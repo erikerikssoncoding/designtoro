@@ -1,0 +1,2 @@
+<?php
+define('RECAPTCHA_SECRET_KEY', 'YOUR_SECRET_KEY_HERE');
