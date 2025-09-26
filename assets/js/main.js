@@ -15,12 +15,28 @@
         { threshold: 0.2 }
     );
 
-    document
-        .querySelectorAll('.service-card, .portfolio-card, .portfolio-item, .pricing-card, .stat-card')
-        .forEach((el) => {
-            el.classList.add('reveal');
-            observer.observe(el);
-        });
+    const revealTargets = document.querySelectorAll(
+        'section, .service-card, .portfolio-card, .portfolio-item, .pricing-card, .stat-card'
+    );
+
+    revealTargets.forEach((el) => {
+        el.classList.add('reveal');
+        observer.observe(el);
+    });
+
+    const siteHeader = document.querySelector('.site-header');
+    if (siteHeader) {
+        const updateHeaderState = () => {
+            if (window.scrollY > 0) {
+                siteHeader.classList.add('is-sticky');
+            } else {
+                siteHeader.classList.remove('is-sticky');
+            }
+        };
+
+        updateHeaderState();
+        window.addEventListener('scroll', updateHeaderState, { passive: true });
+    }
 
     const filterButtons = document.querySelectorAll('.filter-button');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
