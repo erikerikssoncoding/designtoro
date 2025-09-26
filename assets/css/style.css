@@ -1543,6 +1543,7 @@ video {
     width: min(640px, 100%);
     max-height: 90vh;
     overflow-y: auto;
+    scrollbar-width: none;
     border-radius: 24px;
     background: var(--color-card);
     border: 1px solid var(--color-border);
@@ -1551,6 +1552,10 @@ video {
     opacity: 0;
     transform: translateY(24px) scale(0.98);
     will-change: opacity, transform;
+}
+
+.offer-modal__dialog::-webkit-scrollbar {
+    display: none;
 }
 
 .offer-modal.is-visible .offer-modal__dialog {
