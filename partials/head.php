@@ -12,6 +12,13 @@ if (!isset($pageUrl)) {
     $pageUrl = 'https://www.designtoro.ro/';
 }
 require_once __DIR__ . '/../config/sitekey.php';
+$bodyClasses = $bodyClasses ?? [];
+if (!is_array($bodyClasses)) {
+    $bodyClasses = [$bodyClasses];
+}
+$bodyClasses = array_filter(array_map('trim', $bodyClasses));
+array_unshift($bodyClasses, 'no-js');
+$bodyClassAttribute = htmlspecialchars(implode(' ', array_unique($bodyClasses)), ENT_QUOTES, 'UTF-8');
 ?>
 <!DOCTYPE html>
 <html lang="ro">
@@ -44,6 +51,6 @@ require_once __DIR__ . '/../config/sitekey.php';
     </script>
     <script>document.documentElement.classList.remove('no-js');</script>
 </head>
-<body class="no-js">
+<body class="<?= $bodyClassAttribute; ?>">
 <?php include __DIR__ . '/header.php'; ?>
 <main>
