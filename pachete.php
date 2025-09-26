@@ -15,7 +15,7 @@ include __DIR__ . '/partials/head.php';
 </section>
 <section class="pricing py-5" aria-label="Pachete de servicii">
     <div class="container pricing-grid">
-        <article class="pricing-card" data-pricing-card tabindex="0" aria-label="Detalii pachet Starter Premiere">
+        <article class="pricing-card" data-pricing-card tabindex="0" aria-label="Detalii pachet StartUp">
             <div class="pricing-card-inner">
                 <div class="pricing-card-face pricing-card-front" aria-hidden="false">
                     <button class="info-toggle" type="button" data-info-toggle aria-expanded="false" aria-label="Vezi explicații ușor de înțeles">
@@ -24,80 +24,84 @@ include __DIR__ . '/partials/head.php';
                     <div class="info-notice" id="pricing-info-prompt" role="status" aria-live="polite" aria-hidden="true">
                         <span>apasa aici pentru informatii</span>
                     </div>
-                    <h2>Starter Premiere</h2>
-                    <p class="pricing-tag">Ideal pentru start-up-uri</p>
+                    <h2>StartUp</h2>
+                    <p class="pricing-tag">Prezență online esențială</p>
                     <ul>
-                        <li>Landing page scenarizat pentru conversie rapidă</li>
-                        <li>Design one-page cu animații ușoare</li>
-                        <li>Copywriting de bază și integrare formulare</li>
-                        <li>Implementare analytics &amp; heatmaps</li>
+                        <li>Găzduire web premium pe server privat și domeniu .RO inclus</li>
+                        <li>Design 100% original pentru până la 4 pagini esențiale</li>
+                        <li>Interfață complet adaptabilă pe mobil, tabletă și desktop</li>
+                        <li>Panou de administrare intuitiv și e-mailuri profesionale personalizate</li>
+                        <li>Securitate standard: SSL și backup-uri zilnice</li>
+                        <li>Termen de livrare: 5-10 zile lucrătoare</li>
                     </ul>
                     <button class="btn btn-secondary" data-scroll="contact">Cere ofertă</button>
                 </div>
                 <div class="pricing-card-face pricing-card-back" aria-hidden="true">
                     <h3>Pe scurt</h3>
-                    <p>Starter Premiere este pachetul potrivit dacă vrei să lansezi rapid un site clar și ușor de urmărit.</p>
+                    <p>StartUp este fundația potrivită dacă vrei o prezență online rapidă, clară și construită corect încă de la început.</p>
                     <ul>
-                        <li>Construim o singură pagină care explică pe înțelesul tuturor cine ești și ce oferi.</li>
-                        <li>Textele și imaginile sunt alese pentru a ghida vizitatorul spre acțiunea dorită.</li>
-                        <li>Primești instrumente simple de monitorizare ca să știi câți oameni ajung pe site.</li>
+                        <li>Primești o arhitectură de bază cu design original și elemente vizuale personalizate brandului tău.</li>
+                        <li>Administrarea conținutului este simplă datorită panoului intuitiv și adreselor de e-mail dedicate.</li>
+                        <li>Securitatea este asigurată prin SSL, backup-uri zilnice și găzduire performantă.</li>
                     </ul>
                     <button class="info-back" type="button" data-info-close>Înapoi la detalii</button>
                 </div>
             </div>
         </article>
-        <article class="pricing-card popular" data-pricing-card tabindex="0" aria-label="Detalii pachet Spotlight">
+        <article class="pricing-card popular" data-pricing-card tabindex="0" aria-label="Detalii pachet Business Plus">
             <div class="pricing-card-inner">
                 <div class="pricing-card-face pricing-card-front" aria-hidden="false">
                     <div class="badge">Cel mai ales</div>
                     <button class="info-toggle" type="button" data-info-toggle aria-expanded="false" aria-label="Vezi explicații ușor de înțeles">
                         <span aria-hidden="true">i</span>
                     </button>
-                    <h2>Spotlight</h2>
-                    <p class="pricing-tag">Pentru branduri în creștere</p>
+                    <h2>Business Plus</h2>
+                    <p class="pricing-tag">Pentru branduri care vor să convingă</p>
                     <ul>
-                        <li>Website multipage cu UI orientat spre conversie</li>
-                        <li>SEO on-page, content calendar și blog integrat</li>
-                        <li>Automatizări lead nurturing &amp; e-mail marketing</li>
-                        <li>Suport dedicat în primele 60 de zile</li>
+                        <li>Include toate beneficiile StartUp plus conținut profesional (texte și imagini premium)</li>
+                        <li>Structură extinsă până la 7 pagini și identitate vizuală cu logo vectorial</li>
+                        <li>Optimizare SEO on-page și conformitate GDPR de bază</li>
+                        <li>Integrare Google Analytics, Facebook Pixel și soluții de chat</li>
+                        <li>Termen de livrare: 10-20 de zile lucrătoare</li>
                     </ul>
                     <button class="btn btn-accent" data-scroll="contact">Cere ofertă</button>
                 </div>
                 <div class="pricing-card-face pricing-card-back" aria-hidden="true">
                     <h3>Pe scurt</h3>
-                    <p>Spotlight este pentru brandurile care cresc și vor să își spună povestea pe mai multe pagini.</p>
+                    <p>Business Plus este soluția completă pentru afaceri care vor să transforme vizitatorii în clienți.</p>
                     <ul>
-                        <li>Structurăm site-ul pe secțiuni clare pentru servicii, produse și articole.</li>
-                        <li>Te ajutăm să apari în căutările relevante și îți oferim un plan de conținut lunar.</li>
-                        <li>Automatizările țin legătura cu potențialii clienți și îți economisesc timp.</li>
+                        <li>Textele persuasive și imaginile atent selectate construiesc încredere și diferențiază brandul.</li>
+                        <li>Logo-ul și identitatea vizuală consolidează mesajul pe fiecare pagină a site-ului.</li>
+                        <li>Instrumentele de analiză și chat oferă vizibilitate asupra performanței și sprijină conversia.</li>
                     </ul>
                     <button class="info-back" type="button" data-info-close>Înapoi la detalii</button>
                 </div>
             </div>
         </article>
-        <article class="pricing-card" data-pricing-card tabindex="0" aria-label="Detalii pachet Prime Release">
+        <article class="pricing-card" data-pricing-card tabindex="0" aria-label="Detalii pachet Executive">
             <div class="pricing-card-inner">
                 <div class="pricing-card-face pricing-card-front" aria-hidden="false">
                     <button class="info-toggle" type="button" data-info-toggle aria-expanded="false" aria-label="Vezi explicații ușor de înțeles">
                         <span aria-hidden="true">i</span>
                     </button>
-                    <h2>Prime Release</h2>
-                    <p class="pricing-tag">Pentru companii enterprise</p>
+                    <h2>Executive</h2>
+                    <p class="pricing-tag">Strategic pentru afaceri consolidate</p>
                     <ul>
-                        <li>Experiențe digitale custom și arhitectură complexă</li>
-                        <li>Integrare CRM, membership și marketing automation</li>
-                        <li>Optimizare conversii continuă &amp; growth sprints</li>
-                        <li>Consultanță CX și raportare avansată</li>
+                        <li>Include toate avantajele StartUp și Business Plus cu până la 15 pagini complexe</li>
+                        <li>Strategie SEO avansată: cercetare de cuvinte cheie și optimizare pentru fiecare pagină</li>
+                        <li>Consultanță pentru strategie de conținut și infrastructură performantă globală</li>
+                        <li>Optimizare Google Business Profile și materiale de brand dedicate</li>
+                        <li>Termen de livrare: 20-40 de zile lucrătoare</li>
                     </ul>
                     <button class="btn btn-secondary" data-scroll="contact">Cere ofertă</button>
                 </div>
                 <div class="pricing-card-face pricing-card-back" aria-hidden="true">
                     <h3>Pe scurt</h3>
-                    <p>Prime Release este gândit pentru echipe mari cu procese complexe și multe integrări digitale.</p>
+                    <p>Executive este pachetul pentru companii care vor autoritate, performanță și vizibilitate constantă.</p>
                     <ul>
-                        <li>Construim experiențe personalizate care țin cont de fiecare etapă a clientului.</li>
-                        <li>Legăm site-ul de CRM, zone cu acces pe bază de cont sau abonamente fără bătăi de cap.</li>
-                        <li>Optimizările și rapoartele recurente te ajută să iei decizii bazate pe date reale.</li>
+                        <li>Arhitectura extinsă a site-ului susține un conținut variat, cu accent pe autoritate și conversie.</li>
+                        <li>Strategia SEO avansată și infrastructura globală oferă viteză, protecție și poziționare solidă.</li>
+                        <li>Dominanța locală și materialele de brand întăresc prezența companiei în fața clienților cheie.</li>
                     </ul>
                     <button class="info-back" type="button" data-info-close>Înapoi la detalii</button>
                 </div>
