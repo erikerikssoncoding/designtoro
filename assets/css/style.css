@@ -359,6 +359,7 @@ video {
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 2.75rem;
+    margin-bottom: 2.5rem;
 }
 
 .hero-media {
