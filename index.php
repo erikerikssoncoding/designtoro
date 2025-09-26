@@ -20,9 +20,9 @@ include __DIR__ . '/partials/head.php';
                     <span class="badge-pill is-gradient">Strategii de conversie dovedite</span>
                     <span class="badge-pill">Experiențe web memorabile</span>
                 </div>
-                <h1 id="hero-title">
-                    Experiența utilizatorului pe locul #1, cu ecosisteme digitale integrate ce unesc identitatea vizuală și
-                    campaniile de marketing pentru a transforma prezența online într-un motor real de creștere.
+                <h1 id="hero-title" class="hero-title-mini">
+                    Construim platforme digitale centrate pe oameni, ghidate de insight-uri și tehnologie.
+                    Amplificăm brandurile prin experiențe coerente care transformă atenția în creștere.
                 </h1>
                 <p>
                     Creăm experiențe web orientate spre rezultate, cu fluxuri UX intuitive și strategii de marketing digital
