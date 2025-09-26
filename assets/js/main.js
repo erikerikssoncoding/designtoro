@@ -66,4 +66,26 @@
                 });
         });
     }
+
+    const stickyFooterNav = document.querySelector('.mobile-footer-nav');
+    if (stickyFooterNav) {
+        const updateStickyNavVisibility = () => {
+            const viewport = window.visualViewport;
+            const scale = viewport && typeof viewport.scale === 'number' ? viewport.scale : 1;
+            if (scale > 1.15) {
+                stickyFooterNav.classList.add('is-hidden-zoom');
+            } else {
+                stickyFooterNav.classList.remove('is-hidden-zoom');
+            }
+        };
+
+        updateStickyNavVisibility();
+
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', updateStickyNavVisibility);
+            window.visualViewport.addEventListener('scroll', updateStickyNavVisibility);
+        } else {
+            window.addEventListener('resize', updateStickyNavVisibility);
+        }
+    }
 })();

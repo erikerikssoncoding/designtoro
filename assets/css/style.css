@@ -25,6 +25,7 @@ html {
     color: var(--color-text);
     background: var(--color-bg);
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -32,6 +33,7 @@ body {
     min-height: 100vh;
     background: var(--color-bg);
     color: var(--color-text);
+    overflow-x: hidden;
 }
 
 a {
@@ -164,15 +166,12 @@ video {
     margin-right: auto;
 }
 
-.navbar-layout .navbar-collapse {
-    width: 100%;
-}
-
 .navbar-cta {
     padding-inline: 1.75rem;
+    white-space: nowrap;
 }
 
-.navbar-nav {
+.navbar-links {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -182,44 +181,25 @@ video {
 }
 
 @media (max-width: 991.98px) {
-    .navbar-nav {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 0;
-        width: 100%;
+    .navbar-layout {
+        justify-content: space-between;
     }
 
-    .navbar-nav .nav-link {
-        margin-inline: 0;
-        width: 100%;
+    .navbar-links {
+        display: none;
     }
 
-    .navbar-layout .navbar-toggler {
+    .navbar-cta {
         margin-left: auto;
+        padding-inline: 1.35rem;
+        font-size: 0.82rem;
     }
-}
-
-.navbar-layout .navbar-collapse .btn {
-    text-align: center;
-}
-
-.navbar-layout .navbar-collapse .btn.w-100 {
-    justify-content: center;
-}
-
-.navbar-layout .navbar-nav {
-    width: 100%;
 }
 
 @media (min-width: 992px) {
-    .navbar-layout .navbar-collapse {
+    .navbar-links {
+        justify-content: center;
         flex: 1;
-        display: flex !important;
-        justify-content: center;
-    }
-
-    .navbar-layout .navbar-nav {
-        justify-content: center;
     }
 
     .navbar-cta {
@@ -240,7 +220,7 @@ video {
     color: var(--color-accent);
 }
 
-.navbar-nav .nav-link {
+.navbar-links .nav-link {
     font-weight: 500;
     position: relative;
     padding: 0.5rem 0;
@@ -251,7 +231,7 @@ video {
     font-size: 0.82rem;
 }
 
-.navbar-nav .nav-link::after {
+.navbar-links .nav-link::after {
     content: '';
     position: absolute;
     left: 0;
@@ -264,27 +244,17 @@ video {
     transition: transform 0.25s ease;
 }
 
-.navbar-nav .nav-link:hover::after,
-.navbar-nav .nav-link:focus::after,
-.navbar-nav .nav-link.active::after {
+.navbar-links .nav-link:hover::after,
+.navbar-links .nav-link:focus::after,
+.navbar-links .nav-link.active::after {
     transform: scaleX(1);
     transform-origin: left;
 }
 
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link:focus,
-.navbar-nav .nav-link.active {
+.navbar-links .nav-link:hover,
+.navbar-links .nav-link:focus,
+.navbar-links .nav-link.active {
     color: #fff;
-}
-
-.navbar-toggler {
-    border-radius: 0.75rem;
-    border: 1px solid var(--color-border);
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 0.25rem rgba(229, 9, 20, 0.35);
 }
 
 .hero {
@@ -1338,6 +1308,64 @@ video {
 .site-footer a:hover,
 .site-footer a:focus {
     color: var(--color-accent);
+}
+
+.mobile-footer-nav {
+    position: fixed;
+    left: 50%;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);
+    transform: translate(-50%, 0);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.75rem 1.1rem;
+    width: min(520px, calc(100% - 20px));
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(8, 8, 14, 0.78);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 28px 50px rgba(0, 0, 0, 0.45);
+    z-index: 1050;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-footer-nav.is-hidden-zoom {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 120%);
+}
+
+.mobile-footer-nav__link {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    color: #f5f5f5;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.68rem;
+    padding: 0.35rem 0.25rem;
+    border-radius: 0.75rem;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.mobile-footer-nav__link i {
+    font-size: 1.05rem;
+    color: var(--color-accent);
+}
+
+.mobile-footer-nav__link:hover,
+.mobile-footer-nav__link:focus {
+    color: var(--color-accent);
+    background: rgba(229, 9, 20, 0.12);
+}
+
+@media (min-width: 992px) {
+    .mobile-footer-nav {
+        display: none;
+    }
 }
 
 .footer-column ul {
