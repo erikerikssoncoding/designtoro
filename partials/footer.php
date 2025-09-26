@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>Copyright © 2025 DesignToro.ro | <a href="#">Politica de Confidențialitate</a> | <a href="#">Termeni și Condiții</a></p>
+        <p>Copyright © <?= date('Y'); ?> DesignToro.ro | <a href="#">Politica de Confidențialitate</a> | <a href="#">Termeni și Condiții</a></p>
     </div>
 </footer>
 <?php
