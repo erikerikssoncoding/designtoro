@@ -38,6 +38,28 @@
         <p>Copyright © 2025 DesignToro.ro | <a href="#">Politica de Confidențialitate</a> | <a href="#">Termeni și Condiții</a></p>
     </div>
 </footer>
+<nav class="mobile-footer-nav" aria-label="Navigație rapidă">
+    <a href="/" class="mobile-footer-nav__link">
+        <i class="fa-solid fa-house" aria-hidden="true"></i>
+        <span>Acasă</span>
+    </a>
+    <a href="/servicii" class="mobile-footer-nav__link">
+        <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+        <span>Servicii</span>
+    </a>
+    <a href="/pachete" class="mobile-footer-nav__link">
+        <i class="fa-solid fa-box-open" aria-hidden="true"></i>
+        <span>Pachete</span>
+    </a>
+    <a href="/portofoliu" class="mobile-footer-nav__link">
+        <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+        <span>Portofoliu</span>
+    </a>
+    <a href="/contact" class="mobile-footer-nav__link">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        <span>Contact</span>
+    </a>
+</nav>
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
