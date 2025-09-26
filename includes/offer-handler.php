@@ -43,6 +43,7 @@ function handle_offer_request(): array
     $phone = offer_sanitize_input($_POST['phone'] ?? '');
     $details = offer_sanitize_input($_POST['details'] ?? '');
     $plan = offer_sanitize_input($_POST['offer_plan'] ?? '');
+    $termsAccepted = isset($_POST['terms']) && $_POST['terms'] === '1';
     $token = $_POST['g-recaptcha-response'] ?? '';
 
     if ($name === '') {
@@ -59,6 +60,10 @@ function handle_offer_request(): array
 
     if ($details === '') {
         $errors[] = 'Detaliile despre proiect sunt obligatorii.';
+    }
+
+    if (!$termsAccepted) {
+        $errors[] = 'Trebuie să accepți Termenii și condițiile și Politica de confidențialitate.';
     }
 
     if ($token === '') {

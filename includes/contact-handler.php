@@ -42,6 +42,7 @@ function handle_contact_form(): array
     $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
     $phone = sanitize_input($_POST['phone'] ?? '');
     $message = sanitize_input($_POST['message'] ?? '');
+    $termsAccepted = isset($_POST['terms']) && $_POST['terms'] === '1';
     $token = $_POST['g-recaptcha-response'] ?? '';
 
     if ($name === '') {
@@ -54,6 +55,10 @@ function handle_contact_form(): array
 
     if ($message === '') {
         $errors[] = 'Mesajul este obligatoriu.';
+    }
+
+    if (!$termsAccepted) {
+        $errors[] = 'Trebuie să accepți Termenii și condițiile și Politica de confidențialitate.';
     }
 
     if ($token === '') {

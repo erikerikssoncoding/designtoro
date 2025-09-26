@@ -294,7 +294,7 @@
 
             window.requestAnimationFrame(() => {
                 animatedElements.forEach((element, index) => {
-                    const delayBase = prefersReducedMotion.matches ? 0 : 1000;
+                    const delayBase = prefersReducedMotion.matches ? 0 : 250;
                     const delayStep = prefersReducedMotion.matches ? 0 : 180;
                     const delay = delayBase + (delayStep * index);
 
