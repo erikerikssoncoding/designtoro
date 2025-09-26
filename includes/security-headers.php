@@ -12,7 +12,7 @@ if (!headers_sent()) {
         . "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com; "
         . "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; "
         . "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:; "
-        . "connect-src 'self' https://www.google.com https://www.gstatic.com; "
+        . "connect-src 'self' https://www.google.com https://www.gstatic.com https://cdn.jsdelivr.net; " // Added https://cdn.jsdelivr.net for source maps
         . "frame-src https://www.google.com/recaptcha/; "
         . "base-uri 'self'; "
         . "form-action 'self'; "

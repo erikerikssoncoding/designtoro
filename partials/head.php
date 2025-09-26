@@ -35,7 +35,7 @@ require_once __DIR__ . '/../config/sitekey.php';
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"
-        integrity="sha384-7XCRsZEFfH90GDVxLvRzIftGKa4vifnq3aeQk4gBKUEooncFGpqlzu0jJjaAiz1D"
+        integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI"
         crossorigin="anonymous"
     >
     <link rel="stylesheet" href="/assets/css/style.css">
