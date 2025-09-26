@@ -94,6 +94,75 @@
         });
     });
 
+    const pricingCards = document.querySelectorAll('[data-pricing-card]');
+
+    pricingCards.forEach((card) => {
+        const front = card.querySelector('.pricing-card-front');
+        const back = card.querySelector('.pricing-card-back');
+        const toggleButton = card.querySelector('[data-info-toggle]');
+
+        const setState = (flipped) => {
+            card.classList.toggle('is-flipped', flipped);
+            if (front) {
+                front.setAttribute('aria-hidden', flipped ? 'true' : 'false');
+            }
+            if (back) {
+                back.setAttribute('aria-hidden', flipped ? 'false' : 'true');
+            }
+            if (toggleButton) {
+                toggleButton.setAttribute('aria-expanded', flipped ? 'true' : 'false');
+            }
+        };
+
+        const toggleState = () => {
+            setState(!card.classList.contains('is-flipped'));
+        };
+
+        card.addEventListener('click', (event) => {
+            const target = event.target;
+
+            if (target.closest('.btn')) {
+                return;
+            }
+
+            if (target.closest('[data-info-close]')) {
+                event.preventDefault();
+                setState(false);
+                return;
+            }
+
+            if (target.closest('[data-info-toggle]')) {
+                event.preventDefault();
+                toggleState();
+                return;
+            }
+
+            if (!target.closest('.pricing-card-face')) {
+                return;
+            }
+
+            toggleState();
+        });
+
+        card.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                setState(false);
+                return;
+            }
+
+            if (event.target !== card) {
+                return;
+            }
+
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleState();
+            }
+        });
+
+        setState(false);
+    });
+
     const recaptchaSiteKey = window.RECAPTCHA_SITE_KEY;
     const enableRecaptchaBadge = (auto = false) => {
         document.body.classList.add('show-recaptcha');
