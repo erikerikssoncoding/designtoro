@@ -34,9 +34,10 @@ require_once __DIR__ . '/../config/sitekey.php';
     >
     <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-        integrity="sha384-XuZVnPY0Zru+TdBzYzNPFKVwoHEk17hMLgeNvvwSv6/XAD0KNA7CdlSJ9zhwHlVb"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"
+        integrity="sha384-7XCRsZEFfH90GDVxLvRzIftGKa4vifnq3aeQk4gBKUEooncFGpqlzu0jJjaAiz1D"
         crossorigin="anonymous"
+        referrerpolicy="no-referrer"
     >
     <link rel="stylesheet" href="/assets/css/style.css">
     <script>

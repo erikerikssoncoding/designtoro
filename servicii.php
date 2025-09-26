@@ -15,7 +15,7 @@ include __DIR__ . '/partials/head.php';
 <section class="service-list py-5" aria-label="Lista serviciilor principale">
     <div class="container service-grid detailed">
         <article class="service-card" id="web-design">
-            <div class="service-icon"><i class="bi bi-window-desktop" aria-hidden="true"></i></div>
+            <div class="service-icon"><i class="fa-solid fa-display" aria-hidden="true"></i></div>
             <h2>Experiențe Web &amp; Platforme</h2>
             <p>Site-uri de prezentare, membership și ecommerce construite ca un hub digital de performanță.</p>
             <ul class="service-benefits">
@@ -26,7 +26,7 @@ include __DIR__ . '/partials/head.php';
             <a class="link-arrow" href="/contact">Programează un discovery call</a>
         </article>
         <article class="service-card" id="seo">
-            <div class="service-icon"><i class="bi bi-search" aria-hidden="true"></i></div>
+            <div class="service-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></div>
             <h2>SEO &amp; Content Serializat</h2>
             <p>Optimizări tehnice și storytelling evergreen pentru vizibilitate organică de durată.</p>
             <ul class="service-benefits">
@@ -37,7 +37,7 @@ include __DIR__ . '/partials/head.php';
             <a class="link-arrow" href="/contact">Solicită un audit SEO</a>
         </article>
         <article class="service-card" id="social-media">
-            <div class="service-icon"><i class="bi bi-chat-dots-fill" aria-hidden="true"></i></div>
+            <div class="service-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></div>
             <h2>Social Media &amp; Communities</h2>
             <p>Campanii episodice și conținut snackable care mențin comunitatea conectată.</p>
             <ul class="service-benefits">
@@ -48,7 +48,7 @@ include __DIR__ . '/partials/head.php';
             <a class="link-arrow" href="/contact">Planifică o campanie</a>
         </article>
         <article class="service-card" id="branding">
-            <div class="service-icon"><i class="bi bi-palette-fill" aria-hidden="true"></i></div>
+            <div class="service-icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></div>
             <h2>Branding &amp; Content Studio</h2>
             <p>Identități vizuale și narațiuni care construiesc conexiuni emoționale.</p>
             <ul class="service-benefits">

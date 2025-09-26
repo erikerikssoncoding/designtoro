@@ -20,11 +20,11 @@ include __DIR__ . '/partials/head.php';
                 orchestrat. De la art direction și copywriting la arhitectură tehnică și growth marketing, tratăm fiecare
                 proiect ca pe un ecosistem complet pentru creștere.</p>
                 <ul class="hero-highlights">
-                    <li><i class="bi bi-check-circle-fill text-primary" aria-hidden="true"></i>Site-uri orchestrate pentru
+                    <li><i class="fa-solid fa-circle-check text-primary" aria-hidden="true"></i>Site-uri orchestrate pentru
                     performanță, cu UI adaptiv și micro-interacțiuni care sporesc încrederea.</li>
-                    <li><i class="bi bi-rocket-takeoff-fill text-primary" aria-hidden="true"></i>Biblioteci de conținut și
+                    <li><i class="fa-solid fa-rocket text-primary" aria-hidden="true"></i>Biblioteci de conținut și
                     automatizări personalizate care transformă vizitatorii în membri loiali.</li>
-                    <li><i class="bi bi-diagram-3-fill text-primary" aria-hidden="true"></i>Campanii integrate și
+                    <li><i class="fa-solid fa-diagram-project text-primary" aria-hidden="true"></i>Campanii integrate și
                     optimizare continuă pentru conversii în fiecare episod al customer journey-ului.</li>
                 </ul>
                 <div class="hero-actions">
@@ -35,8 +35,11 @@ include __DIR__ . '/partials/head.php';
             <div class="col-lg-6">
                 <div class="hero-media" aria-hidden="true">
                     <div class="media-placeholder">
-                        <h3>Experiență completă, gata de lansare.</h3>
-                        <span>UX, conținut și tehnologie reunite într-un singur pachet digital.</span>
+                        <img class="image-placeholder" src="https://placehold.co/600x360/1a1a26/FFFFFF?text=DesignToro+Showcase" alt="Previzualizare proiect digital realizat de DesignToro">
+                        <div class="media-caption">
+                            <h3>Experiență completă, gata de lansare.</h3>
+                            <span>UX, conținut și tehnologie reunite într-un singur pachet digital.</span>
+                        </div>
                     </div>
                     <div class="accent-card">
                         <strong>+68%</strong>
@@ -50,17 +53,17 @@ include __DIR__ . '/partials/head.php';
 <section class="stats py-5" aria-label="Rezultatele DesignToro">
     <div class="container stats-grid">
         <div class="stat-card">
-            <i class="bi bi-briefcase-fill text-primary display-6" aria-hidden="true"></i>
+            <i class="fa-solid fa-briefcase text-primary display-6" aria-hidden="true"></i>
             <span class="stat-value">225+</span>
             <span class="stat-label">Lansări orchestrate</span>
         </div>
         <div class="stat-card">
-            <i class="bi bi-emoji-smile-fill text-primary display-6" aria-hidden="true"></i>
+            <i class="fa-solid fa-face-smile text-primary display-6" aria-hidden="true"></i>
             <span class="stat-value">213+</span>
             <span class="stat-label">Branduri în prim-plan</span>
         </div>
         <div class="stat-card">
-            <i class="bi bi-award-fill text-primary display-6" aria-hidden="true"></i>
+            <i class="fa-solid fa-award text-primary display-6" aria-hidden="true"></i>
             <span class="stat-value">8+</span>
             <span class="stat-label">Ani de producție digitală</span>
         </div>
@@ -102,25 +105,25 @@ include __DIR__ . '/partials/head.php';
         <h2 id="services-title">Servicii create pentru platforme captivante</h2>
         <div class="service-grid">
             <article class="service-card">
-                <div class="service-icon"><i class="bi bi-window-stack" aria-hidden="true"></i></div>
+                <div class="service-icon"><i class="fa-solid fa-window-restore" aria-hidden="true"></i></div>
                 <h3>Experiențe Web &amp; Platforme</h3>
                 <p>Interfețe modulare, membership și ecommerce construite pentru performanță și conversii.</p>
                 <a class="link-arrow" href="/servicii#web-design">Descoperă procesul</a>
             </article>
             <article class="service-card">
-                <div class="service-icon"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i></div>
+                <div class="service-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
                 <h3>SEO &amp; Distribuție organică</h3>
                 <p>Optimizare tehnică, conținut serializat și strategii de căutare pentru audiențe calificate.</p>
                 <a class="link-arrow" href="/servicii#seo">Solicită un audit</a>
             </article>
             <article class="service-card">
-                <div class="service-icon"><i class="bi bi-people-fill" aria-hidden="true"></i></div>
+                <div class="service-icon"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
                 <h3>Social Media &amp; Communities</h3>
                 <p>Campanii episodice, conținut snackable și automatizări de engagement.</p>
                 <a class="link-arrow" href="/servicii#social-media">Planifică o campanie</a>
             </article>
             <article class="service-card">
-                <div class="service-icon"><i class="bi bi-palette-fill" aria-hidden="true"></i></div>
+                <div class="service-icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></div>
                 <h3>Branding &amp; Content Studio</h3>
                 <p>Identități vizuale, ghiduri de comunicare și campanii de conținut care vând.</p>
                 <a class="link-arrow" href="/servicii#branding">Vezi pachetele</a>
@@ -164,28 +167,36 @@ include __DIR__ . '/partials/head.php';
         </div>
         <div class="portfolio-grid">
             <article class="portfolio-card">
-                <div class="portfolio-media">Poster digital Pulse</div>
+                <div class="portfolio-media">
+                    <img class="image-placeholder" src="https://placehold.co/520x360/101017/FFFFFF?text=Pulse+Media" alt="Previzualizare proiect Pulse Media">
+                </div>
                 <div class="portfolio-overlay">
                     <h3>Pulse Media</h3>
                     <p>Platformă de content digital și marketing automation</p>
                 </div>
             </article>
             <article class="portfolio-card">
-                <div class="portfolio-media">Poster digital Nebula</div>
+                <div class="portfolio-media">
+                    <img class="image-placeholder" src="https://placehold.co/520x360/181824/FFFFFF?text=Nebula+Commerce" alt="Previzualizare proiect Nebula Commerce">
+                </div>
                 <div class="portfolio-overlay">
                     <h3>Nebula Commerce</h3>
                     <p>Experiență ecommerce high-end</p>
                 </div>
             </article>
             <article class="portfolio-card">
-                <div class="portfolio-media">Poster digital Skyline</div>
+                <div class="portfolio-media">
+                    <img class="image-placeholder" src="https://placehold.co/520x360/13131c/FFFFFF?text=Skyline+Air" alt="Previzualizare proiect Skyline Air">
+                </div>
                 <div class="portfolio-overlay">
                     <h3>Skyline Air</h3>
                     <p>Portal de rezervări premium</p>
                 </div>
             </article>
             <article class="portfolio-card">
-                <div class="portfolio-media">Poster digital Prime</div>
+                <div class="portfolio-media">
+                    <img class="image-placeholder" src="https://placehold.co/520x360/171721/FFFFFF?text=Prime+Estates" alt="Previzualizare proiect Prime Estates">
+                </div>
                 <div class="portfolio-overlay">
                     <h3>Prime Estates</h3>
                     <p>Platformă imobiliară interactivă</p>
