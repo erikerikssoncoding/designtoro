@@ -14,8 +14,8 @@ include __DIR__ . '/partials/head.php';
 <section class="contact-hero py-5" aria-labelledby="contact-title">
     <div class="container contact-grid row g-5 align-items-start">
         <div class="col-lg-5">
-            <h1 id="contact-title">Hai să stăm de vorbă.</h1>
-            <p>Spune-ne câteva detalii despre proiectul tău și îți vom răspunde în cel mult o zi lucrătoare.</p>
+            <h1 id="contact-title">Hai să planificăm premiera digitală.</h1>
+            <p>Spune-ne câteva detalii despre proiect și îți răspundem cu un plan de acțiune în maximum o zi lucrătoare.</p>
             <ul class="contact-details list-unstyled d-grid gap-2">
                 <li><i class="bi bi-telephone-fill text-primary" aria-hidden="true"></i><strong>Telefon:</strong> <a href="tel:+40722123456">+40 722 123 456</a></li>
                 <li><i class="bi bi-envelope-open-fill text-primary" aria-hidden="true"></i><strong>Email:</strong> <a href="mailto:contact@designtoro.ro">contact@designtoro.ro</a></li>
@@ -66,8 +66,8 @@ include __DIR__ . '/partials/head.php';
 <section class="cta-banner py-5" aria-labelledby="cta-contact">
     <div class="container cta-inline d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-between gap-3">
         <div>
-            <h2 id="cta-contact">Preferi o întâlnire față în față?</h2>
-            <p>Stabilește o sesiune de consultanță și vom analiza împreună soluțiile potrivite.</p>
+            <h2 id="cta-contact">Preferi o sesiune rapidă pe video?</h2>
+            <p>Stabilește o întâlnire și discutăm live despre strategie, bugete și calendar.</p>
         </div>
         <a class="btn btn-secondary" href="tel:+40722123456">Sună acum</a>
     </div>
