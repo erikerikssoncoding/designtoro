@@ -300,6 +300,11 @@ video {
     margin-bottom: 1.5rem;
 }
 
+.hero-text .hero-title-mini {
+    font-size: clamp(2.3rem, 5vw, 3.6rem);
+    line-height: 1.1;
+}
+
 .hero-text p {
     color: var(--color-muted);
     font-size: 1.12rem;
