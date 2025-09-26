@@ -13,7 +13,7 @@
             <ul>
                 <li><a href="/">Acasă</a></li>
                 <li><a href="/servicii">Servicii</a></li>
-                <li><a href="/pachete">Pachete</a></li>
+                <li><a href="/preturi">Prețuri</a></li>
                 <li><a href="/portofoliu">Portofoliu</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
@@ -52,10 +52,10 @@ $mobileFooterNavItems = [
         'icon' => 'fa-solid fa-layer-group',
         'label' => 'Servicii',
     ],
-    'pachete' => [
-        'href' => '/pachete',
-        'icon' => 'fa-solid fa-box-open',
-        'label' => 'Pachete',
+    'preturi' => [
+        'href' => '/preturi',
+        'icon' => 'fa-solid fa-tags',
+        'label' => 'Prețuri',
     ],
     'portofoliu' => [
         'href' => '/portofoliu',

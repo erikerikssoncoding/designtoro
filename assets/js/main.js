@@ -271,6 +271,73 @@
         }
     }
 
+    const offerModal = document.querySelector('[data-offer-modal]');
+    if (offerModal) {
+        const offerOpenButtons = document.querySelectorAll('[data-offer-modal-open]');
+        const planField = offerModal.querySelector('#offer-plan-field');
+        const nameField = offerModal.querySelector('#offer-name');
+        const closeSelectors = '[data-offer-modal-close]';
+
+        const setAriaState = (isOpen) => {
+            offerModal.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+            if (isOpen) {
+                document.body.classList.add('offer-modal-open');
+            } else {
+                document.body.classList.remove('offer-modal-open');
+            }
+        };
+
+        const openOfferModal = (plan) => {
+            if (planField && typeof plan === 'string') {
+                planField.value = plan;
+            }
+
+            offerModal.classList.add('is-visible');
+            setAriaState(true);
+
+            window.setTimeout(() => {
+                if (nameField && typeof nameField.focus === 'function') {
+                    nameField.focus();
+                }
+            }, 50);
+        };
+
+        const closeOfferModal = () => {
+            offerModal.classList.remove('is-visible');
+            setAriaState(false);
+        };
+
+        if (offerModal.classList.contains('is-visible')) {
+            setAriaState(true);
+            window.setTimeout(() => {
+                if (nameField && typeof nameField.focus === 'function') {
+                    nameField.focus();
+                }
+            }, 50);
+        }
+
+        offerOpenButtons.forEach((button) => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                const plan = button.getAttribute('data-offer-plan') || button.textContent.trim();
+                openOfferModal(plan);
+            });
+        });
+
+        offerModal.addEventListener('click', (event) => {
+            if (event.target.closest(closeSelectors)) {
+                event.preventDefault();
+                closeOfferModal();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && offerModal.classList.contains('is-visible')) {
+                closeOfferModal();
+            }
+        });
+    }
+
     const stickyFooterNav = document.querySelector('.mobile-footer-nav');
     if (stickyFooterNav) {
         const updateStickyNavVisibility = () => {
