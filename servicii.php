@@ -69,19 +69,19 @@ include __DIR__ . '/partials/head.php';
         </div>
         <ol class="process-steps">
             <li>
-                <h3>1. Discovery</h3>
+                <h3>Discovery</h3>
                 <p>Analizăm contextul brandului și definim scenariul strategic al proiectului.</p>
             </li>
             <li>
-                <h3>2. Design &amp; Prototipare</h3>
+                <h3>Design &amp; Prototipare</h3>
                 <p>Construim wireframe-uri interactive și moodboard-uri pentru feedback rapid.</p>
             </li>
             <li>
-                <h3>3. Build &amp; QA</h3>
+                <h3>Build &amp; QA</h3>
                 <p>Implementăm funcționalitățile, optimizăm performanța și testăm cross-device.</p>
             </li>
             <li>
-                <h3>4. Launch &amp; Growth</h3>
+                <h3>Launch &amp; Growth</h3>
                 <p>Orchestrăm lansarea, monitorizăm datele și iterăm pentru rezultate sustenabile.</p>
             </li>
         </ol>
