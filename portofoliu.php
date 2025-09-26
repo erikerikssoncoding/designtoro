@@ -23,42 +23,54 @@ include __DIR__ . '/partials/head.php';
 <section class="portfolio-gallery py-4" aria-label="Galerie portofoliu">
     <div class="container portfolio-masonry">
         <article class="portfolio-item" data-category="website">
-            <div class="portfolio-media">Poster digital Pulse</div>
+            <div class="portfolio-media">
+                <img class="image-placeholder" src="https://placehold.co/560x380/101017/FFFFFF?text=Pulse+Media" alt="Previzualizare proiect Pulse Media">
+            </div>
             <div class="portfolio-details">
                 <h2>Pulse Media</h2>
                 <p>Hub de content digital &amp; newsletter</p>
             </div>
         </article>
         <article class="portfolio-item" data-category="ecommerce">
-            <div class="portfolio-media">Poster digital Nebula</div>
+            <div class="portfolio-media">
+                <img class="image-placeholder" src="https://placehold.co/560x380/181824/FFFFFF?text=Nebula+Commerce" alt="Previzualizare proiect Nebula Commerce">
+            </div>
             <div class="portfolio-details">
                 <h2>Nebula Commerce</h2>
                 <p>Magazin online fashion premium</p>
             </div>
         </article>
         <article class="portfolio-item" data-category="branding">
-            <div class="portfolio-media">Poster digital Skyline</div>
+            <div class="portfolio-media">
+                <img class="image-placeholder" src="https://placehold.co/560x380/13131c/FFFFFF?text=Skyline+Air" alt="Previzualizare proiect Skyline Air">
+            </div>
             <div class="portfolio-details">
                 <h2>Skyline Air</h2>
                 <p>Identitate și platformă de rezervări</p>
             </div>
         </article>
         <article class="portfolio-item" data-category="website">
-            <div class="portfolio-media">Poster digital Prime</div>
+            <div class="portfolio-media">
+                <img class="image-placeholder" src="https://placehold.co/560x380/171721/FFFFFF?text=Prime+Estates" alt="Previzualizare proiect Prime Estates">
+            </div>
             <div class="portfolio-details">
                 <h2>Prime Estates</h2>
                 <p>Platformă imobiliară interactivă</p>
             </div>
         </article>
         <article class="portfolio-item" data-category="ecommerce">
-            <div class="portfolio-media">Poster digital Orbit</div>
+            <div class="portfolio-media">
+                <img class="image-placeholder" src="https://placehold.co/560x380/0f0f15/FFFFFF?text=Orbit+Tech" alt="Previzualizare proiect Orbit Tech">
+            </div>
             <div class="portfolio-details">
                 <h2>Orbit Tech</h2>
                 <p>Store B2B cu integrări complexe</p>
             </div>
         </article>
         <article class="portfolio-item" data-category="branding">
-            <div class="portfolio-media">Poster digital Lumen</div>
+            <div class="portfolio-media">
+                <img class="image-placeholder" src="https://placehold.co/560x380/191921/FFFFFF?text=Lumen+Studio" alt="Previzualizare proiect Lumen Studio">
+            </div>
             <div class="portfolio-details">
                 <h2>Lumen Studio</h2>
                 <p>Branding și ghid de identitate</p>

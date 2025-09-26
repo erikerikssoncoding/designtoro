@@ -19,18 +19,18 @@
         <div class="footer-column">
             <h3>Contact rapid</h3>
             <ul class="footer-contact">
-                <li><i class="bi bi-geo-alt-fill text-primary" aria-hidden="true"></i>București, România</li>
-                <li><i class="bi bi-envelope-open-fill text-primary" aria-hidden="true"></i><a href="mailto:contact@designtoro.ro">contact@designtoro.ro</a></li>
-                <li><i class="bi bi-telephone-fill text-primary" aria-hidden="true"></i><a href="tel:+40722123456">+40 722 123 456</a></li>
+                <li><i class="fa-solid fa-location-dot text-primary" aria-hidden="true"></i>București, România</li>
+                <li><i class="fa-solid fa-envelope-open-text text-primary" aria-hidden="true"></i><a href="mailto:contact@designtoro.ro">contact@designtoro.ro</a></li>
+                <li><i class="fa-solid fa-phone text-primary" aria-hidden="true"></i><a href="tel:+40722123456">+40 722 123 456</a></li>
             </ul>
         </div>
         <div class="footer-column">
             <h3>Urmărește lansările</h3>
             <ul class="social-links">
-                <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i> Instagram</a></li>
-                <li><a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
-                <li><a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i> Facebook</a></li>
-                <li><a href="#" aria-label="YouTube"><i class="bi bi-youtube" aria-hidden="true"></i> YouTube</a></li>
+                <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+                <li><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+                <li><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+                <li><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube</a></li>
             </ul>
         </div>
     </div>

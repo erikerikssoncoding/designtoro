@@ -17,9 +17,9 @@ include __DIR__ . '/partials/head.php';
             <h1 id="contact-title">Hai să planificăm strategia digitală.</h1>
             <p>Spune-ne câteva detalii despre proiect și îți răspundem cu un plan de acțiune în maximum o zi lucrătoare.</p>
             <ul class="contact-details list-unstyled d-grid gap-2">
-                <li><i class="bi bi-telephone-fill text-primary" aria-hidden="true"></i><strong>Telefon:</strong> <a href="tel:+40722123456">+40 722 123 456</a></li>
-                <li><i class="bi bi-envelope-open-fill text-primary" aria-hidden="true"></i><strong>Email:</strong> <a href="mailto:contact@designtoro.ro">contact@designtoro.ro</a></li>
-                <li><i class="bi bi-geo-alt-fill text-primary" aria-hidden="true"></i><strong>Adresă:</strong> București, România</li>
+                <li><i class="fa-solid fa-phone text-primary" aria-hidden="true"></i><strong>Telefon:</strong> <a href="tel:+40722123456">+40 722 123 456</a></li>
+                <li><i class="fa-solid fa-envelope-open-text text-primary" aria-hidden="true"></i><strong>Email:</strong> <a href="mailto:contact@designtoro.ro">contact@designtoro.ro</a></li>
+                <li><i class="fa-solid fa-location-dot text-primary" aria-hidden="true"></i><strong>Adresă:</strong> București, România</li>
             </ul>
         </div>
         <div class="col-lg-7">
