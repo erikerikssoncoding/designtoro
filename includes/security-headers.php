@@ -8,11 +8,11 @@ if (!headers_sent()) {
     header(
         'Content-Security-Policy: '
         . "default-src 'self'; "
-        . "img-src 'self' data: https://www.gstatic.com https://www.google.com; "
-        . "script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; "
-        . "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-        . "font-src 'self' https://fonts.gstatic.com; "
-        . "connect-src 'self'; "
+        . "img-src 'self' data: https://www.gstatic.com https://www.google.com https://cdn.jsdelivr.net; "
+        . "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com; "
+        . "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; "
+        . "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:; "
+        . "connect-src 'self' https://www.google.com https://www.gstatic.com; "
         . "frame-src https://www.google.com/recaptcha/; "
         . "base-uri 'self'; "
         . "form-action 'self'; "

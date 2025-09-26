@@ -36,7 +36,6 @@ include __DIR__ . '/partials/head.php';
                 <div class="hero-media" aria-hidden="true">
                     <div class="media-placeholder">
                         <div class="media-visual hero-visual" role="img" aria-label="Previzualizare proiect digital realizat de DesignToro">
-                            <span class="media-visual__chip" aria-hidden="true">DesignToro Launch Lab</span>
                             <span class="media-visual__tag" aria-hidden="true">UX • UI • Growth</span>
                         </div>
                         <div class="media-caption">
