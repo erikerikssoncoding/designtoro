@@ -4,8 +4,7 @@
         <div class="footer-column">
             <a href="/" class="footer-logo">designtoro</a>
             <p>
-                Proiectăm platforme digitale performante. Prin web design strategic și marketing focusat pe rezultate,
-                ajutăm brandurile să crească și să domine în mediul online.
+                Construim site-uri clare și campanii ușor de înțeles. Explicăm fiecare pas și te ajutăm să atragi clienți noi fără jargon tehnic.
             </p>
         </div>
         <div class="footer-column">
@@ -27,7 +26,7 @@
             </ul>
         </div>
         <div class="footer-column">
-            <h3>Urmărește lansările</h3>
+            <h3>Urmărește noutățile</h3>
             <ul class="social-links">
                 <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</a></li>
                 <li><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>

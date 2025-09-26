@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/security-headers.php';
 $pageTitle = 'Contact - Agenție Web Design | DesignToro';
-$pageDescription = 'Contactează echipa DesignToro pentru o ofertă personalizată de web design, SEO sau marketing digital.';
+$pageDescription = 'Contactează echipa DesignToro pentru o discuție rapidă despre site-ul tău, promovare și bugete clare.';
 $pageKeywords = 'contact web design, ofertă personalizată site, agenție bucurești contact';
 $pageUrl = 'https://www.designtoro.ro/contact';
 $currentPage = 'contact';
@@ -19,8 +19,8 @@ include __DIR__ . '/partials/head.php';
 <section class="contact-hero py-5" aria-labelledby="contact-title">
     <div class="container contact-grid row g-5 align-items-start">
         <div class="col-lg-5">
-            <h1 id="contact-title">Hai să planificăm strategia digitală.</h1>
-            <p>Spune-ne câteva detalii despre proiect și îți răspundem cu un plan de acțiune în maximum o zi lucrătoare.</p>
+            <h1 id="contact-title">Hai să discutăm despre proiectul tău online.</h1>
+            <p>Scrie-ne câteva detalii, iar în cel mult o zi lucrătoare primești un plan simplu și pașii următori.</p>
             <ul class="contact-details list-unstyled d-grid gap-2">
                 <li><i class="fa-solid fa-phone text-primary" aria-hidden="true"></i><strong>Telefon:</strong> <a href="tel:+40757568812">+40 757 568 812</a></li>
                 <li><i class="fa-solid fa-envelope-open-text text-primary" aria-hidden="true"></i><strong>Email:</strong> <a href="mailto:office@designtoro.ro">office@designtoro.ro</a></li>
@@ -71,8 +71,8 @@ include __DIR__ . '/partials/head.php';
 <section class="cta-banner py-5" aria-labelledby="cta-contact">
     <div class="container cta-inline d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-between gap-3">
         <div>
-            <h2 id="cta-contact">Preferi o sesiune rapidă live?</h2>
-            <p>Stabilește o întâlnire și discutăm despre strategie, bugete și calendar.</p>
+            <h2 id="cta-contact">Vrei să vorbim direct la telefon?</h2>
+            <p>Sună-ne și clarificăm pe loc bugetul, calendarul și pașii următori.</p>
         </div>
         <a class="btn btn-secondary" href="tel:+40757568812">Sună acum</a>
     </div>
