@@ -40,11 +40,11 @@ include __DIR__ . '/partials/head.php';
         </div>
         <div class="hero-metric" role="list" aria-label="Rezultatele DesignToro">
             <article class="accent-card hero-metric-card" role="listitem">
-                <strong>225+</strong>
-                <span>Lansări orchestrate</span>
+                <strong>1.300+</strong>
+                <span>Website-uri lansate</span>
             </article>
             <article class="accent-card hero-metric-card" role="listitem">
-                <strong>213+</strong>
+                <strong>700+</strong>
                 <span>Branduri în prim-plan</span>
             </article>
             <article class="accent-card hero-metric-card" role="listitem">
