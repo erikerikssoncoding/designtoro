@@ -3,8 +3,10 @@
     <div class="container footer-grid">
         <div class="footer-column">
             <a href="/" class="footer-logo">designtoro</a>
-            <p>Proiectăm platforme digitale cu focus pe web design și marketing pentru branduri care vor să rămână relevante
-            online.</p>
+            <p>
+                Proiectăm platforme digitale performante. Prin web design strategic și marketing focusat pe rezultate,
+                ajutăm brandurile să crească și să domine în mediul online.
+            </p>
         </div>
         <div class="footer-column">
             <h3>Explorează</h3>

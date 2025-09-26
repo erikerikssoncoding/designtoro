@@ -15,15 +15,21 @@ include __DIR__ . '/partials/head.php';
     <div class="container">
         <div class="row align-items-center g-5 hero-content">
             <div class="col-12 col-lg-10 col-xl-8 hero-text">
-                <p class="eyebrow">Agenție digitală pentru branduri fără pauză</p>
+                <p class="eyebrow">Platforme digitale care generează rezultate</p>
                 <div class="hero-badges">
-                    <span class="badge-pill is-gradient">Lansări cu impact global</span>
-                    <span class="badge-pill">Design narativ &amp; funnel-uri inteligente</span>
+                    <span class="badge-pill is-gradient">Strategii de conversie dovedite</span>
+                    <span class="badge-pill">Experiențe web memorabile</span>
                 </div>
-                <h1 id="hero-title">Transformăm prezența online într-o platformă care ține publicul conectat.</h1>
-                <p>DesignToro creează experiențe web orientate spre conversie, cu fluxuri UX clare și marketing digital
-                orchestrat. De la art direction și copywriting la arhitectură tehnică și growth marketing, tratăm fiecare
-                proiect ca pe un ecosistem complet pentru creștere.</p>
+                <h1 id="hero-title">
+                    Dezvoltăm ecosisteme digitale complete, de la identitate vizuală la campanii de marketing, pentru a vă
+                    transforma prezența online într-un motor de creștere pentru afacere.
+                </h1>
+                <p>
+                    Creăm experiențe web orientate spre rezultate, cu fluxuri UX intuitive și strategii de marketing digital
+                    perfect orchestrate. De la art direction și copywriting la arhitectură tehnică și growth marketing,
+                    gestionăm fiecare proiect ca pe un ecosistem complet, cu un singur scop: creșterea afacerii
+                    dumneavoastră.
+                </p>
                 <ul class="hero-highlights">
                     <li><i class="fa-solid fa-circle-check text-primary" aria-hidden="true"></i>Site-uri orchestrate pentru
                     performanță, cu UI adaptiv și micro-interacțiuni care sporesc încrederea.</li>
