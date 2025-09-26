@@ -21,8 +21,7 @@ include __DIR__ . '/partials/head.php';
                     <span class="badge-pill">Experiențe web memorabile</span>
                 </div>
                 <h1 id="hero-title" class="hero-title-mini">
-                    Construim platforme digitale centrate pe oameni, ghidate de insight-uri și tehnologie.
-                    Amplificăm brandurile prin experiențe coerente care transformă atenția în creștere.
+                    Experiențe digitale care cresc branduri.
                 </h1>
                 <p>
                     Creăm experiențe web orientate spre rezultate, cu fluxuri UX intuitive și strategii de marketing digital
