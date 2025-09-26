@@ -4,6 +4,7 @@ $pageTitle = 'Portofoliu Web Design și Proiecte Digitale | DesignToro';
 $pageDescription = 'Explorează proiectele DesignToro: website-uri, ecommerce și branding pentru branduri din diverse industrii.';
 $pageKeywords = 'portofoliu web design, proiecte site-uri, exemple magazine online, lucrări design';
 $pageUrl = 'https://www.designtoro.ro/portofoliu';
+$currentPage = 'portofoliu';
 include __DIR__ . '/partials/head.php';
 ?>
 <section class="page-hero py-5" aria-labelledby="portfolio-hero">

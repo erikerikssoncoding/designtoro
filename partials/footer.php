@@ -20,8 +20,8 @@
             <h3>Contact rapid</h3>
             <ul class="footer-contact">
                 <li><i class="fa-solid fa-location-dot text-primary" aria-hidden="true"></i>București, România</li>
-                <li><i class="fa-solid fa-envelope-open-text text-primary" aria-hidden="true"></i><a href="mailto:contact@designtoro.ro">contact@designtoro.ro</a></li>
-                <li><i class="fa-solid fa-phone text-primary" aria-hidden="true"></i><a href="tel:+40722123456">+40 722 123 456</a></li>
+                <li><i class="fa-solid fa-envelope-open-text text-primary" aria-hidden="true"></i><a href="mailto:office@designtoro.ro">office@designtoro.ro</a></li>
+                <li><i class="fa-solid fa-phone text-primary" aria-hidden="true"></i><a href="tel:+40757568812">+40 757 568 812</a></li>
             </ul>
         </div>
         <div class="footer-column">
@@ -38,27 +38,44 @@
         <p>Copyright © 2025 DesignToro.ro | <a href="#">Politica de Confidențialitate</a> | <a href="#">Termeni și Condiții</a></p>
     </div>
 </footer>
+<?php
+$mobileFooterNavItems = [
+    'home' => [
+        'href' => '/',
+        'icon' => 'fa-solid fa-house',
+        'label' => 'Acasă',
+    ],
+    'servicii' => [
+        'href' => '/servicii',
+        'icon' => 'fa-solid fa-layer-group',
+        'label' => 'Servicii',
+    ],
+    'pachete' => [
+        'href' => '/pachete',
+        'icon' => 'fa-solid fa-box-open',
+        'label' => 'Pachete',
+    ],
+    'portofoliu' => [
+        'href' => '/portofoliu',
+        'icon' => 'fa-solid fa-briefcase',
+        'label' => 'Portofoliu',
+    ],
+    'contact' => [
+        'href' => '/contact',
+        'icon' => 'fa-solid fa-envelope',
+        'label' => 'Contact',
+    ],
+];
+$currentPageKey = $currentPage ?? null;
+?>
 <nav class="mobile-footer-nav" aria-label="Navigație rapidă">
-    <a href="/" class="mobile-footer-nav__link">
-        <i class="fa-solid fa-house" aria-hidden="true"></i>
-        <span>Acasă</span>
-    </a>
-    <a href="/servicii" class="mobile-footer-nav__link">
-        <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-        <span>Servicii</span>
-    </a>
-    <a href="/pachete" class="mobile-footer-nav__link">
-        <i class="fa-solid fa-box-open" aria-hidden="true"></i>
-        <span>Pachete</span>
-    </a>
-    <a href="/portofoliu" class="mobile-footer-nav__link">
-        <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
-        <span>Portofoliu</span>
-    </a>
-    <a href="/contact" class="mobile-footer-nav__link">
-        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-        <span>Contact</span>
-    </a>
+    <?php foreach ($mobileFooterNavItems as $slug => $item): ?>
+        <?php if ($currentPageKey === $slug) { continue; } ?>
+        <a href="<?= $item['href']; ?>" class="mobile-footer-nav__link">
+            <i class="<?= $item['icon']; ?>" aria-hidden="true"></i>
+            <span><?= $item['label']; ?></span>
+        </a>
+    <?php endforeach; ?>
 </nav>
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

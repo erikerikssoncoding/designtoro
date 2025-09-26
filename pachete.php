@@ -4,6 +4,7 @@ $pageTitle = 'Prețuri Creare Site și Pachete Marketing | DesignToro';
 $pageDescription = 'Compară pachetele DesignToro pentru web design, marketing și mentenanță. Alege soluția potrivită afacerii tale.';
 $pageKeywords = 'preț creare site, pachet web design, ofertă site prezentare, cost mentenanță site, prețuri marketing';
 $pageUrl = 'https://www.designtoro.ro/pachete';
+$currentPage = 'pachete';
 include __DIR__ . '/partials/head.php';
 ?>
 <section class="page-hero py-5" aria-labelledby="pricing-hero">

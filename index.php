@@ -4,6 +4,7 @@ $pageTitle = 'DesignToro | Agenție Web Design & Marketing Digital București';
 $pageDescription = 'DesignToro creează experiențe digitale memorabile pentru branduri care vor să inspire acțiune.';
 $pageKeywords = 'agenție web design, creare site bucurești, marketing digital, servicii seo, promovare online';
 $pageUrl = 'https://www.designtoro.ro/';
+$currentPage = 'home';
 include __DIR__ . '/partials/head.php';
 ?>
 <section class="hero py-5" aria-labelledby="hero-title">

@@ -4,6 +4,7 @@ $pageTitle = 'Contact - Agenție Web Design | DesignToro';
 $pageDescription = 'Contactează echipa DesignToro pentru o ofertă personalizată de web design, SEO sau marketing digital.';
 $pageKeywords = 'contact web design, ofertă personalizată site, agenție bucurești contact';
 $pageUrl = 'https://www.designtoro.ro/contact';
+$currentPage = 'contact';
 $formResponse = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once __DIR__ . '/includes/contact-handler.php';
@@ -17,8 +18,8 @@ include __DIR__ . '/partials/head.php';
             <h1 id="contact-title">Hai să planificăm strategia digitală.</h1>
             <p>Spune-ne câteva detalii despre proiect și îți răspundem cu un plan de acțiune în maximum o zi lucrătoare.</p>
             <ul class="contact-details list-unstyled d-grid gap-2">
-                <li><i class="fa-solid fa-phone text-primary" aria-hidden="true"></i><strong>Telefon:</strong> <a href="tel:+40722123456">+40 722 123 456</a></li>
-                <li><i class="fa-solid fa-envelope-open-text text-primary" aria-hidden="true"></i><strong>Email:</strong> <a href="mailto:contact@designtoro.ro">contact@designtoro.ro</a></li>
+                <li><i class="fa-solid fa-phone text-primary" aria-hidden="true"></i><strong>Telefon:</strong> <a href="tel:+40757568812">+40 757 568 812</a></li>
+                <li><i class="fa-solid fa-envelope-open-text text-primary" aria-hidden="true"></i><strong>Email:</strong> <a href="mailto:office@designtoro.ro">office@designtoro.ro</a></li>
                 <li><i class="fa-solid fa-location-dot text-primary" aria-hidden="true"></i><strong>Adresă:</strong> București, România</li>
             </ul>
         </div>
@@ -69,7 +70,7 @@ include __DIR__ . '/partials/head.php';
             <h2 id="cta-contact">Preferi o sesiune rapidă live?</h2>
             <p>Stabilește o întâlnire și discutăm despre strategie, bugete și calendar.</p>
         </div>
-        <a class="btn btn-secondary" href="tel:+40722123456">Sună acum</a>
+        <a class="btn btn-secondary" href="tel:+40757568812">Sună acum</a>
     </div>
 </section>
 <?php include __DIR__ . '/partials/footer.php'; ?>
