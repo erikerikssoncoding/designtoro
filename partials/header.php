@@ -22,7 +22,6 @@
                         <li class="nav-item"><a href="/portofoliu" class="nav-link">Portofoliu</a></li>
                         <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
                     </ul>
-                    <a href="/contact" class="btn btn-accent mt-3 d-lg-none w-100">Programează un demo</a>
                 </div>
                 <a href="/contact" class="btn btn-accent d-none d-lg-inline-flex navbar-cta">Programează un demo</a>
             </div>
