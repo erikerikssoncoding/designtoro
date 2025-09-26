@@ -1426,6 +1426,12 @@ video {
     color: rgba(255, 255, 255, 0.5);
 }
 
+@media (max-width: 991.98px) {
+    .footer-bottom {
+        padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+    }
+}
+
 @media (max-width: 960px) {
     .site-footer {
         margin-top: 4rem;
