@@ -38,32 +38,19 @@ include __DIR__ . '/partials/head.php';
                 </div>
             </div>
         </div>
-        <div class="hero-metric">
-            <div class="accent-card">
-                <h3>Experiență completă, gata de lansare.</h3>
-                <p>UX, conținut și tehnologie reunite într-un singur pachet digital.</p>
-                <strong>+68%</strong>
-                <span>creștere medie a timpului petrecut pe pagină după relansare</span>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="stats py-5" aria-label="Rezultatele DesignToro">
-    <div class="container stats-grid">
-        <div class="stat-card">
-            <i class="fa-solid fa-briefcase text-primary display-6" aria-hidden="true"></i>
-            <span class="stat-value">225+</span>
-            <span class="stat-label">Lansări orchestrate</span>
-        </div>
-        <div class="stat-card">
-            <i class="fa-solid fa-face-smile text-primary display-6" aria-hidden="true"></i>
-            <span class="stat-value">213+</span>
-            <span class="stat-label">Branduri în prim-plan</span>
-        </div>
-        <div class="stat-card">
-            <i class="fa-solid fa-award text-primary display-6" aria-hidden="true"></i>
-            <span class="stat-value"><?php echo $experienceYears; ?>+</span>
-            <span class="stat-label">Peste <?php echo $experienceYears; ?> ani de experiență digitală</span>
+        <div class="hero-metric" role="list" aria-label="Rezultatele DesignToro">
+            <article class="accent-card hero-metric-card" role="listitem">
+                <strong>225+</strong>
+                <span>Lansări orchestrate</span>
+            </article>
+            <article class="accent-card hero-metric-card" role="listitem">
+                <strong>213+</strong>
+                <span>Branduri în prim-plan</span>
+            </article>
+            <article class="accent-card hero-metric-card" role="listitem">
+                <strong><?php echo $experienceYears; ?>+</strong>
+                <span>Peste <?php echo $experienceYears; ?> ani de experiență digitală</span>
+            </article>
         </div>
     </div>
 </section>

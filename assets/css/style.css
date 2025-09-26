@@ -325,26 +325,20 @@ video {
 
 .hero-metric {
     margin-top: 3rem;
-    display: flex;
-    justify-content: flex-start;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .hero-metric .accent-card {
-    max-width: 420px;
     display: grid;
-    gap: 0.6rem;
+    gap: 0.35rem;
+    align-content: flex-start;
 }
 
-.hero-metric .accent-card h3 {
-    margin: 0;
-    font-size: 1.3rem;
-    color: #fff;
-}
-
-.hero-metric .accent-card p {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.75);
+.hero-metric-card span {
     font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .badge-pill {
