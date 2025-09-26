@@ -215,7 +215,7 @@ include __DIR__ . '/partials/head.php';
                 </div>
             <?php endif; ?>
             <form class="offer-form" id="offer-form" method="post" action="/preturi" novalidate>
-                <div class="form-group">
+                <div class="form-group" data-offer-animate>
                     <label for="offer-name" class="form-label">Nume *</label>
                     <input
                         type="text"
@@ -226,7 +226,7 @@ include __DIR__ . '/partials/head.php';
                         required
                     >
                 </div>
-                <div class="form-group">
+                <div class="form-group" data-offer-animate>
                     <label for="offer-phone" class="form-label">Număr de telefon *</label>
                     <input
                         type="tel"
@@ -237,7 +237,7 @@ include __DIR__ . '/partials/head.php';
                         required
                     >
                 </div>
-                <div class="form-group">
+                <div class="form-group" data-offer-animate>
                     <label for="offer-email" class="form-label">Email *</label>
                     <input
                         type="email"
@@ -248,7 +248,7 @@ include __DIR__ . '/partials/head.php';
                         required
                     >
                 </div>
-                <div class="form-group">
+                <div class="form-group" data-offer-animate>
                     <label for="offer-details" class="form-label">Detalii despre site / proiect *</label>
                     <textarea
                         id="offer-details"
@@ -264,7 +264,7 @@ include __DIR__ . '/partials/head.php';
                 </div>
                 <input type="hidden" name="offer_plan" id="offer-plan-field" value="<?= htmlspecialchars($_POST['offer_plan'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                 <input type="hidden" name="g-recaptcha-response" id="recaptcha-token">
-                <button class="btn btn-accent" type="submit">Trimite cererea</button>
+                <button class="btn btn-accent" type="submit" data-offer-animate>Trimite cererea</button>
             </form>
         </div>
     </div>
