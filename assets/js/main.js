@@ -35,7 +35,16 @@
 
     const siteHeader = document.querySelector('.site-header');
     if (siteHeader) {
+        const stickyMediaQuery = window.matchMedia
+            ? window.matchMedia('(min-width: 992px)')
+            : null;
+
         const updateHeaderState = () => {
+            if (stickyMediaQuery && !stickyMediaQuery.matches) {
+                siteHeader.classList.remove('is-sticky');
+                return;
+            }
+
             if (window.scrollY > 0) {
                 siteHeader.classList.add('is-sticky');
             } else {
@@ -45,6 +54,16 @@
 
         updateHeaderState();
         window.addEventListener('scroll', updateHeaderState, { passive: true });
+
+        if (stickyMediaQuery) {
+            const handleMediaChange = () => updateHeaderState();
+
+            if (typeof stickyMediaQuery.addEventListener === 'function') {
+                stickyMediaQuery.addEventListener('change', handleMediaChange);
+            } else if (typeof stickyMediaQuery.addListener === 'function') {
+                stickyMediaQuery.addListener(handleMediaChange);
+            }
+        }
     }
 
     const filterButtons = document.querySelectorAll('.filter-button');
