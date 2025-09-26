@@ -16,10 +16,19 @@
     );
 
     const revealTargets = document.querySelectorAll(
-        'section, .service-card, .portfolio-card, .portfolio-item, .pricing-card, .stat-card'
+        'section:not(.hero), .service-card, .portfolio-card, .portfolio-item, .pricing-card, .stat-card'
     );
 
     revealTargets.forEach((el) => {
+        el.classList.add('reveal');
+        observer.observe(el);
+    });
+
+    const heroRevealTargets = document.querySelectorAll(
+        '.hero .hero-text > *, .hero .hero-metric, .hero .hero-metric .accent-card'
+    );
+
+    heroRevealTargets.forEach((el) => {
         el.classList.add('reveal');
         observer.observe(el);
     });
