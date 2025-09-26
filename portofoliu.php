@@ -6,13 +6,13 @@ $pageKeywords = 'portofoliu web design, proiecte site-uri, exemple magazine onli
 $pageUrl = 'https://www.designtoro.ro/portofoliu';
 include __DIR__ . '/partials/head.php';
 ?>
-<section class="page-hero" aria-labelledby="portfolio-hero">
-    <div class="container narrow">
+<section class="page-hero py-5" aria-labelledby="portfolio-hero">
+    <div class="container narrow text-center">
         <h1 id="portfolio-hero">Proiecte realizate cu mândrie.</h1>
         <p>Selecție de proiecte care îmbină designul minimalist cu performanța de top.</p>
     </div>
 </section>
-<section class="portfolio-filters" aria-label="Filtre portofoliu">
+<section class="portfolio-filters py-3" aria-label="Filtre portofoliu">
     <div class="container filter-buttons">
         <button class="filter-button is-active" data-filter="all">Toate</button>
         <button class="filter-button" data-filter="website">Website-uri</button>
@@ -20,7 +20,7 @@ include __DIR__ . '/partials/head.php';
         <button class="filter-button" data-filter="branding">Logo & branding</button>
     </div>
 </section>
-<section class="portfolio-gallery" aria-label="Galerie portofoliu">
+<section class="portfolio-gallery py-4" aria-label="Galerie portofoliu">
     <div class="container portfolio-masonry">
         <article class="portfolio-item" data-category="website">
             <div class="portfolio-media">Placeholder Vision</div>
@@ -66,13 +66,13 @@ include __DIR__ . '/partials/head.php';
         </article>
     </div>
 </section>
-<section class="cta-banner" aria-labelledby="cta-portfolio">
-    <div class="container cta-inline">
+<section class="cta-banner py-5" aria-labelledby="cta-portfolio">
+    <div class="container cta-inline d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-between gap-3">
         <div>
             <h2 id="cta-portfolio">Îți dorești un proiect la fel de memorabil?</h2>
             <p>Scrie-ne despre provocarea ta și îți arătăm cum o putem transforma într-o poveste de succes.</p>
         </div>
-        <a class="btn btn-accent" href="/contact.php">Hai să discutăm</a>
+        <a class="btn btn-accent" href="/contact">Hai să discutăm</a>
     </div>
 </section>
 <?php include __DIR__ . '/partials/footer.php'; ?>

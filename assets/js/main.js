@@ -3,24 +3,6 @@
     docEl.classList.remove('no-js');
     document.body.classList.remove('no-js');
 
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (navToggle && navLinks) {
-        navToggle.addEventListener('click', () => {
-            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', String(!expanded));
-            navLinks.classList.toggle('is-open');
-        });
-
-        navLinks.addEventListener('click', (event) => {
-            if (event.target instanceof HTMLElement && event.target.matches('a')) {
-                navToggle.setAttribute('aria-expanded', 'false');
-                navLinks.classList.remove('is-open');
-            }
-        });
-    }
-
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {

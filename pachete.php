@@ -6,13 +6,13 @@ $pageKeywords = 'preț creare site, pachet web design, ofertă site prezentare, 
 $pageUrl = 'https://www.designtoro.ro/pachete';
 include __DIR__ . '/partials/head.php';
 ?>
-<section class="page-hero" aria-labelledby="pricing-hero">
-    <div class="container narrow">
+<section class="page-hero py-5" aria-labelledby="pricing-hero">
+    <div class="container narrow text-center">
         <h1 id="pricing-hero">Pachete adaptate nevoilor tale.</h1>
         <p>Transparență totală, beneficii clare și flexibilitate pentru proiecte la început sau în plină expansiune.</p>
     </div>
 </section>
-<section class="pricing" aria-label="Pachete de servicii">
+<section class="pricing py-5" aria-label="Pachete de servicii">
     <div class="container pricing-grid">
         <article class="pricing-card">
             <h2>Entry Level</h2>
@@ -50,7 +50,7 @@ include __DIR__ . '/partials/head.php';
         </article>
     </div>
 </section>
-<section class="pricing" aria-label="Pachete de mentenanță și social media">
+<section class="pricing py-5" aria-label="Pachete de mentenanță și social media">
     <div class="container pricing-grid maintenance">
         <article class="pricing-card">
             <h2>Mentenanță Web</h2>
@@ -78,16 +78,16 @@ include __DIR__ . '/partials/head.php';
             <h2 id="offer-title">Magazin online complet</h2>
             <p>De la <strong>399€</strong> pentru un magazin online scalabil, optimizat pentru vânzări și automatizări.</p>
         </div>
-        <a class="btn btn-accent" href="/contact.php">Primește ofertă personalizată</a>
+        <a class="btn btn-accent" href="/contact">Primește ofertă personalizată</a>
     </div>
 </section>
-<section class="cta-banner" id="contact" aria-labelledby="cta-pricing">
-    <div class="container cta-inline">
+<section class="cta-banner py-5" id="contact" aria-labelledby="cta-pricing">
+    <div class="container cta-inline d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-between gap-3">
         <div>
             <h2 id="cta-pricing">Vrei să discutăm pachetul potrivit?</h2>
             <p>Lasă-ne detaliile proiectului și îți răspundem cu un plan personalizat.</p>
         </div>
-        <a class="btn btn-accent" href="/contact.php">Contactează-ne</a>
+        <a class="btn btn-accent" href="/contact">Contactează-ne</a>
     </div>
 </section>
 <?php include __DIR__ . '/partials/footer.php'; ?>
