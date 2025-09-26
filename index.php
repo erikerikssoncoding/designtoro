@@ -10,32 +10,37 @@ include __DIR__ . '/partials/head.php';
     <div class="container">
         <div class="row align-items-center g-5 hero-content">
             <div class="col-lg-6 hero-text">
-                <p class="eyebrow">Agenție Web Design & Marketing Digital</p>
+                <p class="eyebrow">Studio digital pentru branduri fără pauză</p>
                 <div class="hero-badges">
-                    <span class="badge-pill is-gradient">Agenție web design București</span>
-                    <span class="badge-pill">Growth prin marketing digital</span>
+                    <span class="badge-pill is-gradient">Lansări cu impact global</span>
+                    <span class="badge-pill">Design narativ &amp; funnel-uri inteligente</span>
                 </div>
-                <h1 id="hero-title">Creăm experiențe digitale care inspiră acțiune pentru branduri curajoase.</h1>
-                <p>DesignToro îmbină estetica clară cu tehnologie de ultimă generație pentru a construi site-uri rapide, sigure și optimizate SEO. Suntem partenerul tău de încredere când ai nevoie de branding memorabil, copy convingător și funnel-uri care convertesc.</p>
+                <h1 id="hero-title">Transformăm prezența online într-o platformă care ține publicul conectat.</h1>
+                <p>DesignToro produce experiențe web imersive, inspirate de dinamica platformelor de streaming. De la art
+                direction și copywriting la arhitectură tehnică și growth marketing, tratăm fiecare proiect ca pe o producție
+                premium.</p>
                 <ul class="hero-highlights">
-                    <li><i class="bi bi-check-circle-fill text-primary" aria-hidden="true"></i>Site-uri custom cu identitate vizuală în gradient indigo-petrol și UX centrat pe rezultate.</li>
-                    <li><i class="bi bi-rocket-takeoff-fill text-primary" aria-hidden="true"></i>Servicii SEO tehnice și de conținut pentru poziționare organică în Google pe termen lung.</li>
-                    <li><i class="bi bi-diagram-3-fill text-primary" aria-hidden="true"></i>Campanii integrate de marketing digital care aliniază social media, e-mail și reclame plătite.</li>
+                    <li><i class="bi bi-check-circle-fill text-primary" aria-hidden="true"></i>Site-uri orchestrate ca un
+                    release major, cu UI cinematic și micro-interacțiuni care amplifică emoția.</li>
+                    <li><i class="bi bi-rocket-takeoff-fill text-primary" aria-hidden="true"></i>Biblioteci de conținut și
+                    automatizări personalizate care transformă vizitatorii în membri loiali.</li>
+                    <li><i class="bi bi-diagram-3-fill text-primary" aria-hidden="true"></i>Campanii integrate și
+                    optimizare continuă pentru conversii în fiecare episod al customer journey-ului.</li>
                 </ul>
                 <div class="hero-actions">
-                    <a class="btn btn-accent" href="/portofoliu">Vezi portofoliul</a>
-                    <a class="btn btn-ghost" href="/contact">Programează o discuție</a>
+                    <a class="btn btn-accent" href="/portofoliu">Explorează portofoliul</a>
+                    <a class="btn btn-ghost" href="/contact">Rezervă un call</a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="hero-media" aria-hidden="true">
                     <div class="media-placeholder">
-                        <h3>Experiență premium în indigo & petrol.</h3>
-                        <span>UI/UX minimaliste, animații fluide și performanță impecabilă.</span>
+                        <h3>Experiență completă, ready to stream.</h3>
+                        <span>Motion, storytelling și tehnologie reunite într-un singur pachet digital.</span>
                     </div>
                     <div class="accent-card">
-                        <strong>+48%</strong>
-                        <span>creștere medie a ratei de conversie după relansarea site-ului</span>
+                        <strong>+68%</strong>
+                        <span>creștere medie a timpului petrecut pe pagină după relansare</span>
                     </div>
                 </div>
             </div>
@@ -47,75 +52,78 @@ include __DIR__ . '/partials/head.php';
         <div class="stat-card">
             <i class="bi bi-briefcase-fill text-primary display-6" aria-hidden="true"></i>
             <span class="stat-value">225+</span>
-            <span class="stat-label">Proiecte livrate</span>
+            <span class="stat-label">Lansări orchestrate</span>
         </div>
         <div class="stat-card">
             <i class="bi bi-emoji-smile-fill text-primary display-6" aria-hidden="true"></i>
             <span class="stat-value">213+</span>
-            <span class="stat-label">Clienți mulțumiți</span>
+            <span class="stat-label">Branduri în prim-plan</span>
         </div>
         <div class="stat-card">
             <i class="bi bi-award-fill text-primary display-6" aria-hidden="true"></i>
             <span class="stat-value">8+</span>
-            <span class="stat-label">Ani de experiență</span>
+            <span class="stat-label">Ani de producție digitală</span>
         </div>
     </div>
 </section>
 <section class="about" id="despre" aria-labelledby="about-title">
     <div class="container about-grid">
         <div class="about-summary">
-            <h2 id="about-title">Agenție web design din București cu mentalitate de produs</h2>
-            <p>De peste opt ani, DesignToro dezvoltă experiențe digitale memorabile pentru companii care vor mai mult decât un simplu site. Aliniem strategia de business cu un design premium, copywriting orientat spre conversie și automatizări care scurtează drumul de la vizitator la client.</p>
+            <h2 id="about-title">Studio digital din București cu ADN cinematografic</h2>
+            <p>De peste opt ani, DesignToro planifică și lansează platforme digitale care se consumă ca un sezon complet.
+            Aliniem strategia de business cu storytelling vizual, componente modulare și tehnologie scalabilă pentru branduri ce
+            vor să captiveze publicul.</p>
             <div class="about-metrics" role="list" aria-label="Indicatori de performanță DesignToro">
                 <div class="about-metric" role="listitem">
                     <strong>3,2x</strong>
-                    <span>ROI mediu generat după implementarea strategiei digitale</span>
+                    <span>ROI mediu generat în primele 90 de zile după lansare</span>
                 </div>
                 <div class="about-metric" role="listitem">
-                    <strong>2,4s</strong>
-                    <span>timp mediu de încărcare pentru site-urile optimizate SEO</span>
+                    <strong>2,1s</strong>
+                    <span>timp mediu de încărcare pentru experiențele optimizate</span>
                 </div>
             </div>
         </div>
         <div class="about-details">
-            <h3>De ce brandurile moderne aleg DesignToro</h3>
-            <p>Ne implicăm în toate etapele: cercetare, arhitectură de informație, design de interfață, dezvoltare web, SEO și marketing digital. Echipa noastră lucrează pe sprints transparente, comunică proactiv și livrează kituri complete pentru ca tu să scalezi rapid.</p>
+            <h3>De ce brandurile ne aleg pentru rolul principal</h3>
+            <p>Acoperim întregul pipeline: cercetare, UX, UI, content, dezvoltare, SEO și growth orchestrat. Lucrăm în sprinturi
+            transparente și livrăm kituri complete pentru echipe interne.</p>
             <ul class="about-list">
-                <li>Integrare completă a identității vizuale în gradient indigo-petrol și micro-interacțiuni elegante.</li>
-                <li>Audit tehnic SEO, structură de conținut și plan editorial pentru creștere sustenabilă.</li>
-                <li>Strategii de marketing digital care alimentează funnel-urile de vânzări și retenție.</li>
-                <li>Raportare clară, dashboard-uri live și suport continuu după lansare.</li>
+                <li>Design systems modulare, contraste puternice și micro-interacțiuni inspirate din entertainment.</li>
+                <li>SEO tehnic, analytics și content calendar gândite ca un program editorial.</li>
+                <li>Automatizări CRM și campanii multi-channel care livrează reacții în timp real.</li>
+                <li>Raportare live, dashboard-uri personalizate și suport post-lansare non-stop.</li>
             </ul>
         </div>
     </div>
 </section>
 <section class="services-preview py-5" id="servicii" aria-labelledby="services-title">
     <div class="container">
-        <h2 id="services-title">Servicii create pentru impact digital</h2>
+        <h2 id="services-title">Servicii create pentru platforme captivante</h2>
         <div class="service-grid">
             <article class="service-card">
                 <div class="service-icon"><i class="bi bi-window-stack" aria-hidden="true"></i></div>
-                <h3>Web Design</h3>
-                <p>Site-uri de prezentare și magazine online cu design premium și experiență fluidă.</p>
-                <a class="link-arrow" href="/servicii#web-design">Află mai multe</a>
+                <h3>Experiențe Web &amp; Platforme</h3>
+                <p>Interfețe modulare, membership și ecommerce cu vibe cinematic și performanță ridicată.</p>
+                <a class="link-arrow" href="/servicii#web-design">Descoperă procesul</a>
             </article>
             <article class="service-card">
                 <div class="service-icon"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i></div>
-                <h3>SEO & Performance</h3>
-                <p>Strategii SEO tehnice și de conținut pentru poziții de top în rezultatele Google.</p>
-                <a class="link-arrow" href="/servicii#seo">Află mai multe</a>
+                <h3>SEO &amp; Distribuție organică</h3>
+                <p>Optimizare tehnică, conținut serializat și strategii de căutare pentru audiențe calificate.</p>
+                <a class="link-arrow" href="/servicii#seo">Solicită un audit</a>
             </article>
             <article class="service-card">
                 <div class="service-icon"><i class="bi bi-people-fill" aria-hidden="true"></i></div>
-                <h3>Social Media</h3>
-                <p>Campanii integrate și conținut creativ care transformă comunitățile în clienți.</p>
-                <a class="link-arrow" href="/servicii#social-media">Află mai multe</a>
+                <h3>Social Media &amp; Communities</h3>
+                <p>Campanii episodice, conținut snackable și automatizări de engagement.</p>
+                <a class="link-arrow" href="/servicii#social-media">Planifică o campanie</a>
             </article>
             <article class="service-card">
                 <div class="service-icon"><i class="bi bi-palette-fill" aria-hidden="true"></i></div>
-                <h3>Branding & Content</h3>
-                <p>Identități vizuale coerente și conținut multimedia ce spun povestea brandului tău.</p>
-                <a class="link-arrow" href="/servicii#branding">Află mai multe</a>
+                <h3>Branding &amp; Content Studio</h3>
+                <p>Identități vizuale, scenarii video și copywriting care vând emoție.</p>
+                <a class="link-arrow" href="/servicii#branding">Vezi pachetele</a>
             </article>
         </div>
     </div>
@@ -123,24 +131,27 @@ include __DIR__ . '/partials/head.php';
 <section class="insights" id="strategie-digitala" aria-labelledby="insights-title">
     <div class="container">
         <div>
-            <h2 id="insights-title">Strategie completă pentru creștere digitală</h2>
-            <p>Construim ecosisteme digitale care aduc trafic calificat și conversii, folosind o metodologie proprie bazată pe simplitate și performanță. Fiecare proiect pornește cu date, apoi este rafinat cu design system și conținut optimizat SEO.</p>
+            <h2 id="insights-title">Metoda noastră de producție digitală</h2>
+            <p>Construim ecosisteme digitale alimentate de date, storytelling și performanță. Fiecare proiect trece printr-un
+            pipeline clar, astfel încât lansarea să se simtă ca o premieră perfect regizată.</p>
         </div>
         <div class="insights-grid">
             <article class="insight-card">
-                <span>Analiză & Cercetare</span>
-                <h3>Diagnostic complet al brandului și publicului tău</h3>
-                <p>Realizăm workshop-uri de poziționare, analizăm comportamentul utilizatorilor și mapăm competitorii pentru a construi wireframe-uri intuitive. Astfel, structura site-ului răspunde exact nevoilor audienței tale.</p>
+                <span>Discovery &amp; Data</span>
+                <h3>Analizăm audiența și planificăm sezonul digital</h3>
+                <p>Workshop-uri de poziționare, maparea user journey-ului și benchmark competitiv pentru a crea arhitecturi
+                intuitive.</p>
             </article>
             <article class="insight-card">
-                <span>Design & Dezvoltare</span>
-                <h3>Interfețe minimaliste cu performanță maximă</h3>
-                <p>Folosim sistemul nostru de design modular și tehnologii moderne pentru a crea pagini rapide, responsive și ușor de administrat. Gradientele indigo-petrol dau profunzime elementelor fără a compromite lizibilitatea.</p>
+                <span>Design &amp; Build</span>
+                <h3>UI cinematic și infrastructură gata de scalare</h3>
+                <p>Design systems modulare, animații subtile și cod optimizat pentru încărcare rapidă pe orice device.</p>
             </article>
             <article class="insight-card">
-                <span>Optimizare continuă</span>
-                <h3>SEO tehnic, conținut și campanii integrate</h3>
-                <p>Monitorizăm indicatorii-cheie, actualizăm conținutul pentru cuvinte-cheie relevante și lansăm campanii PPC și social media aliniate. Raportăm transparent impactul asupra vânzărilor și ajustăm tactica în timp real.</p>
+                <span>Growth &amp; Iteration</span>
+                <h3>Optimizare continuă pentru retenție și conversii</h3>
+                <p>Monitorizăm indicatorii cheie, actualizăm conținutul și orchestrăm campanii integrate pentru rezultate
+                sustenabile.</p>
             </article>
         </div>
     </div>
@@ -148,36 +159,36 @@ include __DIR__ . '/partials/head.php';
 <section class="portfolio-preview" aria-labelledby="portfolio-title">
     <div class="container">
         <div class="section-header">
-            <h2 id="portfolio-title">Portofoliu selectat</h2>
-            <a class="link-arrow" href="/portofoliu">Vezi toate proiectele</a>
+            <h2 id="portfolio-title">Producții recente</h2>
+            <a class="link-arrow" href="/portofoliu">Vezi toată colecția</a>
         </div>
         <div class="portfolio-grid">
             <article class="portfolio-card">
-                <div class="portfolio-media">Placeholder proiect 1</div>
+                <div class="portfolio-media">Poster digital Pulse</div>
                 <div class="portfolio-overlay">
-                    <h3>Proiect Vision</h3>
-                    <p>Website de prezentare</p>
+                    <h3>Pulse Media</h3>
+                    <p>Platformă de content serializat</p>
                 </div>
             </article>
             <article class="portfolio-card">
-                <div class="portfolio-media">Placeholder proiect 2</div>
+                <div class="portfolio-media">Poster digital Nebula</div>
                 <div class="portfolio-overlay">
-                    <h3>Proiect Nova</h3>
-                    <p>Magazin online</p>
+                    <h3>Nebula Commerce</h3>
+                    <p>Experiență ecommerce high-end</p>
                 </div>
             </article>
             <article class="portfolio-card">
-                <div class="portfolio-media">Placeholder proiect 3</div>
+                <div class="portfolio-media">Poster digital Skyline</div>
                 <div class="portfolio-overlay">
-                    <h3>Proiect Aero</h3>
-                    <p>Branding & UI</p>
+                    <h3>Skyline Air</h3>
+                    <p>Portal de rezervări premium</p>
                 </div>
             </article>
             <article class="portfolio-card">
-                <div class="portfolio-media">Placeholder proiect 4</div>
+                <div class="portfolio-media">Poster digital Prime</div>
                 <div class="portfolio-overlay">
-                    <h3>Proiect Atlas</h3>
-                    <p>Landing page campanie</p>
+                    <h3>Prime Estates</h3>
+                    <p>Platformă imobiliară interactivă</p>
                 </div>
             </article>
         </div>
@@ -185,27 +196,30 @@ include __DIR__ . '/partials/head.php';
 </section>
 <section class="testimonials" id="testimoniale" aria-labelledby="testimonials-title">
     <div class="container">
-        <h2 id="testimonials-title">Feedback de la clienți care cresc cu DesignToro</h2>
+        <h2 id="testimonials-title">Feedback de la partenerii noștri</h2>
         <div class="testimonial-grid">
             <article class="testimonial-card">
-                <p class="testimonial-quote">„DesignToro a transformat complet experiența digitală a brandului nostru. Am primit un site cu estetica perfectă și un plan SEO care ne-a dus pe prima pagină în doar trei luni.”</p>
+                <p class="testimonial-quote">„DesignToro a creat o experiență digitală care arată și funcționează ca un hub
+                media. Traficul organic a crescut constant, iar lead-urile calificate s-au dublat.”</p>
                 <div class="testimonial-meta">
                     <strong>Irina C., CEO Glow Beauty</strong>
-                    <span>Industrie beauty & e-commerce</span>
+                    <span>Industrie beauty &amp; e-commerce</span>
                 </div>
             </article>
             <article class="testimonial-card">
-                <p class="testimonial-quote">„Procesul a fost impecabil: cercetare, prototipare, implementare și optimizare continuă. Conversiile din campaniile PPC și e-mail marketing au crescut cu 62%.”</p>
+                <p class="testimonial-quote">„Lansarea noastră s-a simțit ca o premieră. Echipa a coordonat design, development
+                și campaniile de performance astfel încât să avem conversii record din prima lună.”</p>
                 <div class="testimonial-meta">
                     <strong>Andrei M., Co-fondator UrbanFit</strong>
-                    <span>Start-up fitness & lifestyle</span>
+                    <span>Start-up fitness &amp; lifestyle</span>
                 </div>
             </article>
             <article class="testimonial-card">
-                <p class="testimonial-quote">„Am găsit în DesignToro un partener strategic. Echipa livrează rapoarte clare, propune idei proactive și menține toate platformele digitale la standarde premium.”</p>
+                <p class="testimonial-quote">„Dashboard-urile live și optimizările constante ne țin mereu cu un pas înainte. Am
+                găsit un partener care gândește strategic și execută impecabil.”</p>
                 <div class="testimonial-meta">
                     <strong>Bianca P., Marketing Manager NordEstate</strong>
-                    <span>Real estate & investiții</span>
+                    <span>Real estate &amp; investiții</span>
                 </div>
             </article>
         </div>
@@ -214,52 +228,55 @@ include __DIR__ . '/partials/head.php';
 <section class="principles" aria-labelledby="principles-title">
     <div class="container principles-grid">
         <div class="principles-intro">
-            <h2 id="principles-title">Principiile noastre de colaborare</h2>
-            <p>Parteneriate transparente, procese optimizate și soluții flexibile adaptate fiecărei etape de creștere.</p>
+            <h2 id="principles-title">Principii de colaborare pentru proiecte blockbuster</h2>
+            <p>Parteneriate transparente, procese rapide și soluții flexibile adaptate fiecărei etape de creștere.</p>
         </div>
         <ul class="principles-list">
             <li>
-                <h3>Planificare strategică</h3>
-                <p>Analizăm obiectivele și publicul pentru a crea un roadmap clar și ușor de urmărit.</p>
+                <h3>Strategie în ritm rapid</h3>
+                <p>Stabilim traseul de la idee la lansare și prioritizăm sprinturile cu cel mai mare impact.</p>
             </li>
             <li>
-                <h3>Inovație constantă</h3>
-                <p>Testăm și aplicăm cele mai noi tehnologii pentru experiențe digitale memorabile.</p>
+                <h3>Inovație continuă</h3>
+                <p>Testăm constant noi tehnologii și formate pentru a menține experiența fresh.</p>
             </li>
             <li>
-                <h3>Raport calitate-preț optim</h3>
-                <p>Livrăm rezultate măsurabile, cu investiții transparente și eficiente.</p>
+                <h3>Valoare măsurabilă</h3>
+                <p>Metodologia noastră este centrată pe KPI, conversii și retenție.</p>
             </li>
             <li>
                 <h3>Suport dedicat</h3>
-                <p>Suntem mereu alături de tine cu mentenanță, optimizări și consultanță.</p>
+                <p>Suntem alături de echipa ta cu mentenanță, optimizări și consultanță continuă.</p>
             </li>
         </ul>
     </div>
 </section>
 <section class="faq" id="intrebari-frecvente" aria-labelledby="faq-title">
     <div class="container">
-        <h2 id="faq-title">Întrebări frecvente despre serviciile DesignToro</h2>
+        <h2 id="faq-title">Întrebări frecvente despre experiențele noastre digitale</h2>
         <div class="faq-grid">
             <article class="faq-item">
-                <h3>Cât durează realizarea unui website premium?</h3>
-                <p>În funcție de complexitate, un proiect complet — strategie, design, dezvoltare și implementare SEO — durează între 6 și 10 săptămâni. Stabilim încă din start milestone-uri clare și demo-uri săptămânale.</p>
+                <h3>Cât durează să lansăm o platformă premium?</h3>
+                <p>În funcție de complexitate, o producție completă — strategie, design, dezvoltare și setup de campanii — durează
+                între 6 și 10 săptămâni. Lucrăm agil și oferim demo-uri săptămânale.</p>
             </article>
             <article class="faq-item">
-                <h3>Ce include optimizarea SEO realizată de DesignToro?</h3>
-                <p>Facem audit tehnic, îmbunătățim structura site-ului, optimizăm viteza și dezvoltăm planuri editoriale cu conținut care atacă cuvinte-cheie relevante pentru piața din România și internațională.</p>
+                <h3>Ce include pachetul de SEO și conținut?</h3>
+                <p>Audit tehnic, optimizări Core Web Vitals, arhitectură de conținut și articole serializate pentru audiențe
+                relevante, plus automatizări pentru distribuție.</p>
             </article>
             <article class="faq-item">
-                <h3>Puteți gestiona și campaniile de marketing digital?</h3>
-                <p>Da. Echipa noastră integrează campanii PPC, social media, e-mail marketing și automatizări CRM, pentru a amplifica rezultatele generate de noul site și pentru a crește ratele de retenție.</p>
+                <h3>Gestionați și campaniile de lansare?</h3>
+                <p>Da. Integrăm PPC, social media, e-mail marketing și automatizări CRM astfel încât lansarea să aibă impact maxim și
+                retenție pe termen lung.</p>
             </article>
         </div>
     </div>
 </section>
 <section class="cta-final" aria-labelledby="cta-title">
     <div class="container cta-content">
-        <h2 id="cta-title">Sunteți gata să vă transformați prezența online?</h2>
-        <p>Hai să discutăm despre următorul proiect și cum îl putem duce la nivelul următor.</p>
+        <h2 id="cta-title">Pregătit pentru premiera digitală a brandului tău?</h2>
+        <p>Hai să discutăm despre următorul proiect și cum îl transformăm într-o experiență memorabilă.</p>
         <a class="btn btn-accent" href="/contact">Contactează-ne</a>
     </div>
 </section>

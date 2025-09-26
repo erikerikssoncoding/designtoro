@@ -1,5 +1,5 @@
 <header class="site-header" id="top">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" aria-label="Navigare principală">
+    <nav class="navbar navbar-expand-lg navbar-dark" data-bs-theme="dark" aria-label="Navigare principală">
         <div class="container">
             <a href="/" class="navbar-brand text-uppercase fw-bold" aria-label="DesignToro">designtoro</a>
             <button
@@ -21,7 +21,7 @@
                     <li class="nav-item"><a href="/portofoliu" class="nav-link">Portofoliu</a></li>
                     <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
                 </ul>
-                <a href="/contact" class="btn btn-accent ms-lg-3 mt-3 mt-lg-0">Cere ofertă</a>
+                <a href="/contact" class="btn btn-accent ms-lg-3 mt-3 mt-lg-0">Programează un demo</a>
             </div>
         </div>
     </nav>

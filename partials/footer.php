@@ -3,10 +3,10 @@
     <div class="container footer-grid">
         <div class="footer-column">
             <a href="/" class="footer-logo">designtoro</a>
-            <p>Construim experiențe digitale memorabile care accelerează creșterea brandului tău.</p>
+            <p>Proiectăm platforme digitale cu vibrație cinematică pentru branduri care vor să rămână pe ecranul publicului.</p>
         </div>
         <div class="footer-column">
-            <h3>Navigare</h3>
+            <h3>Explorează</h3>
             <ul>
                 <li><a href="/">Acasă</a></li>
                 <li><a href="/servicii">Servicii</a></li>
@@ -16,7 +16,7 @@
             </ul>
         </div>
         <div class="footer-column">
-            <h3>Contact</h3>
+            <h3>Contact rapid</h3>
             <ul class="footer-contact">
                 <li><i class="bi bi-geo-alt-fill text-primary" aria-hidden="true"></i>București, România</li>
                 <li><i class="bi bi-envelope-open-fill text-primary" aria-hidden="true"></i><a href="mailto:contact@designtoro.ro">contact@designtoro.ro</a></li>
@@ -24,7 +24,7 @@
             </ul>
         </div>
         <div class="footer-column">
-            <h3>Urmărește-ne</h3>
+            <h3>Urmărește lansările</h3>
             <ul class="social-links">
                 <li><a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i> Instagram</a></li>
                 <li><a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
