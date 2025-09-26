@@ -21,8 +21,8 @@ include __DIR__ . '/partials/head.php';
                     <span class="badge-pill">Experiențe web memorabile</span>
                 </div>
                 <h1 id="hero-title">
-                    Dezvoltăm ecosisteme digitale complete, de la identitate vizuală la campanii de marketing, pentru a vă
-                    transforma prezența online într-un motor de creștere pentru afacere.
+                    Experiența utilizatorului pe locul #1, cu ecosisteme digitale integrate ce unesc identitatea vizuală și
+                    campaniile de marketing pentru a transforma prezența online într-un motor real de creștere.
                 </h1>
                 <p>
                     Creăm experiențe web orientate spre rezultate, cu fluxuri UX intuitive și strategii de marketing digital
