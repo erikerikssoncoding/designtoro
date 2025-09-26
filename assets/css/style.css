@@ -1139,6 +1139,10 @@ video {
     position: relative;
 }
 
+.pricing-card-front {
+    padding-top: 4.5rem;
+}
+
 .pricing-card-back {
     transform: rotateY(180deg);
     gap: 1rem;
