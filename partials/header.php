@@ -10,7 +10,7 @@
                     <li class="nav-item"><a href="/portofoliu" class="nav-link">Portofoliu</a></li>
                     <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
                 </ul>
-                <a href="/contact" class="btn btn-accent navbar-cta">Programează o discuție</a>
+                <a href="/contact" class="btn btn-accent navbar-cta">Cere ofertă</a>
             </div>
         </div>
     </nav>
