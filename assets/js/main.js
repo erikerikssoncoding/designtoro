@@ -294,8 +294,9 @@
 
             window.requestAnimationFrame(() => {
                 animatedElements.forEach((element, index) => {
-                    const delayStep = prefersReducedMotion.matches ? 0 : 120;
-                    const delay = delayStep * index;
+                    const delayBase = prefersReducedMotion.matches ? 0 : 1000;
+                    const delayStep = prefersReducedMotion.matches ? 0 : 180;
+                    const delay = delayBase + (delayStep * index);
 
                     if (delay) {
                         element.style.setProperty('--offer-animate-delay', `${delay}ms`);
