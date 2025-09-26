@@ -199,10 +199,10 @@ include __DIR__ . '/partials/head.php';
             <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
         <div class="offer-modal__content" data-offer-modal-content>
-            <h2 id="offer-modal-title">Cere o ofertă personalizată</h2>
-            <p class="offer-modal__subtitle">Completează detaliile esențiale și revenim cu propunerea potrivită în maximum o zi lucrătoare.</p>
+            <h2 id="offer-modal-title" data-offer-animate>Cere o ofertă personalizată</h2>
+            <p class="offer-modal__subtitle" data-offer-animate>Completează detaliile esențiale și revenim cu propunerea potrivită în maximum o zi lucrătoare.</p>
             <?php if ($offerResponse): ?>
-                <div class="form-feedback <?= !empty($offerResponse['success']) ? 'success' : 'error'; ?>">
+                <div class="form-feedback <?= !empty($offerResponse['success']) ? 'success' : 'error'; ?>" data-offer-animate>
                     <?php if (!empty($offerResponse['success'])): ?>
                         <p>Îți mulțumim! Cererea a fost trimisă. Un specialist DesignToro te va contacta în scurt timp.</p>
                     <?php else: ?>
@@ -261,6 +261,20 @@ include __DIR__ . '/partials/head.php';
                 <div class="form-group honeypot">
                     <label for="offer-company">Companie</label>
                     <input type="text" id="offer-company" name="company" autocomplete="off">
+                </div>
+                <div class="form-group form-consent" data-offer-animate>
+                    <input
+                        type="checkbox"
+                        id="offer-terms"
+                        name="terms"
+                        value="1"
+                        required
+                        <?= isset($_POST['terms']) ? 'checked' : ''; ?>
+                    >
+                    <label for="offer-terms">
+                        Sunt de acord cu <a href="/termeni-si-conditii" target="_blank" rel="noopener">Termenii și condițiile</a>
+                        și cu <a href="/politica-de-confidentialitate" target="_blank" rel="noopener">Politica de confidențialitate</a>.
+                    </label>
                 </div>
                 <input type="hidden" name="offer_plan" id="offer-plan-field" value="<?= htmlspecialchars($_POST['offer_plan'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                 <input type="hidden" name="g-recaptcha-response" id="recaptcha-token">

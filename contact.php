@@ -62,6 +62,20 @@ include __DIR__ . '/partials/head.php';
                     <label for="message" class="form-label">Mesaj *</label>
                     <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
                 </div>
+                <div class="form-group form-consent">
+                    <input
+                        type="checkbox"
+                        id="contact-terms"
+                        name="terms"
+                        value="1"
+                        required
+                        <?= isset($_POST['terms']) ? 'checked' : ''; ?>
+                    >
+                    <label for="contact-terms">
+                        Sunt de acord cu <a href="/termeni-si-conditii" target="_blank" rel="noopener">Termenii și condițiile</a>
+                        și cu <a href="/politica-de-confidentialitate" target="_blank" rel="noopener">Politica de confidențialitate</a>.
+                    </label>
+                </div>
                 <input type="hidden" name="g-recaptcha-response" id="recaptcha-token">
                 <button class="btn btn-accent" type="submit">Trimite mesajul</button>
             </form>
