@@ -413,14 +413,6 @@ video {
     pointer-events: none;
 }
 
-.image-placeholder {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    background: rgba(12, 12, 18, 0.85);
-}
-
 .media-placeholder {
     position: relative;
     z-index: 1;
@@ -430,10 +422,78 @@ video {
     font-weight: 600;
 }
 
-.media-placeholder .image-placeholder {
+.media-visual {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
     border-radius: 24px;
+    padding: clamp(1.75rem, 3vw, 2.75rem);
+    display: grid;
+    align-content: space-between;
+    justify-items: start;
+    gap: 1rem;
+    overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: var(--shadow-soft);
+    background:
+        radial-gradient(circle at 20% 15%, rgba(229, 9, 20, 0.35), transparent 60%),
+        linear-gradient(145deg, rgba(15, 15, 22, 0.95), rgba(12, 12, 18, 0.85));
+    isolation: isolate;
+    color: #fff;
+}
+
+.media-visual::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(circle at 75% 30%, rgba(229, 9, 20, 0.4), transparent 60%);
+    opacity: 0.8;
+    transform: rotate(8deg);
+    z-index: -1;
+}
+
+.hero-visual {
+    background:
+        radial-gradient(circle at 12% 18%, rgba(229, 9, 20, 0.45), transparent 55%),
+        radial-gradient(circle at 80% 20%, rgba(118, 17, 23, 0.35), transparent 65%),
+        linear-gradient(150deg, rgba(14, 14, 22, 0.9), rgba(5, 5, 8, 0.85));
+}
+
+.hero-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    right: -15%;
+    width: 65%;
+    aspect-ratio: 1;
+    border-radius: 40%;
+    background: radial-gradient(circle at center, rgba(229, 9, 20, 0.35), transparent 65%);
+    filter: blur(8px);
+    opacity: 0.75;
+    z-index: -1;
+}
+
+.media-visual__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    background: rgba(229, 9, 20, 0.2);
+    color: #fff;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(229, 9, 20, 0.45);
+}
+
+.media-visual__tag {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 .media-caption {
@@ -790,18 +850,132 @@ video {
 .portfolio-media {
     position: relative;
     aspect-ratio: 4 / 5;
-    background: radial-gradient(circle at center, rgba(229, 9, 20, 0.2), transparent 70%);
+    display: grid;
+    align-items: stretch;
+    padding: clamp(0.75rem, 2vw, 1.25rem);
+    background:
+        radial-gradient(circle at 20% 20%, rgba(229, 9, 20, 0.18), transparent 60%),
+        rgba(12, 12, 18, 0.85);
 }
 
-.portfolio-media .image-placeholder {
-    position: absolute;
-    inset: 0;
+.mockup-card {
+    position: relative;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 0;
-    border: 0;
-    opacity: 0.95;
+    border-radius: 20px;
+    overflow: hidden;
+    display: grid;
+    align-content: end;
+    justify-items: start;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+        0 25px 45px rgba(0, 0, 0, 0.45);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.mockup-card::before,
+.mockup-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.65;
+    transition: opacity 0.35s ease;
+}
+
+.mockup-card::before {
+    background: radial-gradient(circle at 35% 8%, rgba(255, 255, 255, 0.18), transparent 60%);
+}
+
+.mockup-card::after {
+    inset: 12%;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    mix-blend-mode: screen;
+    opacity: 0.45;
+}
+
+.mockup-label {
+    position: relative;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(5, 5, 8, 0.55);
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(4px);
+}
+
+.mockup-pulse {
+    background:
+        radial-gradient(circle at 18% 18%, rgba(229, 9, 20, 0.55), transparent 62%),
+        radial-gradient(circle at 85% 10%, rgba(144, 12, 20, 0.4), transparent 65%),
+        linear-gradient(155deg, #15151f, #0c0c14);
+}
+
+.mockup-nebula {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(92, 61, 255, 0.55), transparent 62%),
+        radial-gradient(circle at 85% 15%, rgba(229, 9, 120, 0.35), transparent 65%),
+        linear-gradient(155deg, #141425, #0c0c16);
+}
+
+.mockup-skyline {
+    background:
+        radial-gradient(circle at 18% 18%, rgba(0, 189, 255, 0.45), transparent 62%),
+        radial-gradient(circle at 80% 12%, rgba(48, 92, 255, 0.35), transparent 65%),
+        linear-gradient(155deg, #141422, #080810);
+}
+
+.mockup-prime {
+    background:
+        radial-gradient(circle at 18% 20%, rgba(255, 196, 45, 0.45), transparent 62%),
+        radial-gradient(circle at 80% 12%, rgba(255, 120, 48, 0.35), transparent 65%),
+        linear-gradient(155deg, #15141f, #09090f);
+}
+
+.mockup-orbit {
+    background:
+        radial-gradient(circle at 18% 18%, rgba(48, 152, 255, 0.5), transparent 62%),
+        radial-gradient(circle at 82% 14%, rgba(92, 61, 255, 0.35), transparent 65%),
+        linear-gradient(155deg, #141423, #080810);
+}
+
+.mockup-lumen {
+    background:
+        radial-gradient(circle at 22% 20%, rgba(255, 111, 189, 0.52), transparent 62%),
+        radial-gradient(circle at 78% 12%, rgba(255, 204, 112, 0.35), transparent 65%),
+        linear-gradient(155deg, #151421, #090910);
+}
+
+.portfolio-card:hover .mockup-card,
+.portfolio-card:focus-within .mockup-card {
+    transform: translateY(-6px);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+        0 35px 65px rgba(0, 0, 0, 0.55);
+}
+
+.portfolio-card:hover .mockup-card::before,
+.portfolio-card:focus-within .mockup-card::before {
+    opacity: 1;
+}
+
+.portfolio-item:hover .mockup-card,
+.portfolio-item:focus-within .mockup-card {
+    transform: translateY(-4px);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 28px 55px rgba(0, 0, 0, 0.5);
+}
+
+.portfolio-item:hover .mockup-card::before,
+.portfolio-item:focus-within .mockup-card::before {
+    opacity: 0.85;
 }
 
 .portfolio-overlay {
@@ -829,11 +1003,6 @@ video {
 
 .portfolio-item .portfolio-media {
     flex: 0 0 auto;
-}
-
-.portfolio-item .portfolio-media .image-placeholder {
-    border-radius: 0;
-    border: 0;
 }
 
 .principles {
@@ -990,7 +1159,13 @@ video {
 }
 
 .portfolio-filters {
-    padding: 1rem 0 0;
+    padding: clamp(1.75rem, 4vw, 2.75rem) 0 0;
+    margin-bottom: clamp(1.5rem, 5vw, 3rem);
+    border-top: 1px solid var(--color-border);
+}
+
+.portfolio-gallery {
+    padding-bottom: clamp(3.25rem, 6vw, 5rem);
 }
 
 .filter-buttons {

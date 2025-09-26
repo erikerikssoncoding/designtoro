@@ -35,7 +35,10 @@ include __DIR__ . '/partials/head.php';
             <div class="col-lg-6">
                 <div class="hero-media" aria-hidden="true">
                     <div class="media-placeholder">
-                        <img class="image-placeholder" src="https://placehold.co/600x360/1a1a26/FFFFFF?text=DesignToro+Showcase" alt="Previzualizare proiect digital realizat de DesignToro">
+                        <div class="media-visual hero-visual" role="img" aria-label="Previzualizare proiect digital realizat de DesignToro">
+                            <span class="media-visual__chip" aria-hidden="true">DesignToro Launch Lab</span>
+                            <span class="media-visual__tag" aria-hidden="true">UX • UI • Growth</span>
+                        </div>
                         <div class="media-caption">
                             <h3>Experiență completă, gata de lansare.</h3>
                             <span>UX, conținut și tehnologie reunite într-un singur pachet digital.</span>
@@ -168,7 +171,9 @@ include __DIR__ . '/partials/head.php';
         <div class="portfolio-grid">
             <article class="portfolio-card">
                 <div class="portfolio-media">
-                    <img class="image-placeholder" src="https://placehold.co/520x360/101017/FFFFFF?text=Pulse+Media" alt="Previzualizare proiect Pulse Media">
+                    <div class="mockup-card mockup-pulse" role="img" aria-label="Previzualizare proiect Pulse Media">
+                        <span class="mockup-label" aria-hidden="true">Pulse Media</span>
+                    </div>
                 </div>
                 <div class="portfolio-overlay">
                     <h3>Pulse Media</h3>
@@ -177,7 +182,9 @@ include __DIR__ . '/partials/head.php';
             </article>
             <article class="portfolio-card">
                 <div class="portfolio-media">
-                    <img class="image-placeholder" src="https://placehold.co/520x360/181824/FFFFFF?text=Nebula+Commerce" alt="Previzualizare proiect Nebula Commerce">
+                    <div class="mockup-card mockup-nebula" role="img" aria-label="Previzualizare proiect Nebula Commerce">
+                        <span class="mockup-label" aria-hidden="true">Nebula Commerce</span>
+                    </div>
                 </div>
                 <div class="portfolio-overlay">
                     <h3>Nebula Commerce</h3>
@@ -186,7 +193,9 @@ include __DIR__ . '/partials/head.php';
             </article>
             <article class="portfolio-card">
                 <div class="portfolio-media">
-                    <img class="image-placeholder" src="https://placehold.co/520x360/13131c/FFFFFF?text=Skyline+Air" alt="Previzualizare proiect Skyline Air">
+                    <div class="mockup-card mockup-skyline" role="img" aria-label="Previzualizare proiect Skyline Air">
+                        <span class="mockup-label" aria-hidden="true">Skyline Air</span>
+                    </div>
                 </div>
                 <div class="portfolio-overlay">
                     <h3>Skyline Air</h3>
@@ -195,7 +204,9 @@ include __DIR__ . '/partials/head.php';
             </article>
             <article class="portfolio-card">
                 <div class="portfolio-media">
-                    <img class="image-placeholder" src="https://placehold.co/520x360/171721/FFFFFF?text=Prime+Estates" alt="Previzualizare proiect Prime Estates">
+                    <div class="mockup-card mockup-prime" role="img" aria-label="Previzualizare proiect Prime Estates">
+                        <span class="mockup-label" aria-hidden="true">Prime Estates</span>
+                    </div>
                 </div>
                 <div class="portfolio-overlay">
                     <h3>Prime Estates</h3>

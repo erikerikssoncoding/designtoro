@@ -24,7 +24,9 @@ include __DIR__ . '/partials/head.php';
     <div class="container portfolio-masonry">
         <article class="portfolio-item" data-category="website">
             <div class="portfolio-media">
-                <img class="image-placeholder" src="https://placehold.co/560x380/101017/FFFFFF?text=Pulse+Media" alt="Previzualizare proiect Pulse Media">
+                <div class="mockup-card mockup-pulse" role="img" aria-label="Previzualizare proiect Pulse Media">
+                    <span class="mockup-label" aria-hidden="true">Pulse Media</span>
+                </div>
             </div>
             <div class="portfolio-details">
                 <h2>Pulse Media</h2>
@@ -33,7 +35,9 @@ include __DIR__ . '/partials/head.php';
         </article>
         <article class="portfolio-item" data-category="ecommerce">
             <div class="portfolio-media">
-                <img class="image-placeholder" src="https://placehold.co/560x380/181824/FFFFFF?text=Nebula+Commerce" alt="Previzualizare proiect Nebula Commerce">
+                <div class="mockup-card mockup-nebula" role="img" aria-label="Previzualizare proiect Nebula Commerce">
+                    <span class="mockup-label" aria-hidden="true">Nebula Commerce</span>
+                </div>
             </div>
             <div class="portfolio-details">
                 <h2>Nebula Commerce</h2>
@@ -42,7 +46,9 @@ include __DIR__ . '/partials/head.php';
         </article>
         <article class="portfolio-item" data-category="branding">
             <div class="portfolio-media">
-                <img class="image-placeholder" src="https://placehold.co/560x380/13131c/FFFFFF?text=Skyline+Air" alt="Previzualizare proiect Skyline Air">
+                <div class="mockup-card mockup-skyline" role="img" aria-label="Previzualizare proiect Skyline Air">
+                    <span class="mockup-label" aria-hidden="true">Skyline Air</span>
+                </div>
             </div>
             <div class="portfolio-details">
                 <h2>Skyline Air</h2>
@@ -51,7 +57,9 @@ include __DIR__ . '/partials/head.php';
         </article>
         <article class="portfolio-item" data-category="website">
             <div class="portfolio-media">
-                <img class="image-placeholder" src="https://placehold.co/560x380/171721/FFFFFF?text=Prime+Estates" alt="Previzualizare proiect Prime Estates">
+                <div class="mockup-card mockup-prime" role="img" aria-label="Previzualizare proiect Prime Estates">
+                    <span class="mockup-label" aria-hidden="true">Prime Estates</span>
+                </div>
             </div>
             <div class="portfolio-details">
                 <h2>Prime Estates</h2>
@@ -60,7 +68,9 @@ include __DIR__ . '/partials/head.php';
         </article>
         <article class="portfolio-item" data-category="ecommerce">
             <div class="portfolio-media">
-                <img class="image-placeholder" src="https://placehold.co/560x380/0f0f15/FFFFFF?text=Orbit+Tech" alt="Previzualizare proiect Orbit Tech">
+                <div class="mockup-card mockup-orbit" role="img" aria-label="Previzualizare proiect Orbit Tech">
+                    <span class="mockup-label" aria-hidden="true">Orbit Tech</span>
+                </div>
             </div>
             <div class="portfolio-details">
                 <h2>Orbit Tech</h2>
@@ -69,7 +79,9 @@ include __DIR__ . '/partials/head.php';
         </article>
         <article class="portfolio-item" data-category="branding">
             <div class="portfolio-media">
-                <img class="image-placeholder" src="https://placehold.co/560x380/191921/FFFFFF?text=Lumen+Studio" alt="Previzualizare proiect Lumen Studio">
+                <div class="mockup-card mockup-lumen" role="img" aria-label="Previzualizare proiect Lumen Studio">
+                    <span class="mockup-label" aria-hidden="true">Lumen Studio</span>
+                </div>
             </div>
             <div class="portfolio-details">
                 <h2>Lumen Studio</h2>
