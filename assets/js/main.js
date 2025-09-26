@@ -51,7 +51,24 @@
     });
 
     const recaptchaSiteKey = window.RECAPTCHA_SITE_KEY;
-    if (typeof grecaptcha !== 'undefined' && recaptchaSiteKey) {
+    const enableRecaptchaBadge = (auto = false) => {
+        document.body.classList.add('show-recaptcha');
+        if (auto) {
+            document.body.dataset.recaptchaAuto = 'true';
+        }
+    };
+    const disableAutoRecaptchaBadge = () => {
+        if (document.body.dataset.recaptchaAuto === 'true') {
+            document.body.classList.remove('show-recaptcha');
+            delete document.body.dataset.recaptchaAuto;
+        }
+    };
+    const initializeRecaptcha = () => {
+        if (typeof grecaptcha === 'undefined' || !recaptchaSiteKey) {
+            enableRecaptchaBadge(true);
+            return;
+        }
+
         grecaptcha.ready(() => {
             grecaptcha
                 .execute(recaptchaSiteKey, { action: 'contact' })
@@ -60,11 +77,27 @@
                     if (tokenField) {
                         tokenField.value = token;
                     }
+                    disableAutoRecaptchaBadge();
                 })
                 .catch(() => {
                     console.warn('Nu s-a putut genera tokenul reCAPTCHA.');
+                    enableRecaptchaBadge(true);
                 });
         });
+    };
+
+    if (recaptchaSiteKey) {
+        if (typeof grecaptcha !== 'undefined') {
+            initializeRecaptcha();
+        } else {
+            window.addEventListener('load', () => {
+                if (typeof grecaptcha !== 'undefined') {
+                    initializeRecaptcha();
+                } else {
+                    enableRecaptchaBadge(true);
+                }
+            });
+        }
     }
 
     const stickyFooterNav = document.querySelector('.mobile-footer-nav');

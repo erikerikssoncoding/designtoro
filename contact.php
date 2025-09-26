@@ -10,6 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once __DIR__ . '/includes/contact-handler.php';
     $formResponse = handle_contact_form();
 }
+$bodyClasses = $bodyClasses ?? [];
+if ($formResponse && empty($formResponse['success'])) {
+    $bodyClasses[] = 'show-recaptcha';
+}
 include __DIR__ . '/partials/head.php';
 ?>
 <section class="contact-hero py-5" aria-labelledby="contact-title">

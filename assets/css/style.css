@@ -1436,6 +1436,19 @@ video {
     color: rgba(255, 255, 255, 0.5);
 }
 
+.grecaptcha-badge {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.show-recaptcha .grecaptcha-badge {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
 @media (max-width: 960px) {
     .site-footer {
         margin-top: 4rem;
