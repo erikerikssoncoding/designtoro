@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/security-headers.php';
 $pageTitle = 'Prețuri Creare Site și Pachete Marketing | DesignToro';
-$pageDescription = 'Compară prețurile și pachetele DesignToro pentru web design, marketing și mentenanță. Alege soluția potrivită afacerii tale.';
+$pageDescription = 'Vezi prețurile DesignToro pentru site-uri, promovare și mentenanță. Alege pachetul potrivit pentru afacerea ta.';
 $pageKeywords = 'preț creare site, pachet web design, ofertă site prezentare, cost mentenanță site, prețuri marketing';
 $pageUrl = 'https://www.designtoro.ro/preturi';
 $currentPage = 'preturi';
@@ -23,8 +23,8 @@ include __DIR__ . '/partials/head.php';
 ?>
 <section class="page-hero py-5" aria-labelledby="pricing-hero">
     <div class="container narrow text-center">
-        <h1 id="pricing-hero">Prețuri transparente pentru lansări digitale performante.</h1>
-        <p>Transparență totală, beneficii clare și flexibilitate pentru branduri aflate la start sau în expansiune.</p>
+        <h1 id="pricing-hero">Prețuri clare pentru site-uri și promovare online.</h1>
+        <p>Alege pachetul care se potrivește afacerii tale și află dinainte ce primești și în cât timp livrăm.</p>
     </div>
 </section>
 <section class="pricing py-5" aria-label="Prețuri servicii web design">
@@ -36,28 +36,28 @@ include __DIR__ . '/partials/head.php';
                         <span aria-hidden="true">i</span>
                     </button>
                     <div class="info-notice" id="pricing-info-prompt" role="status" aria-live="polite" aria-hidden="true">
-                        <span>apasa aici pentru informatii</span>
+                        <span>apasă aici pentru explicații pe scurt</span>
                     </div>
                     <h2>StartUp</h2>
-                    <p class="pricing-tag">Prezență online esențială</p>
+                    <p class="pricing-tag">Tot ce îți trebuie pentru a fi online</p>
                     <ul>
-                        <li>Găzduire web premium pe server privat și domeniu .RO inclus</li>
-                        <li>Design 100% original pentru până la 4 pagini esențiale</li>
-                        <li>Interfață complet adaptabilă pe mobil, tabletă și desktop</li>
-                        <li>Panou de administrare intuitiv și e-mailuri profesionale personalizate</li>
-                        <li>Securitate standard: SSL și backup-uri zilnice</li>
+                        <li>Găzduire sigură pe server dedicat și domeniu .RO inclus</li>
+                        <li>Design personalizat pentru până la 4 pagini importante</li>
+                        <li>Site adaptat pentru telefon, tabletă și desktop</li>
+                        <li>Panou de administrare simplu și adrese de e-mail profesionale</li>
+                        <li>Protecție de bază: certificat SSL și copii de siguranță zilnice</li>
                     </ul>
                     <button class="btn btn-secondary" data-offer-modal-open data-offer-plan="StartUp">Cere ofertă</button>
                     <p class="delivery-note">Termen estimat de livrare: 5-10 zile lucrătoare</p>
                 </div>
                 <div class="pricing-card-face pricing-card-back" aria-hidden="true">
                     <h3>Pe scurt</h3>
-                    <p>StartUp este fundația potrivită dacă vrei o prezență online rapidă, clară și construită corect încă de la început.</p>
+                    <p>StartUp este baza potrivită dacă vrei un site rapid, ușor de folosit și construit corect încă de la început.</p>
                     <ul>
-                        <li>Site-ul este găzduit pe serverul nostru privat la care au acces doar clienții DesignToro – nu îl împarți cu mii de site-uri, ca în găzduirea de masă.</li>
-                        <li>Primești o arhitectură clară cu design original, copy de start și elemente vizuale aliniate identității brandului.</li>
-                        <li>Administrarea conținutului rămâne intuitivă datorită tutorialelor dedicate și adreselor de e-mail profesionale.</li>
-                        <li>Securitatea este activ monitorizată prin SSL, backup-uri zilnice testate și alerte de uptime.</li>
+                        <li>Site-ul este găzduit pe serverul nostru dedicat – nu împarți resursele cu sute de alte proiecte.</li>
+                        <li>Primești un design original, texte de start și imagini potrivite brandului tău.</li>
+                        <li>Îți arătăm cum să actualizezi singur paginile și setăm e-mailuri cu numele afacerii tale.</li>
+                        <li>Monitorizăm securitatea, facem backup-uri zilnice și te anunțăm imediat dacă apare o problemă.</li>
                     </ul>
                     <button class="info-back" type="button" data-info-close>Înapoi la detalii</button>
                 </div>
@@ -71,24 +71,24 @@ include __DIR__ . '/partials/head.php';
                         <span aria-hidden="true">i</span>
                     </button>
                     <h2>Business Plus</h2>
-                    <p class="pricing-tag">Pentru branduri care vor să convingă</p>
+                    <p class="pricing-tag">Pentru afaceri care vor să fie preferate</p>
                     <ul>
-                        <li>Include toate beneficiile StartUp plus conținut profesional (texte și imagini premium)</li>
-                        <li>Structură extinsă până la 7 pagini și identitate vizuală cu logo vectorial</li>
-                        <li>Optimizare SEO on-page și conformitate GDPR de bază</li>
-                        <li>Integrare Google Analytics, Facebook Pixel și soluții de chat</li>
+                        <li>Include tot ce oferă StartUp plus texte și imagini realizate de echipa noastră</li>
+                        <li>Structură extinsă până la 7 pagini și actualizarea identității vizuale</li>
+                        <li>Optimizare pentru Google și setări esențiale de confidențialitate</li>
+                        <li>Integrare cu instrumente de analiză și chat pentru clienți</li>
                     </ul>
                     <button class="btn btn-accent" data-offer-modal-open data-offer-plan="Business Plus">Cere ofertă</button>
                     <p class="delivery-note">Termen estimat de livrare: 10-20 de zile lucrătoare</p>
                 </div>
                 <div class="pricing-card-face pricing-card-back" aria-hidden="true">
                     <h3>Pe scurt</h3>
-                    <p>Business Plus este soluția completă pentru afaceri care vor să transforme vizitatorii în clienți.</p>
+                    <p>Business Plus este pachetul complet pentru afaceri care vor să transforme vizitatorii în clienți fideli.</p>
                     <ul>
-                        <li>Textele persuasive și sesiunile de interviu ne ajută să traducem expertiza ta în mesaje clare care convertesc.</li>
-                        <li>Logo-ul, paleta cromatică și sistemul vizual sunt livrate în format editabil, gata pentru orice material viitor.</li>
-                        <li>Instrumentele de analiză și chat oferă vizibilitate asupra performanței și sprijină conversia în timp real.</li>
-                        <li>Infrastructura privată asigură resurse dedicate – site-ul tău nu împarte CPU sau memorie cu sute de proiecte străine.</li>
+                        <li>Realizăm interviuri scurte cu tine și echipa, apoi scriem mesaje clare și convingătoare.</li>
+                        <li>Primești fișiere editabile pentru logo și materiale, gata pentru orice suport de comunicare.</li>
+                        <li>Setăm instrumente care arată câți vizitatori ai și ce acțiuni fac în site.</li>
+                        <li>Serverul dedicat păstrează site-ul rapid și stabil chiar și în perioade aglomerate.</li>
                     </ul>
                     <button class="info-back" type="button" data-info-close>Înapoi la detalii</button>
                 </div>
@@ -101,24 +101,24 @@ include __DIR__ . '/partials/head.php';
                         <span aria-hidden="true">i</span>
                     </button>
                     <h2>Executive</h2>
-                    <p class="pricing-tag">Strategic pentru afaceri consolidate</p>
+                    <p class="pricing-tag">Pentru companii cu planuri mari</p>
                     <ul>
-                        <li>Include toate avantajele StartUp și Business Plus cu până la 15 pagini complexe</li>
-                        <li>Strategie SEO avansată: cercetare de cuvinte cheie și optimizare pentru fiecare pagină</li>
-                        <li>Consultanță pentru strategie de conținut și infrastructură performantă globală</li>
-                        <li>Optimizare Google Business Profile și materiale de brand dedicate</li>
+                        <li>Include toate avantajele StartUp și Business Plus, extins până la 15 pagini complexe</li>
+                        <li>Plan SEO detaliat pentru fiecare pagină importantă</li>
+                        <li>Consiliere pentru conținut, integrarea sistemelor interne și hosting internațional</li>
+                        <li>Optimizare pentru Google Business Profile și materiale de prezentare dedicate</li>
                     </ul>
                     <button class="btn btn-secondary" data-offer-modal-open data-offer-plan="Executive">Cere ofertă</button>
                     <p class="delivery-note">Termen estimat de livrare: 20-40 de zile lucrătoare</p>
                 </div>
                 <div class="pricing-card-face pricing-card-back" aria-hidden="true">
                     <h3>Pe scurt</h3>
-                    <p>Executive este pachetul pentru companii care vor autoritate, performanță și vizibilitate constantă.</p>
+                    <p>Executive este pachetul pentru companii care vor vizibilitate constantă și procese automate.</p>
                     <ul>
-                        <li>Arhitectura extinsă a site-ului susține campanii de conținut, lead magnets și integrarea CRM-ului.</li>
-                        <li>Strategia SEO avansată și infrastructura multi-region asigură încărcare rapidă din orice țară și protecție DDoS.</li>
-                        <li>Workshop-urile trimestriale și materialele de brand dedicate alimentează constant echipa de vânzări.</li>
-                        <li>Găzduirea pe server dedicat DesignToro păstrează resursele doar pentru brandul tău și menține uptime de 99,9%.</li>
+                        <li>Structura site-ului susține campanii ample, formulare complexe și conectare cu CRM-ul tău.</li>
+                        <li>Hostingul global asigură încărcare rapidă și protecție în orice țară.</li>
+                        <li>Organizăm sesiuni periodice pentru planificare și oferim materiale proaspete pentru echipa de vânzări.</li>
+                        <li>Serverul dedicat DesignToro păstrează resursele doar pentru brandul tău și menține uptime aproape de 100%.</li>
                     </ul>
                     <button class="info-back" type="button" data-info-close>Înapoi la detalii</button>
                 </div>
@@ -136,9 +136,9 @@ include __DIR__ . '/partials/head.php';
                     </button>
                     <h2>Mentenanță &amp; Support</h2>
                     <ul>
-                        <li>Monitorizare uptime, securitate și backup-uri automate</li>
-                        <li>Actualizări lunare platformă și componente</li>
-                        <li>Raportare de performanță și recomandări</li>
+                        <li>Supraveghere zilnică a site-ului și copii de siguranță automate</li>
+                        <li>Actualizări lunare pentru platformă și module</li>
+                        <li>Raport lunar cu intervenții și recomandări</li>
                     </ul>
                     <button class="btn btn-secondary" data-offer-modal-open data-offer-plan="Mentenanță &amp; Support">Solicită pachet</button>
                 </div>
@@ -146,10 +146,10 @@ include __DIR__ . '/partials/head.php';
                     <h3>Pe scurt</h3>
                     <p>Pachetul de mentenanță te scapă de grija actualizărilor și a problemelor tehnice neașteptate.</p>
                     <ul>
-                        <li>Monitorizăm constant site-ul și intervenim rapid dacă apare o eroare sau un plugin vulnerabil.</li>
-                        <li>Actualizăm platforma la timp, testăm compatibilitatea și păstrăm copii de siguranță în locații separate.</li>
-                        <li>Primești rapoarte clare despre fiecare intervenție și recomandări acționabile pentru următoarea lună.</li>
-                        <li>Serverul privat rămâne optimizat doar pentru clienții noștri, astfel uptime-ul rămâne peste 99,9%.</li>
+                        <li>Verificăm site-ul zilnic și intervenim rapid când apare o eroare sau o alertă de securitate.</li>
+                        <li>Actualizăm platforma, testăm compatibilitatea și păstrăm copii de siguranță în locuri separate.</li>
+                        <li>Primești rapoarte pe înțelesul tău și pași clari pentru luna următoare.</li>
+                        <li>Serverul dedicat pentru clienți DesignToro menține site-ul stabil și rapid.</li>
                     </ul>
                     <button class="info-back" type="button" data-info-close>Înapoi la detalii</button>
                 </div>
@@ -163,9 +163,9 @@ include __DIR__ . '/partials/head.php';
                     </button>
                     <h2>Social Media Showrunner</h2>
                     <ul>
-                        <li>Strategie editorială, grilă de conținut și tone of voice</li>
-                        <li>Producție creativă pentru social media și asset-uri animate</li>
-                        <li>Campanii plătite și raportări detaliate</li>
+                        <li>Plan editorial lunar și stil de comunicare adaptat publicului tău</li>
+                        <li>Materiale vizuale și video scurte pentru rețelele sociale</li>
+                        <li>Campanii plătite și rapoarte ușor de citit</li>
                     </ul>
                     <button class="btn btn-secondary" data-offer-modal-open data-offer-plan="Social Media Showrunner">Solicită pachet</button>
                 </div>
@@ -173,10 +173,10 @@ include __DIR__ . '/partials/head.php';
                     <h3>Pe scurt</h3>
                     <p>Social Media Showrunner este pentru brandurile care vor o prezență constantă și coerentă.</p>
                     <ul>
-                        <li>Primești un plan editorial simplu care arată ce se postează și când, plus guideline-uri de răspuns rapid.</li>
-                        <li>Creăm vizualuri, animații și template-uri reutilizabile astfel încât echipa ta să posteze fără blocaje.</li>
-                        <li>Analizăm campaniile plătite și optimizăm mesajele lună de lună, cu focus pe leaduri și vânzări.</li>
-                        <li>Sincronizăm constant comunicarea cu landing page-urile găzduite pe serverul nostru privat pentru un parcurs fluent.</li>
+                        <li>Primești un calendar simplu cu ce se postează și când, plus răspunsuri standard pentru comentarii.</li>
+                        <li>Creăm imagini, animații și șabloane ușor de folosit de echipa ta.</li>
+                        <li>Verificăm lunar campaniile plătite și ajustăm mesajele pentru mai multe cereri și vânzări.</li>
+                        <li>Aliniem mesajele cu paginile site-ului tău pentru un parcurs clar din social media până la contact.</li>
                     </ul>
                     <button class="info-back" type="button" data-info-close>Înapoi la detalii</button>
                 </div>
@@ -272,8 +272,8 @@ include __DIR__ . '/partials/head.php';
 <section class="special-offer" aria-labelledby="offer-title">
     <div class="container special-grid">
         <div>
-            <h2 id="offer-title">Pachet ecommerce complet</h2>
-            <p>De la <strong>399€</strong> pentru un magazin online scalabil, optimizat pentru funnel-uri și automatizări.</p>
+            <h2 id="offer-title">Pachet complet pentru magazine online</h2>
+            <p>De la <strong>399€</strong> pentru un magazin online pregătit pentru plăți, facturare și promovare continuă.</p>
         </div>
         <a class="btn btn-accent" href="/contact">Primește ofertă personalizată</a>
     </div>
@@ -281,8 +281,8 @@ include __DIR__ . '/partials/head.php';
 <section class="cta-banner py-5" id="contact" aria-labelledby="cta-pricing">
     <div class="container cta-inline d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-between gap-3">
         <div>
-            <h2 id="cta-pricing">Vrei să discutăm pachetul potrivit?</h2>
-            <p>Spune-ne despre obiectivele tale și îți trimitem o propunere adaptată.</p>
+            <h2 id="cta-pricing">Hai să alegem împreună pachetul potrivit.</h2>
+            <p>Spune-ne ce planuri ai, iar noi îți trimitem o recomandare clară de buget și pași următori.</p>
         </div>
         <a class="btn btn-accent" href="/contact">Contactează-ne</a>
     </div>

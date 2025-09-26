@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/security-headers.php';
 $pageTitle = 'Portofoliu Web Design și Proiecte Digitale | DesignToro';
-$pageDescription = 'Explorează proiectele DesignToro: website-uri, ecommerce și branding pentru branduri din diverse industrii.';
+$pageDescription = 'Explorează proiectele DesignToro: site-uri, magazine online și materiale de brand create pentru clienți din diferite domenii.';
 $pageKeywords = 'portofoliu web design, proiecte site-uri, exemple magazine online, lucrări design';
 $pageUrl = 'https://www.designtoro.ro/portofoliu';
 $currentPage = 'portofoliu';
@@ -9,16 +9,16 @@ include __DIR__ . '/partials/head.php';
 ?>
 <section class="page-hero py-5" aria-labelledby="portfolio-hero">
     <div class="container narrow text-center">
-        <h1 id="portfolio-hero">Proiecte digitale care convertesc.</h1>
-        <p>Selecție de website-uri, platforme ecommerce și campanii integrate cu rezultate măsurabile.</p>
+        <h1 id="portfolio-hero">Proiecte digitale care aduc rezultate reale.</h1>
+        <p>Vezi exemple de site-uri, magazine online și campanii pe care le-am construit pas cu pas împreună cu clienții noștri.</p>
     </div>
 </section>
 <section class="portfolio-filters py-3" aria-label="Filtre portofoliu">
     <div class="container filter-buttons">
         <button class="filter-button is-active" data-filter="all">Toate</button>
-        <button class="filter-button" data-filter="website">Experiențe web</button>
+        <button class="filter-button" data-filter="website">Site-uri de prezentare</button>
         <button class="filter-button" data-filter="ecommerce">Magazine online</button>
-        <button class="filter-button" data-filter="branding">Branding &amp; content</button>
+        <button class="filter-button" data-filter="branding">Identitate și conținut</button>
     </div>
 </section>
 <section class="portfolio-gallery py-4" aria-label="Galerie portofoliu">
@@ -31,7 +31,7 @@ include __DIR__ . '/partials/head.php';
             </div>
             <div class="portfolio-details">
                 <h2>Pulse Media</h2>
-                <p>Hub de content digital &amp; newsletter</p>
+                <p>Site de știri și newsletter ușor de administrat</p>
             </div>
         </article>
         <article class="portfolio-item" data-category="ecommerce">
@@ -42,7 +42,7 @@ include __DIR__ . '/partials/head.php';
             </div>
             <div class="portfolio-details">
                 <h2>Nebula Commerce</h2>
-                <p>Magazin online fashion premium</p>
+                <p>Magazin online de modă cu experiență simplă de cumpărare</p>
             </div>
         </article>
         <article class="portfolio-item" data-category="branding">
@@ -53,7 +53,7 @@ include __DIR__ . '/partials/head.php';
             </div>
             <div class="portfolio-details">
                 <h2>Skyline Air</h2>
-                <p>Identitate și platformă de rezervări</p>
+                <p>Identitate vizuală și platformă clară de rezervări</p>
             </div>
         </article>
         <article class="portfolio-item" data-category="website">
@@ -64,7 +64,7 @@ include __DIR__ . '/partials/head.php';
             </div>
             <div class="portfolio-details">
                 <h2>Prime Estates</h2>
-                <p>Platformă imobiliară interactivă</p>
+                <p>Site imobiliar cu tururi virtuale și formulare clare</p>
             </div>
         </article>
         <article class="portfolio-item" data-category="ecommerce">
@@ -75,7 +75,7 @@ include __DIR__ . '/partials/head.php';
             </div>
             <div class="portfolio-details">
                 <h2>Orbit Tech</h2>
-                <p>Store B2B cu integrări complexe</p>
+                <p>Magazin B2B cu comenzi rapide și integrare ERP</p>
             </div>
         </article>
         <article class="portfolio-item" data-category="branding">
@@ -86,7 +86,7 @@ include __DIR__ . '/partials/head.php';
             </div>
             <div class="portfolio-details">
                 <h2>Lumen Studio</h2>
-                <p>Branding și ghid de identitate</p>
+                <p>Manual de brand și materiale ușor de folosit</p>
             </div>
         </article>
     </div>
@@ -94,8 +94,8 @@ include __DIR__ . '/partials/head.php';
 <section class="cta-banner py-5" aria-labelledby="cta-portfolio">
     <div class="container cta-inline d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-between gap-3">
         <div>
-            <h2 id="cta-portfolio">Ți-ai imaginat proiectul tău pe această listă?</h2>
-            <p>Spune-ne despre provocare și îți arătăm cum o transformăm într-o poveste memorabilă.</p>
+            <h2 id="cta-portfolio">Vrei să vezi proiectul tău în această galerie?</h2>
+            <p>Trimite-ne câteva detalii și îți arătăm ce pași urmăm pentru a ajunge acolo.</p>
         </div>
         <a class="btn btn-accent" href="/contact">Hai să discutăm</a>
     </div>
