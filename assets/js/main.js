@@ -277,6 +277,34 @@
         const planField = offerModal.querySelector('#offer-plan-field');
         const nameField = offerModal.querySelector('#offer-name');
         const closeSelectors = '[data-offer-modal-close]';
+        const animatedElements = offerModal.querySelectorAll('[data-offer-animate]');
+        const prefersReducedMotion = typeof window.matchMedia === 'function'
+            ? window.matchMedia('(prefers-reduced-motion: reduce)')
+            : { matches: false };
+
+        const animateOfferFields = () => {
+            if (!animatedElements.length) {
+                return;
+            }
+
+            animatedElements.forEach((element) => {
+                element.classList.remove('is-animated');
+                element.style.removeProperty('--offer-animate-delay');
+            });
+
+            window.requestAnimationFrame(() => {
+                animatedElements.forEach((element, index) => {
+                    const delayStep = prefersReducedMotion.matches ? 0 : 120;
+                    const delay = delayStep * index;
+
+                    if (delay) {
+                        element.style.setProperty('--offer-animate-delay', `${delay}ms`);
+                    }
+
+                    element.classList.add('is-animated');
+                });
+            });
+        };
 
         const setAriaState = (isOpen) => {
             offerModal.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
@@ -294,6 +322,7 @@
 
             offerModal.classList.add('is-visible');
             setAriaState(true);
+            animateOfferFields();
 
             window.setTimeout(() => {
                 if (nameField && typeof nameField.focus === 'function') {
@@ -309,6 +338,7 @@
 
         if (offerModal.classList.contains('is-visible')) {
             setAriaState(true);
+            animateOfferFields();
             window.setTimeout(() => {
                 if (nameField && typeof nameField.focus === 'function') {
                     nameField.focus();
@@ -336,6 +366,14 @@
                 closeOfferModal();
             }
         });
+
+        if (typeof prefersReducedMotion.addEventListener === 'function') {
+            prefersReducedMotion.addEventListener('change', () => {
+                if (offerModal.classList.contains('is-visible')) {
+                    animateOfferFields();
+                }
+            });
+        }
     }
 
     const stickyFooterNav = document.querySelector('.mobile-footer-nav');

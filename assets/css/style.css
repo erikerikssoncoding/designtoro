@@ -1517,16 +1517,25 @@ video {
     background: rgba(5, 5, 8, 0.6);
     backdrop-filter: blur(8px);
     z-index: 1200;
+    opacity: 0;
+    transition: opacity 0.35s ease;
 }
 
 .offer-modal.is-visible {
     display: flex;
+    opacity: 1;
 }
 
 .offer-modal__backdrop {
     position: absolute;
     inset: 0;
     background: rgba(5, 5, 8, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.offer-modal.is-visible .offer-modal__backdrop {
+    opacity: 1;
 }
 
 .offer-modal__dialog {
@@ -1539,6 +1548,13 @@ video {
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-soft);
     padding: clamp(1.75rem, 4vw, 2.75rem);
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+    will-change: opacity, transform;
+}
+
+.offer-modal.is-visible .offer-modal__dialog {
+    animation: offerModalIn 0.45s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 .offer-modal__close {
@@ -1586,6 +1602,67 @@ video {
 
 .offer-form .btn {
     width: 100%;
+}
+
+body:not(.no-js) [data-offer-animate] {
+    opacity: 0;
+    transform: translateY(16px);
+    will-change: opacity, transform;
+}
+
+body:not(.no-js) [data-offer-animate].is-animated {
+    animation: offerFieldFadeUp 0.4s ease forwards;
+    animation-delay: var(--offer-animate-delay, 0ms);
+}
+
+@keyframes offerModalIn {
+    0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes offerFieldFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .offer-modal {
+        transition: none;
+    }
+
+    .offer-modal__backdrop {
+        transition: none;
+        opacity: 1;
+    }
+
+    .offer-modal.is-visible .offer-modal__dialog {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    body:not(.no-js) [data-offer-animate] {
+        opacity: 1;
+        transform: none;
+    }
+
+    body:not(.no-js) [data-offer-animate].is-animated {
+        animation: none;
+    }
 }
 
 body.offer-modal-open {
