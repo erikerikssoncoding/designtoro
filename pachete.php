@@ -21,6 +21,9 @@ include __DIR__ . '/partials/head.php';
                     <button class="info-toggle" type="button" data-info-toggle aria-expanded="false" aria-label="Vezi explicații ușor de înțeles">
                         <span aria-hidden="true">i</span>
                     </button>
+                    <div class="info-notice" id="pricing-info-prompt" role="status" aria-live="polite" aria-hidden="true">
+                        <span>apasa aici pentru informatii</span>
+                    </div>
                     <h2>Starter Premiere</h2>
                     <p class="pricing-tag">Ideal pentru start-up-uri</p>
                     <ul>
