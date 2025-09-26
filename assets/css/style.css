@@ -1255,7 +1255,7 @@ video {
 
 @media (max-width: 640px) {
     .pricing-card .info-notice {
-        top: 4rem;
+        top: 1rem;
         right: calc(1.5rem + 2.5rem + 0.65rem);
     }
 }
