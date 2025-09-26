@@ -12,12 +12,25 @@ $bodyClasses = $bodyClasses ?? [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once __DIR__ . '/includes/offer-handler.php';
     $offerResponse = handle_offer_request();
+    $wantsJson = isset($_SERVER['HTTP_ACCEPT']) && stripos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false;
+
+    if ($wantsJson) {
+        header('Content-Type: application/json');
+        http_response_code(!empty($offerResponse['success']) ? 200 : 400);
+        echo json_encode($offerResponse);
+        exit;
+    }
+
     $offerModalShouldOpen = true;
 
     if (empty($offerResponse['success'])) {
         $bodyClasses[] = 'show-recaptcha';
     }
 }
+
+$offerFieldErrors = $offerResponse['fieldErrors'] ?? [];
+$offerFormWasSuccessful = $offerResponse && !empty($offerResponse['success']);
+$offerGlobalErrors = ($offerResponse && empty($offerResponse['success'])) ? ($offerResponse['errors'] ?? []) : [];
 
 include __DIR__ . '/partials/head.php';
 ?>
@@ -201,32 +214,56 @@ include __DIR__ . '/partials/head.php';
         <div class="offer-modal__content" data-offer-modal-content>
             <h2 id="offer-modal-title" data-offer-animate>Cere o ofertă personalizată</h2>
             <p class="offer-modal__subtitle" data-offer-animate>Completează detaliile esențiale și revenim cu propunerea potrivită în maximum o zi lucrătoare.</p>
-            <?php if ($offerResponse): ?>
-                <div class="form-feedback <?= !empty($offerResponse['success']) ? 'success' : 'error'; ?>" data-offer-animate>
-                    <?php if (!empty($offerResponse['success'])): ?>
-                        <p>Îți mulțumim! Cererea a fost trimisă. Un specialist DesignToro te va contacta în scurt timp.</p>
-                    <?php else: ?>
-                        <ul>
-                            <?php foreach ($offerResponse['errors'] as $error): ?>
-                                <li><?= $error; ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    <?php endif; ?>
+            <div class="form-shell" data-form-wrapper>
+                <div
+                    class="form-success-message<?= $offerFormWasSuccessful ? ' is-visible' : ''; ?>"
+                    data-form-success
+                    role="status"
+                    aria-live="polite"
+                    <?= $offerFormWasSuccessful ? '' : 'hidden'; ?>
+                    data-offer-animate
+                >
+                    <span class="form-success-icon" aria-hidden="true">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </span>
+                    <div>
+                        <p class="form-success-title">Cererea a ajuns la noi!</p>
+                        <p>Un specialist DesignToro te va contacta în cel mai scurt timp.</p>
+                    </div>
                 </div>
-            <?php endif; ?>
-            <form class="offer-form" id="offer-form" method="post" action="/preturi" novalidate>
-                <div class="form-group" data-offer-animate>
-                    <label for="offer-name" class="form-label">Nume *</label>
-                    <input
-                        type="text"
+                <form
+                    class="offer-form"
+                    id="offer-form"
+                    method="post"
+                    action="/preturi"
+                    novalidate
+                    data-async-form
+                    data-success-storage-key="offer"
+                >
+                    <div class="form-feedback<?= !empty($offerGlobalErrors) ? ' is-visible' : ''; ?>" data-form-global-error aria-live="polite" data-offer-animate>
+                        <?php if (!empty($offerGlobalErrors)): ?>
+                            <ul>
+                                <?php foreach ($offerGlobalErrors as $error): ?>
+                                    <li><?= $error; ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-group<?= isset($offerFieldErrors['name']) ? ' has-error' : ''; ?>" data-offer-animate>
+                        <label for="offer-name" class="form-label">Nume *</label>
+                        <input
+                            type="text"
                         id="offer-name"
                         name="name"
                         class="form-control"
                         value="<?= htmlspecialchars($_POST['name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
                         required
                     >
+                        <p class="form-error" data-field-error="name" aria-live="polite">
+                            <?= $offerFieldErrors['name'] ?? ''; ?>
+                        </p>
                 </div>
-                <div class="form-group" data-offer-animate>
+                <div class="form-group<?= isset($offerFieldErrors['phone']) ? ' has-error' : ''; ?>" data-offer-animate>
                     <label for="offer-phone" class="form-label">Număr de telefon *</label>
                     <input
                         type="tel"
@@ -236,8 +273,11 @@ include __DIR__ . '/partials/head.php';
                         value="<?= htmlspecialchars($_POST['phone'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
                         required
                     >
+                    <p class="form-error" data-field-error="phone" aria-live="polite">
+                        <?= $offerFieldErrors['phone'] ?? ''; ?>
+                    </p>
                 </div>
-                <div class="form-group" data-offer-animate>
+                <div class="form-group<?= isset($offerFieldErrors['email']) ? ' has-error' : ''; ?>" data-offer-animate>
                     <label for="offer-email" class="form-label">Email *</label>
                     <input
                         type="email"
@@ -247,8 +287,11 @@ include __DIR__ . '/partials/head.php';
                         value="<?= htmlspecialchars($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
                         required
                     >
+                    <p class="form-error" data-field-error="email" aria-live="polite">
+                        <?= $offerFieldErrors['email'] ?? ''; ?>
+                    </p>
                 </div>
-                <div class="form-group" data-offer-animate>
+                <div class="form-group<?= isset($offerFieldErrors['details']) ? ' has-error' : ''; ?>" data-offer-animate>
                     <label for="offer-details" class="form-label">Detalii despre site / proiect *</label>
                     <textarea
                         id="offer-details"
@@ -257,12 +300,15 @@ include __DIR__ . '/partials/head.php';
                         class="form-control"
                         required
                     ><?= htmlspecialchars($_POST['details'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
+                    <p class="form-error" data-field-error="details" aria-live="polite">
+                        <?= $offerFieldErrors['details'] ?? ''; ?>
+                    </p>
                 </div>
                 <div class="form-group honeypot">
                     <label for="offer-company">Companie</label>
                     <input type="text" id="offer-company" name="company" autocomplete="off">
                 </div>
-                <div class="form-group form-consent" data-offer-animate>
+                <div class="form-group form-consent<?= isset($offerFieldErrors['terms']) ? ' has-error' : ''; ?>" data-offer-animate>
                     <input
                         type="checkbox"
                         id="offer-terms"
@@ -275,11 +321,17 @@ include __DIR__ . '/partials/head.php';
                         Sunt de acord cu <a href="/termeni-si-conditii" target="_blank" rel="noopener">Termenii și condițiile</a>
                         și cu <a href="/politica-de-confidentialitate" target="_blank" rel="noopener">Politica de confidențialitate</a>.
                     </label>
+                    <p class="form-error" data-field-error="terms" aria-live="polite">
+                        <?= $offerFieldErrors['terms'] ?? ''; ?>
+                    </p>
                 </div>
                 <input type="hidden" name="offer_plan" id="offer-plan-field" value="<?= htmlspecialchars($_POST['offer_plan'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
-                <input type="hidden" name="g-recaptcha-response" id="recaptcha-token">
+                <input type="hidden" name="g-recaptcha-response" data-recaptcha-token>
+                <input type="hidden" name="fingerprint" data-device-fingerprint>
+                <input type="hidden" name="page_url" value="<?= htmlspecialchars($pageUrl ?? ($_SERVER['REQUEST_URI'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
                 <button class="btn btn-accent" type="submit" data-offer-animate>Trimite cererea</button>
             </form>
+        </div>
         </div>
     </div>
 </div>

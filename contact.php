@@ -9,11 +9,22 @@ $formResponse = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once __DIR__ . '/includes/contact-handler.php';
     $formResponse = handle_contact_form();
+
+    $wantsJson = isset($_SERVER['HTTP_ACCEPT']) && stripos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false;
+    if ($wantsJson) {
+        header('Content-Type: application/json');
+        http_response_code(!empty($formResponse['success']) ? 200 : 400);
+        echo json_encode($formResponse);
+        exit;
+    }
 }
 $bodyClasses = $bodyClasses ?? [];
 if ($formResponse && empty($formResponse['success'])) {
     $bodyClasses[] = 'show-recaptcha';
 }
+$formFieldErrors = $formResponse['fieldErrors'] ?? [];
+$formWasSuccessful = $formResponse && !empty($formResponse['success']);
+$globalFormErrors = ($formResponse && empty($formResponse['success'])) ? ($formResponse['errors'] ?? []) : [];
 include __DIR__ . '/partials/head.php';
 ?>
 <section class="contact-hero py-5" aria-labelledby="contact-title">
@@ -28,57 +39,120 @@ include __DIR__ . '/partials/head.php';
             </ul>
         </div>
         <div class="col-lg-7">
-            <form class="contact-form" method="post" action="/contact" novalidate>
-                <?php if ($formResponse): ?>
-                    <div class="form-feedback <?= $formResponse['success'] ? 'success' : 'error'; ?>">
-                        <?php if ($formResponse['success']): ?>
-                            <p>Îți mulțumim! Mesajul a fost trimis cu succes.</p>
-                        <?php else: ?>
+            <div class="form-shell" data-form-wrapper>
+                <div
+                    class="form-success-message<?= $formWasSuccessful ? ' is-visible' : ''; ?>"
+                    data-form-success
+                    role="status"
+                    aria-live="polite"
+                    <?= $formWasSuccessful ? '' : 'hidden'; ?>
+                >
+                    <span class="form-success-icon" aria-hidden="true">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </span>
+                    <div>
+                        <p class="form-success-title">Mesaj primit!</p>
+                        <p>Îți mulțumim. Te vom contacta în cel mai scurt timp cu detaliile solicitate.</p>
+                    </div>
+                </div>
+                <form
+                    class="contact-form"
+                    method="post"
+                    action="/contact"
+                    novalidate
+                    data-async-form
+                    data-success-storage-key="contact"
+                >
+                    <div class="form-feedback<?= !empty($globalFormErrors) ? ' is-visible' : ''; ?>" data-form-global-error aria-live="polite">
+                        <?php if (!empty($globalFormErrors)): ?>
                             <ul>
-                                <?php foreach ($formResponse['errors'] as $error): ?>
+                                <?php foreach ($globalFormErrors as $error): ?>
                                     <li><?= $error; ?></li>
                                 <?php endforeach; ?>
                             </ul>
                         <?php endif; ?>
                     </div>
-                <?php endif; ?>
-                <div class="form-group">
-                    <label for="name" class="form-label">Nume *</label>
-                    <input type="text" id="name" name="name" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="form-label">Email *</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone" class="form-label">Telefon</label>
-                    <input type="tel" id="phone" name="phone" class="form-control">
-                </div>
-                <div class="form-group honeypot">
-                    <label for="company">Companie</label>
-                    <input type="text" id="company" name="company" autocomplete="off">
-                </div>
-                <div class="form-group">
-                    <label for="message" class="form-label">Mesaj *</label>
-                    <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
-                </div>
-                <div class="form-group form-consent">
-                    <input
-                        type="checkbox"
-                        id="contact-terms"
-                        name="terms"
-                        value="1"
-                        required
-                        <?= isset($_POST['terms']) ? 'checked' : ''; ?>
-                    >
-                    <label for="contact-terms">
-                        Sunt de acord cu <a href="/termeni-si-conditii" target="_blank" rel="noopener">Termenii și condițiile</a>
-                        și cu <a href="/politica-de-confidentialitate" target="_blank" rel="noopener">Politica de confidențialitate</a>.
-                    </label>
-                </div>
-                <input type="hidden" name="g-recaptcha-response" id="recaptcha-token">
-                <button class="btn btn-accent" type="submit">Trimite mesajul</button>
-            </form>
+                    <div class="form-group<?= isset($formFieldErrors['name']) ? ' has-error' : ''; ?>">
+                        <label for="name" class="form-label">Nume *</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            class="form-control"
+                            value="<?= htmlspecialchars($_POST['name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                            required
+                        >
+                        <p class="form-error" data-field-error="name" aria-live="polite">
+                            <?= $formFieldErrors['name'] ?? ''; ?>
+                        </p>
+                    </div>
+                    <div class="form-group<?= isset($formFieldErrors['email']) ? ' has-error' : ''; ?>">
+                        <label for="email" class="form-label">Email *</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="form-control"
+                            value="<?= htmlspecialchars($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                            required
+                        >
+                        <p class="form-error" data-field-error="email" aria-live="polite">
+                            <?= $formFieldErrors['email'] ?? ''; ?>
+                        </p>
+                    </div>
+                    <div class="form-group<?= isset($formFieldErrors['phone']) ? ' has-error' : ''; ?>">
+                        <label for="phone" class="form-label">Telefon</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            class="form-control"
+                            value="<?= htmlspecialchars($_POST['phone'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                        >
+                        <p class="form-error" data-field-error="phone" aria-live="polite">
+                            <?= $formFieldErrors['phone'] ?? ''; ?>
+                        </p>
+                    </div>
+                    <div class="form-group honeypot">
+                        <label for="company">Companie</label>
+                        <input type="text" id="company" name="company" autocomplete="off">
+                    </div>
+                    <div class="form-group<?= isset($formFieldErrors['message']) ? ' has-error' : ''; ?>">
+                        <label for="message" class="form-label">Mesaj *</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            class="form-control"
+                            required
+                        ><?= htmlspecialchars($_POST['message'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
+                        <p class="form-error" data-field-error="message" aria-live="polite">
+                            <?= $formFieldErrors['message'] ?? ''; ?>
+                        </p>
+                    </div>
+                    <div class="form-group form-consent<?= isset($formFieldErrors['terms']) ? ' has-error' : ''; ?>">
+                        <input
+                            type="checkbox"
+                            id="contact-terms"
+                            name="terms"
+                            value="1"
+                            required
+                            <?= isset($_POST['terms']) ? 'checked' : ''; ?>
+                        >
+                        <label for="contact-terms">
+                            Sunt de acord cu <a href="/termeni-si-conditii" target="_blank" rel="noopener">Termenii și condițiile</a>
+                            și cu <a href="/politica-de-confidentialitate" target="_blank" rel="noopener">Politica de confidențialitate</a>.
+                        </label>
+                        <p class="form-error" data-field-error="terms" aria-live="polite">
+                            <?= $formFieldErrors['terms'] ?? ''; ?>
+                        </p>
+                    </div>
+                    <input type="hidden" name="g-recaptcha-response" data-recaptcha-token>
+                    <input type="hidden" name="fingerprint" data-device-fingerprint>
+                    <input type="hidden" name="page_url" value="<?= htmlspecialchars($pageUrl ?? ($_SERVER['REQUEST_URI'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
+                    <button class="btn btn-accent" type="submit">Trimite mesajul</button>
+                </form>
+            </div>
         </div>
     </div>
 </section>
