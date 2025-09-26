@@ -4,6 +4,7 @@ $pageTitle = 'Servicii Web Design, SEO și Marketing Online | DesignToro';
 $pageDescription = 'Descoperă serviciile DesignToro: web design, optimizare SEO, social media, branding și content pentru branduri ambițioase.';
 $pageKeywords = 'servicii creare site, optimizare seo, management social media, creare magazin online, branding';
 $pageUrl = 'https://www.designtoro.ro/servicii';
+$currentPage = 'servicii';
 include __DIR__ . '/partials/head.php';
 ?>
 <section class="page-hero py-5" aria-labelledby="services-hero">

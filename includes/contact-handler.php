@@ -72,7 +72,7 @@ function handle_contact_form(): array
 
     $mailSent = false;
     if (function_exists('mail')) {
-        $mailSent = mail('contact@designtoro.ro', $subject, $body, $headers);
+        $mailSent = mail('office@designtoro.ro', $subject, $body, $headers);
     }
 
     if (!$mailSent) {
