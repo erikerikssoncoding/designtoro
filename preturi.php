@@ -1,19 +1,33 @@
 <?php
 require_once __DIR__ . '/includes/security-headers.php';
 $pageTitle = 'Prețuri Creare Site și Pachete Marketing | DesignToro';
-$pageDescription = 'Compară pachetele DesignToro pentru web design, marketing și mentenanță. Alege soluția potrivită afacerii tale.';
+$pageDescription = 'Compară prețurile și pachetele DesignToro pentru web design, marketing și mentenanță. Alege soluția potrivită afacerii tale.';
 $pageKeywords = 'preț creare site, pachet web design, ofertă site prezentare, cost mentenanță site, prețuri marketing';
-$pageUrl = 'https://www.designtoro.ro/pachete';
-$currentPage = 'pachete';
+$pageUrl = 'https://www.designtoro.ro/preturi';
+$currentPage = 'preturi';
+$offerResponse = null;
+$offerModalShouldOpen = false;
+$bodyClasses = $bodyClasses ?? [];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once __DIR__ . '/includes/offer-handler.php';
+    $offerResponse = handle_offer_request();
+    $offerModalShouldOpen = true;
+
+    if (empty($offerResponse['success'])) {
+        $bodyClasses[] = 'show-recaptcha';
+    }
+}
+
 include __DIR__ . '/partials/head.php';
 ?>
 <section class="page-hero py-5" aria-labelledby="pricing-hero">
     <div class="container narrow text-center">
-        <h1 id="pricing-hero">Pachete create pentru lansări digitale performante.</h1>
+        <h1 id="pricing-hero">Prețuri transparente pentru lansări digitale performante.</h1>
         <p>Transparență totală, beneficii clare și flexibilitate pentru branduri aflate la start sau în expansiune.</p>
     </div>
 </section>
-<section class="pricing py-5" aria-label="Pachete de servicii">
+<section class="pricing py-5" aria-label="Prețuri servicii web design">
     <div class="container pricing-grid">
         <article class="pricing-card" data-pricing-card tabindex="0" aria-label="Detalii pachet StartUp">
             <div class="pricing-card-inner">
@@ -32,17 +46,18 @@ include __DIR__ . '/partials/head.php';
                         <li>Interfață complet adaptabilă pe mobil, tabletă și desktop</li>
                         <li>Panou de administrare intuitiv și e-mailuri profesionale personalizate</li>
                         <li>Securitate standard: SSL și backup-uri zilnice</li>
-                        <li>Termen de livrare: 5-10 zile lucrătoare</li>
                     </ul>
-                    <button class="btn btn-secondary" data-scroll="contact">Cere ofertă</button>
+                    <button class="btn btn-secondary" data-offer-modal-open data-offer-plan="StartUp">Cere ofertă</button>
+                    <p class="delivery-note">Termen estimat de livrare: 5-10 zile lucrătoare</p>
                 </div>
                 <div class="pricing-card-face pricing-card-back" aria-hidden="true">
                     <h3>Pe scurt</h3>
                     <p>StartUp este fundația potrivită dacă vrei o prezență online rapidă, clară și construită corect încă de la început.</p>
                     <ul>
-                        <li>Primești o arhitectură de bază cu design original și elemente vizuale personalizate brandului tău.</li>
-                        <li>Administrarea conținutului este simplă datorită panoului intuitiv și adreselor de e-mail dedicate.</li>
-                        <li>Securitatea este asigurată prin SSL, backup-uri zilnice și găzduire performantă.</li>
+                        <li>Site-ul este găzduit pe serverul nostru privat la care au acces doar clienții DesignToro – nu îl împarți cu mii de site-uri, ca în găzduirea de masă.</li>
+                        <li>Primești o arhitectură clară cu design original, copy de start și elemente vizuale aliniate identității brandului.</li>
+                        <li>Administrarea conținutului rămâne intuitivă datorită tutorialelor dedicate și adreselor de e-mail profesionale.</li>
+                        <li>Securitatea este activ monitorizată prin SSL, backup-uri zilnice testate și alerte de uptime.</li>
                     </ul>
                     <button class="info-back" type="button" data-info-close>Înapoi la detalii</button>
                 </div>
@@ -62,17 +77,18 @@ include __DIR__ . '/partials/head.php';
                         <li>Structură extinsă până la 7 pagini și identitate vizuală cu logo vectorial</li>
                         <li>Optimizare SEO on-page și conformitate GDPR de bază</li>
                         <li>Integrare Google Analytics, Facebook Pixel și soluții de chat</li>
-                        <li>Termen de livrare: 10-20 de zile lucrătoare</li>
                     </ul>
-                    <button class="btn btn-accent" data-scroll="contact">Cere ofertă</button>
+                    <button class="btn btn-accent" data-offer-modal-open data-offer-plan="Business Plus">Cere ofertă</button>
+                    <p class="delivery-note">Termen estimat de livrare: 10-20 de zile lucrătoare</p>
                 </div>
                 <div class="pricing-card-face pricing-card-back" aria-hidden="true">
                     <h3>Pe scurt</h3>
                     <p>Business Plus este soluția completă pentru afaceri care vor să transforme vizitatorii în clienți.</p>
                     <ul>
-                        <li>Textele persuasive și imaginile atent selectate construiesc încredere și diferențiază brandul.</li>
-                        <li>Logo-ul și identitatea vizuală consolidează mesajul pe fiecare pagină a site-ului.</li>
-                        <li>Instrumentele de analiză și chat oferă vizibilitate asupra performanței și sprijină conversia.</li>
+                        <li>Textele persuasive și sesiunile de interviu ne ajută să traducem expertiza ta în mesaje clare care convertesc.</li>
+                        <li>Logo-ul, paleta cromatică și sistemul vizual sunt livrate în format editabil, gata pentru orice material viitor.</li>
+                        <li>Instrumentele de analiză și chat oferă vizibilitate asupra performanței și sprijină conversia în timp real.</li>
+                        <li>Infrastructura privată asigură resurse dedicate – site-ul tău nu împarte CPU sau memorie cu sute de proiecte străine.</li>
                     </ul>
                     <button class="info-back" type="button" data-info-close>Înapoi la detalii</button>
                 </div>
@@ -91,17 +107,18 @@ include __DIR__ . '/partials/head.php';
                         <li>Strategie SEO avansată: cercetare de cuvinte cheie și optimizare pentru fiecare pagină</li>
                         <li>Consultanță pentru strategie de conținut și infrastructură performantă globală</li>
                         <li>Optimizare Google Business Profile și materiale de brand dedicate</li>
-                        <li>Termen de livrare: 20-40 de zile lucrătoare</li>
                     </ul>
-                    <button class="btn btn-secondary" data-scroll="contact">Cere ofertă</button>
+                    <button class="btn btn-secondary" data-offer-modal-open data-offer-plan="Executive">Cere ofertă</button>
+                    <p class="delivery-note">Termen estimat de livrare: 20-40 de zile lucrătoare</p>
                 </div>
                 <div class="pricing-card-face pricing-card-back" aria-hidden="true">
                     <h3>Pe scurt</h3>
                     <p>Executive este pachetul pentru companii care vor autoritate, performanță și vizibilitate constantă.</p>
                     <ul>
-                        <li>Arhitectura extinsă a site-ului susține un conținut variat, cu accent pe autoritate și conversie.</li>
-                        <li>Strategia SEO avansată și infrastructura globală oferă viteză, protecție și poziționare solidă.</li>
-                        <li>Dominanța locală și materialele de brand întăresc prezența companiei în fața clienților cheie.</li>
+                        <li>Arhitectura extinsă a site-ului susține campanii de conținut, lead magnets și integrarea CRM-ului.</li>
+                        <li>Strategia SEO avansată și infrastructura multi-region asigură încărcare rapidă din orice țară și protecție DDoS.</li>
+                        <li>Workshop-urile trimestriale și materialele de brand dedicate alimentează constant echipa de vânzări.</li>
+                        <li>Găzduirea pe server dedicat DesignToro păstrează resursele doar pentru brandul tău și menține uptime de 99,9%.</li>
                     </ul>
                     <button class="info-back" type="button" data-info-close>Înapoi la detalii</button>
                 </div>
@@ -123,15 +140,16 @@ include __DIR__ . '/partials/head.php';
                         <li>Actualizări lunare platformă și componente</li>
                         <li>Raportare de performanță și recomandări</li>
                     </ul>
-                    <button class="btn btn-secondary" data-scroll="contact">Solicită pachet</button>
+                    <button class="btn btn-secondary" data-offer-modal-open data-offer-plan="Mentenanță &amp; Support">Solicită pachet</button>
                 </div>
                 <div class="pricing-card-face pricing-card-back" aria-hidden="true">
                     <h3>Pe scurt</h3>
                     <p>Pachetul de mentenanță te scapă de grija actualizărilor și a problemelor tehnice neașteptate.</p>
                     <ul>
-                        <li>Monitorizăm constant site-ul și intervenim rapid dacă apare o eroare.</li>
-                        <li>Actualizăm platforma la timp și păstrăm copii de siguranță.</li>
-                        <li>Primești rapoarte pe înțelesul tău despre ce s-a lucrat.</li>
+                        <li>Monitorizăm constant site-ul și intervenim rapid dacă apare o eroare sau un plugin vulnerabil.</li>
+                        <li>Actualizăm platforma la timp, testăm compatibilitatea și păstrăm copii de siguranță în locații separate.</li>
+                        <li>Primești rapoarte clare despre fiecare intervenție și recomandări acționabile pentru următoarea lună.</li>
+                        <li>Serverul privat rămâne optimizat doar pentru clienții noștri, astfel uptime-ul rămâne peste 99,9%.</li>
                     </ul>
                     <button class="info-back" type="button" data-info-close>Înapoi la detalii</button>
                 </div>
@@ -149,15 +167,16 @@ include __DIR__ . '/partials/head.php';
                         <li>Producție creativă pentru social media și asset-uri animate</li>
                         <li>Campanii plătite și raportări detaliate</li>
                     </ul>
-                    <button class="btn btn-secondary" data-scroll="contact">Solicită pachet</button>
+                    <button class="btn btn-secondary" data-offer-modal-open data-offer-plan="Social Media Showrunner">Solicită pachet</button>
                 </div>
                 <div class="pricing-card-face pricing-card-back" aria-hidden="true">
                     <h3>Pe scurt</h3>
                     <p>Social Media Showrunner este pentru brandurile care vor o prezență constantă și coerentă.</p>
                     <ul>
-                        <li>Primești un plan editorial simplu care arată ce se postează și când.</li>
-                        <li>Creăm vizualuri și animații adaptate fiecărei platforme.</li>
-                        <li>Analizăm campaniile plătite și optimizăm mesajele lună de lună.</li>
+                        <li>Primești un plan editorial simplu care arată ce se postează și când, plus guideline-uri de răspuns rapid.</li>
+                        <li>Creăm vizualuri, animații și template-uri reutilizabile astfel încât echipa ta să posteze fără blocaje.</li>
+                        <li>Analizăm campaniile plătite și optimizăm mesajele lună de lună, cu focus pe leaduri și vânzări.</li>
+                        <li>Sincronizăm constant comunicarea cu landing page-urile găzduite pe serverul nostru privat pentru un parcurs fluent.</li>
                     </ul>
                     <button class="info-back" type="button" data-info-close>Înapoi la detalii</button>
                 </div>
@@ -165,6 +184,91 @@ include __DIR__ . '/partials/head.php';
         </article>
     </div>
 </section>
+<?php $offerSuccess = $offerResponse && !empty($offerResponse['success']); ?>
+<div
+    class="offer-modal<?= $offerModalShouldOpen ? ' is-visible' : ''; ?><?= $offerSuccess ? ' is-success' : ''; ?>"
+    data-offer-modal
+    aria-hidden="<?= $offerModalShouldOpen ? 'false' : 'true'; ?>"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="offer-modal-title"
+>
+    <div class="offer-modal__backdrop" data-offer-modal-close aria-hidden="true"></div>
+    <div class="offer-modal__dialog" role="document">
+        <button class="offer-modal__close" type="button" data-offer-modal-close aria-label="Închide formularul">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+        <div class="offer-modal__content" data-offer-modal-content>
+            <h2 id="offer-modal-title">Cere o ofertă personalizată</h2>
+            <p class="offer-modal__subtitle">Completează detaliile esențiale și revenim cu propunerea potrivită în maximum o zi lucrătoare.</p>
+            <?php if ($offerResponse): ?>
+                <div class="form-feedback <?= !empty($offerResponse['success']) ? 'success' : 'error'; ?>">
+                    <?php if (!empty($offerResponse['success'])): ?>
+                        <p>Îți mulțumim! Cererea a fost trimisă. Un specialist DesignToro te va contacta în scurt timp.</p>
+                    <?php else: ?>
+                        <ul>
+                            <?php foreach ($offerResponse['errors'] as $error): ?>
+                                <li><?= $error; ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+            <form class="offer-form" id="offer-form" method="post" action="/preturi" novalidate>
+                <div class="form-group">
+                    <label for="offer-name" class="form-label">Nume *</label>
+                    <input
+                        type="text"
+                        id="offer-name"
+                        name="name"
+                        class="form-control"
+                        value="<?= htmlspecialchars($_POST['name'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="offer-phone" class="form-label">Număr de telefon *</label>
+                    <input
+                        type="tel"
+                        id="offer-phone"
+                        name="phone"
+                        class="form-control"
+                        value="<?= htmlspecialchars($_POST['phone'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="offer-email" class="form-label">Email *</label>
+                    <input
+                        type="email"
+                        id="offer-email"
+                        name="email"
+                        class="form-control"
+                        value="<?= htmlspecialchars($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="offer-details" class="form-label">Detalii despre site / proiect *</label>
+                    <textarea
+                        id="offer-details"
+                        name="details"
+                        rows="5"
+                        class="form-control"
+                        required
+                    ><?= htmlspecialchars($_POST['details'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
+                </div>
+                <div class="form-group honeypot">
+                    <label for="offer-company">Companie</label>
+                    <input type="text" id="offer-company" name="company" autocomplete="off">
+                </div>
+                <input type="hidden" name="offer_plan" id="offer-plan-field" value="<?= htmlspecialchars($_POST['offer_plan'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                <input type="hidden" name="g-recaptcha-response" id="recaptcha-token">
+                <button class="btn btn-accent" type="submit">Trimite cererea</button>
+            </form>
+        </div>
+    </div>
+</div>
 <section class="special-offer" aria-labelledby="offer-title">
     <div class="container special-grid">
         <div>

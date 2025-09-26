@@ -1258,6 +1258,17 @@ video {
         top: 1rem;
         right: calc(1.5rem + 2.5rem + 0.65rem);
     }
+
+    .offer-modal__dialog {
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .offer-modal {
+        padding: 1rem;
+    }
 }
 
 .pricing-card .info-back {
@@ -1488,6 +1499,97 @@ video {
 .form-feedback.error {
     background: rgba(229, 9, 20, 0.18);
     color: #ff6f79;
+}
+
+.delivery-note {
+    margin: -0.35rem 0 0;
+    font-size: 0.78rem;
+    color: var(--color-muted);
+}
+
+.offer-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(5, 5, 8, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 1200;
+}
+
+.offer-modal.is-visible {
+    display: flex;
+}
+
+.offer-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 5, 8, 0.7);
+}
+
+.offer-modal__dialog {
+    position: relative;
+    width: min(640px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 24px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-soft);
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.offer-modal__close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.offer-modal__close:hover,
+.offer-modal__close:focus {
+    background: rgba(229, 9, 20, 0.16);
+    color: #fff;
+    border-color: rgba(229, 9, 20, 0.4);
+}
+
+.offer-modal__content h2 {
+    margin-bottom: 0.35rem;
+}
+
+.offer-modal__subtitle {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    color: var(--color-muted);
+}
+
+.offer-form {
+    display: grid;
+    gap: 1.1rem;
+}
+
+.offer-form .form-group {
+    margin: 0;
+}
+
+.offer-form .btn {
+    width: 100%;
+}
+
+body.offer-modal-open {
+    overflow: hidden;
 }
 
 .honeypot {

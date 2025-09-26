@@ -116,7 +116,7 @@ include __DIR__ . '/partials/head.php';
                 <div class="service-icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></div>
                 <h3>Branding &amp; Content Studio</h3>
                 <p>Identități vizuale, ghiduri de comunicare și campanii de conținut care vând.</p>
-                <a class="link-arrow" href="/servicii#branding">Vezi pachetele</a>
+                <a class="link-arrow" href="/preturi">Vezi prețurile</a>
             </article>
         </div>
     </div>
