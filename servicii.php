@@ -8,8 +8,8 @@ include __DIR__ . '/partials/head.php';
 ?>
 <section class="page-hero py-5" aria-labelledby="services-hero">
     <div class="container narrow text-center">
-        <h1 id="services-hero">Servicii pentru platforme digitale cu vibe cinematic.</h1>
-        <p>Strategii integrate, echipă multidisciplinară și un flux de lucru orientat spre lansări memorabile.</p>
+        <h1 id="services-hero">Servicii pentru platforme digitale orientate spre conversie.</h1>
+        <p>Strategii integrate, echipă multidisciplinară și un flux de lucru orientat spre rezultate măsurabile.</p>
     </div>
 </section>
 <section class="service-list py-5" aria-label="Lista serviciilor principale">
@@ -17,10 +17,10 @@ include __DIR__ . '/partials/head.php';
         <article class="service-card" id="web-design">
             <div class="service-icon"><i class="bi bi-window-desktop" aria-hidden="true"></i></div>
             <h2>Experiențe Web &amp; Platforme</h2>
-            <p>Site-uri de prezentare, membership și ecommerce construite ca un hub digital premium.</p>
+            <p>Site-uri de prezentare, membership și ecommerce construite ca un hub digital de performanță.</p>
             <ul class="service-benefits">
                 <li>Audit de produs și mapping al experienței utilizatorului</li>
-                <li>UI modular cu animații ready-to-stream</li>
+                <li>UI modular cu animații subtile orientate spre UX</li>
                 <li>Integrare CMS, membership și soluții ecommerce</li>
             </ul>
             <a class="link-arrow" href="/contact">Programează un discovery call</a>
@@ -42,7 +42,7 @@ include __DIR__ . '/partials/head.php';
             <p>Campanii episodice și conținut snackable care mențin comunitatea conectată.</p>
             <ul class="service-benefits">
                 <li>Tone of voice și structură editorială episodică</li>
-                <li>Producție video vertical, stories și asset-uri sociale</li>
+                <li>Producție creativă pentru stories și asset-uri sociale</li>
                 <li>Campanii paid și automatizări de retargeting</li>
             </ul>
             <a class="link-arrow" href="/contact">Planifică o campanie</a>
@@ -54,7 +54,7 @@ include __DIR__ . '/partials/head.php';
             <ul class="service-benefits">
                 <li>Platformă de brand, logo adaptiv și ghid complet</li>
                 <li>Design pentru landing page-uri, pitch deck-uri și materiale promo</li>
-                <li>Copywriting și scenarii video axate pe conversie</li>
+                <li>Copywriting și ghiduri de campanii axate pe conversie</li>
             </ul>
             <a class="link-arrow" href="/contact">Cere o ofertă personalizată</a>
         </article>

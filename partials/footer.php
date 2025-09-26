@@ -3,7 +3,8 @@
     <div class="container footer-grid">
         <div class="footer-column">
             <a href="/" class="footer-logo">designtoro</a>
-            <p>Proiectăm platforme digitale cu vibrație cinematică pentru branduri care vor să rămână pe ecranul publicului.</p>
+            <p>Proiectăm platforme digitale cu focus pe web design și marketing pentru branduri care vor să rămână relevante
+            online.</p>
         </div>
         <div class="footer-column">
             <h3>Explorează</h3>
