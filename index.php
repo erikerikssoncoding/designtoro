@@ -1,54 +1,61 @@
 <?php
 require_once __DIR__ . '/includes/security-headers.php';
 $pageTitle = 'DesignToro | Agenție Web Design & Marketing Digital București';
-$pageDescription = 'DesignToro creează experiențe digitale inspirate de Apple pentru branduri care vor să inspire acțiune.';
+$pageDescription = 'DesignToro creează experiențe digitale memorabile pentru branduri care vor să inspire acțiune.';
 $pageKeywords = 'agenție web design, creare site bucurești, marketing digital, servicii seo, promovare online';
 $pageUrl = 'https://www.designtoro.ro/';
 include __DIR__ . '/partials/head.php';
 ?>
-<section class="hero" aria-labelledby="hero-title">
-    <div class="container hero-content">
-        <div class="hero-text">
-            <p class="eyebrow">Agenție Web Design & Marketing Digital</p>
-            <div class="hero-badges">
-                <span class="badge-pill is-gradient">Agenție web design București</span>
-                <span class="badge-pill">Growth prin marketing digital</span>
+<section class="hero py-5" aria-labelledby="hero-title">
+    <div class="container">
+        <div class="row align-items-center g-5 hero-content">
+            <div class="col-lg-6 hero-text">
+                <p class="eyebrow">Agenție Web Design & Marketing Digital</p>
+                <div class="hero-badges">
+                    <span class="badge-pill is-gradient">Agenție web design București</span>
+                    <span class="badge-pill">Growth prin marketing digital</span>
+                </div>
+                <h1 id="hero-title">Creăm experiențe digitale care inspiră acțiune pentru branduri curajoase.</h1>
+                <p>DesignToro îmbină estetica clară cu tehnologie de ultimă generație pentru a construi site-uri rapide, sigure și optimizate SEO. Suntem partenerul tău de încredere când ai nevoie de branding memorabil, copy convingător și funnel-uri care convertesc.</p>
+                <ul class="hero-highlights">
+                    <li><i class="bi bi-check-circle-fill text-primary" aria-hidden="true"></i>Site-uri custom cu identitate vizuală în gradient indigo-petrol și UX centrat pe rezultate.</li>
+                    <li><i class="bi bi-rocket-takeoff-fill text-primary" aria-hidden="true"></i>Servicii SEO tehnice și de conținut pentru poziționare organică în Google pe termen lung.</li>
+                    <li><i class="bi bi-diagram-3-fill text-primary" aria-hidden="true"></i>Campanii integrate de marketing digital care aliniază social media, e-mail și reclame plătite.</li>
+                </ul>
+                <div class="hero-actions">
+                    <a class="btn btn-accent" href="/portofoliu">Vezi portofoliul</a>
+                    <a class="btn btn-ghost" href="/contact">Programează o discuție</a>
+                </div>
             </div>
-            <h1 id="hero-title">Creăm experiențe digitale care inspiră acțiune pentru branduri curajoase.</h1>
-            <p>DesignToro îmbină estetica inspirată de Apple cu tehnologie de ultimă generație pentru a construi site-uri rapide, sigure și optimizate SEO. Suntem partenerul tău de încredere când ai nevoie de branding memorabil, copy convingător și funnel-uri care convertesc.</p>
-            <ul class="hero-highlights">
-                <li>Site-uri custom cu identitate vizuală în gradient roșu-violet și UX centrat pe rezultate.</li>
-                <li>Servicii SEO tehnice și de conținut pentru poziționare organică în Google pe termen lung.</li>
-                <li>Campanii integrate de marketing digital care aliniază social media, e-mail și reclame plătite.</li>
-            </ul>
-            <div class="hero-actions">
-                <a class="btn btn-accent" href="/portofoliu.php">Vezi portofoliul</a>
-                <a class="btn btn-ghost" href="/contact.php">Programează o discuție</a>
-            </div>
-        </div>
-        <div class="hero-media" aria-hidden="true">
-            <div class="media-placeholder">
-                <h3>Experiență premium în roșu & violet.</h3>
-                <span>UI/UX minimaliste, animații fluide și performanță impecabilă.</span>
-            </div>
-            <div class="accent-card">
-                <strong>+48%</strong>
-                <span>creștere medie a ratei de conversie după relansarea site-ului</span>
+            <div class="col-lg-6">
+                <div class="hero-media" aria-hidden="true">
+                    <div class="media-placeholder">
+                        <h3>Experiență premium în indigo & petrol.</h3>
+                        <span>UI/UX minimaliste, animații fluide și performanță impecabilă.</span>
+                    </div>
+                    <div class="accent-card">
+                        <strong>+48%</strong>
+                        <span>creștere medie a ratei de conversie după relansarea site-ului</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
-<section class="stats" aria-label="Rezultatele DesignToro">
+<section class="stats py-5" aria-label="Rezultatele DesignToro">
     <div class="container stats-grid">
         <div class="stat-card">
+            <i class="bi bi-briefcase-fill text-primary display-6" aria-hidden="true"></i>
             <span class="stat-value">225+</span>
             <span class="stat-label">Proiecte livrate</span>
         </div>
         <div class="stat-card">
+            <i class="bi bi-emoji-smile-fill text-primary display-6" aria-hidden="true"></i>
             <span class="stat-value">213+</span>
             <span class="stat-label">Clienți mulțumiți</span>
         </div>
         <div class="stat-card">
+            <i class="bi bi-award-fill text-primary display-6" aria-hidden="true"></i>
             <span class="stat-value">8+</span>
             <span class="stat-label">Ani de experiență</span>
         </div>
@@ -74,7 +81,7 @@ include __DIR__ . '/partials/head.php';
             <h3>De ce brandurile moderne aleg DesignToro</h3>
             <p>Ne implicăm în toate etapele: cercetare, arhitectură de informație, design de interfață, dezvoltare web, SEO și marketing digital. Echipa noastră lucrează pe sprints transparente, comunică proactiv și livrează kituri complete pentru ca tu să scalezi rapid.</p>
             <ul class="about-list">
-                <li>Integrare completă a identității vizuale în gradient roșu-violet și micro-interacțiuni elegante.</li>
+                <li>Integrare completă a identității vizuale în gradient indigo-petrol și micro-interacțiuni elegante.</li>
                 <li>Audit tehnic SEO, structură de conținut și plan editorial pentru creștere sustenabilă.</li>
                 <li>Strategii de marketing digital care alimentează funnel-urile de vânzări și retenție.</li>
                 <li>Raportare clară, dashboard-uri live și suport continuu după lansare.</li>
@@ -82,33 +89,33 @@ include __DIR__ . '/partials/head.php';
         </div>
     </div>
 </section>
-<section class="services-preview" id="servicii" aria-labelledby="services-title">
+<section class="services-preview py-5" id="servicii" aria-labelledby="services-title">
     <div class="container">
         <h2 id="services-title">Servicii create pentru impact digital</h2>
         <div class="service-grid">
             <article class="service-card">
-                <div class="service-icon">Icon</div>
+                <div class="service-icon"><i class="bi bi-window-stack" aria-hidden="true"></i></div>
                 <h3>Web Design</h3>
                 <p>Site-uri de prezentare și magazine online cu design premium și experiență fluidă.</p>
-                <a class="link-arrow" href="/servicii.php#web-design">Află mai multe</a>
+                <a class="link-arrow" href="/servicii#web-design">Află mai multe</a>
             </article>
             <article class="service-card">
-                <div class="service-icon">Icon</div>
+                <div class="service-icon"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i></div>
                 <h3>SEO & Performance</h3>
                 <p>Strategii SEO tehnice și de conținut pentru poziții de top în rezultatele Google.</p>
-                <a class="link-arrow" href="/servicii.php#seo">Află mai multe</a>
+                <a class="link-arrow" href="/servicii#seo">Află mai multe</a>
             </article>
             <article class="service-card">
-                <div class="service-icon">Icon</div>
+                <div class="service-icon"><i class="bi bi-people-fill" aria-hidden="true"></i></div>
                 <h3>Social Media</h3>
                 <p>Campanii integrate și conținut creativ care transformă comunitățile în clienți.</p>
-                <a class="link-arrow" href="/servicii.php#social-media">Află mai multe</a>
+                <a class="link-arrow" href="/servicii#social-media">Află mai multe</a>
             </article>
             <article class="service-card">
-                <div class="service-icon">Icon</div>
+                <div class="service-icon"><i class="bi bi-palette-fill" aria-hidden="true"></i></div>
                 <h3>Branding & Content</h3>
                 <p>Identități vizuale coerente și conținut multimedia ce spun povestea brandului tău.</p>
-                <a class="link-arrow" href="/servicii.php#branding">Află mai multe</a>
+                <a class="link-arrow" href="/servicii#branding">Află mai multe</a>
             </article>
         </div>
     </div>
@@ -117,7 +124,7 @@ include __DIR__ . '/partials/head.php';
     <div class="container">
         <div>
             <h2 id="insights-title">Strategie completă pentru creștere digitală</h2>
-            <p>Construim ecosisteme digitale care aduc trafic calificat și conversii, folosind o metodologie proprie inspirată de standardele Apple pentru simplitate și performanță. Fiecare proiect pornește cu date, apoi este rafinat cu design sistem și conținut optimizat SEO.</p>
+            <p>Construim ecosisteme digitale care aduc trafic calificat și conversii, folosind o metodologie proprie bazată pe simplitate și performanță. Fiecare proiect pornește cu date, apoi este rafinat cu design system și conținut optimizat SEO.</p>
         </div>
         <div class="insights-grid">
             <article class="insight-card">
@@ -128,7 +135,7 @@ include __DIR__ . '/partials/head.php';
             <article class="insight-card">
                 <span>Design & Dezvoltare</span>
                 <h3>Interfețe minimaliste cu performanță maximă</h3>
-                <p>Folosim sistemul nostru de design modular și tehnologii moderne pentru a crea pagini rapide, responsive și ușor de administrat. Gradientele roșu-violet dau profunzime elementelor fără a compromite lizibilitatea.</p>
+                <p>Folosim sistemul nostru de design modular și tehnologii moderne pentru a crea pagini rapide, responsive și ușor de administrat. Gradientele indigo-petrol dau profunzime elementelor fără a compromite lizibilitatea.</p>
             </article>
             <article class="insight-card">
                 <span>Optimizare continuă</span>
@@ -142,7 +149,7 @@ include __DIR__ . '/partials/head.php';
     <div class="container">
         <div class="section-header">
             <h2 id="portfolio-title">Portofoliu selectat</h2>
-            <a class="link-arrow" href="/portofoliu.php">Vezi toate proiectele</a>
+            <a class="link-arrow" href="/portofoliu">Vezi toate proiectele</a>
         </div>
         <div class="portfolio-grid">
             <article class="portfolio-card">
@@ -253,7 +260,7 @@ include __DIR__ . '/partials/head.php';
     <div class="container cta-content">
         <h2 id="cta-title">Sunteți gata să vă transformați prezența online?</h2>
         <p>Hai să discutăm despre următorul proiect și cum îl putem duce la nivelul următor.</p>
-        <a class="btn btn-accent" href="/contact.php">Contactează-ne</a>
+        <a class="btn btn-accent" href="/contact">Contactează-ne</a>
     </div>
 </section>
 <?php include __DIR__ . '/partials/footer.php'; ?>
