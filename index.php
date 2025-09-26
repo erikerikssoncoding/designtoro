@@ -5,6 +5,10 @@ $pageDescription = 'DesignToro creează experiențe digitale memorabile pentru b
 $pageKeywords = 'agenție web design, creare site bucurești, marketing digital, servicii seo, promovare online';
 $pageUrl = 'https://www.designtoro.ro/';
 $currentPage = 'home';
+
+$experienceStartDate = new DateTime('2013-10-13');
+$experienceYears = max(1, $experienceStartDate->diff(new DateTime())->y);
+
 include __DIR__ . '/partials/head.php';
 ?>
 <section class="hero py-5" aria-labelledby="hero-title">
@@ -58,8 +62,8 @@ include __DIR__ . '/partials/head.php';
         </div>
         <div class="stat-card">
             <i class="fa-solid fa-award text-primary display-6" aria-hidden="true"></i>
-            <span class="stat-value">10+</span>
-            <span class="stat-label">Peste 10 ani de producție digitală</span>
+            <span class="stat-value"><?php echo $experienceYears; ?>+</span>
+            <span class="stat-label">Peste <?php echo $experienceYears; ?> ani de experiență digitală</span>
         </div>
     </div>
 </section>
@@ -67,7 +71,7 @@ include __DIR__ . '/partials/head.php';
     <div class="container about-grid">
         <div class="about-summary">
             <h2 id="about-title">Agenție digitală din București specializată în web design și marketing</h2>
-            <p>De peste 10 ani, DesignToro planifică și lansează platforme digitale care convertesc. Aliniem strategia de
+            <p>De peste <?php echo $experienceYears; ?> ani, DesignToro planifică și lansează platforme digitale care convertesc. Aliniem strategia de
             business cu storytelling vizual, componente modulare și tehnologie scalabilă pentru branduri ce vor să-și crească
             vizibilitatea și vânzările.</p>
             <div class="about-metrics" role="list" aria-label="Indicatori de performanță DesignToro">
