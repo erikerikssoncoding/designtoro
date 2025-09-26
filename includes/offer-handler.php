@@ -8,6 +8,80 @@ function offer_sanitize_input(string $value): string
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
+function offer_validate_phone_number(string $phone, bool $isRequired = true): array
+{
+    $phone = trim($phone);
+
+    if ($phone === '') {
+        if ($isRequired) {
+            return [false, 'Numărul de telefon este obligatoriu.'];
+        }
+
+        return [true, ''];
+    }
+
+    $hasPlus = str_starts_with($phone, '+');
+    $digits = $hasPlus ? substr($phone, 1) : $phone;
+
+    if ($digits === '' || preg_match('/\D/', $digits)) {
+        return [false, 'Numărul de telefon poate conține doar cifre (și un singur + la început).'];
+    }
+
+    $length = strlen($digits);
+
+    if ($hasPlus) {
+        if ($length < 6 || $length > 14) {
+            return [false, 'Numărul de telefon în format internațional trebuie să aibă între 6 și 14 cifre.'];
+        }
+    } else {
+        if ($length !== 10) {
+            return [false, 'Numărul de telefon trebuie să conțină exact 10 cifre.'];
+        }
+    }
+
+    return [true, $phone];
+}
+
+function offer_build_submission_metadata(?string $fingerprintRaw = null, ?string $pageUrl = null): string
+{
+    $metadataLines = [];
+    $metadataLines[] = '---- Informații tehnice ----';
+
+    $ipAddress = $_SERVER['REMOTE_ADDR'] ?? 'necunoscut';
+    $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? 'necunoscut';
+    $acceptLanguage = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? 'necunoscut';
+    $referer = $_SERVER['HTTP_REFERER'] ?? 'necunoscut';
+    $submittedAt = gmdate('Y-m-d H:i:s') . ' UTC';
+
+    $metadataLines[] = 'IP vizitator: ' . $ipAddress;
+    $metadataLines[] = 'User agent: ' . $userAgent;
+    $metadataLines[] = 'Limbi acceptate: ' . $acceptLanguage;
+    $metadataLines[] = 'Referer: ' . $referer;
+
+    if ($pageUrl) {
+        $metadataLines[] = 'Pagină formular: ' . $pageUrl;
+    }
+
+    $metadataLines[] = 'Moment trimitere: ' . $submittedAt;
+
+    if ($fingerprintRaw) {
+        $decoded = json_decode($fingerprintRaw, true);
+        if (is_array($decoded)) {
+            $metadataLines[] = 'Amprentă dispozitiv:';
+            foreach ($decoded as $key => $value) {
+                if (is_array($value)) {
+                    $value = implode(', ', array_map('strval', $value));
+                }
+                $metadataLines[] = '  - ' . $key . ': ' . (is_scalar($value) ? (string) $value : json_encode($value));
+            }
+        } else {
+            $metadataLines[] = 'Amprentă dispozitiv: ' . $fingerprintRaw;
+        }
+    }
+
+    return "\n\n" . implode("\n", $metadataLines);
+}
+
 function offer_verify_recaptcha(string $token, string $remoteIp): bool
 {
     if (RECAPTCHA_SECRET_KEY === 'YOUR_SECRET_KEY_HERE') {
@@ -32,10 +106,11 @@ function offer_verify_recaptcha(string $token, string $remoteIp): bool
 function handle_offer_request(): array
 {
     $errors = [];
+    $fieldErrors = [];
     $honeypot = $_POST['company'] ?? '';
     if (!empty($honeypot)) {
         $errors[] = 'Formular invalid.';
-        return ['success' => false, 'errors' => $errors];
+        return ['success' => false, 'errors' => $errors, 'fieldErrors' => $fieldErrors];
     }
 
     $name = offer_sanitize_input($_POST['name'] ?? '');
@@ -45,25 +120,32 @@ function handle_offer_request(): array
     $plan = offer_sanitize_input($_POST['offer_plan'] ?? '');
     $termsAccepted = isset($_POST['terms']) && $_POST['terms'] === '1';
     $token = $_POST['g-recaptcha-response'] ?? '';
+    $fingerprintRaw = isset($_POST['fingerprint']) ? substr((string) $_POST['fingerprint'], 0, 3000) : null;
+    $pageUrl = isset($_POST['page_url']) ? substr((string) $_POST['page_url'], 0, 500) : null;
 
     if ($name === '') {
-        $errors[] = 'Numele este obligatoriu.';
+        $fieldErrors['name'] = 'Numele este obligatoriu.';
     }
 
-    if ($phone === '') {
-        $errors[] = 'Numărul de telefon este obligatoriu.';
+    [$isPhoneValid, $normalizedPhone] = offer_validate_phone_number($phone, true);
+    if (!$isPhoneValid) {
+        $fieldErrors['phone'] = $normalizedPhone;
+    } else {
+        $phone = $normalizedPhone;
     }
 
-    if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = 'Adresa de email nu este validă.';
+    if ($email === '') {
+        $fieldErrors['email'] = 'Adresa de email este obligatorie.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $fieldErrors['email'] = 'Adresa de email nu este validă.';
     }
 
     if ($details === '') {
-        $errors[] = 'Detaliile despre proiect sunt obligatorii.';
+        $fieldErrors['details'] = 'Detaliile despre proiect sunt obligatorii.';
     }
 
     if (!$termsAccepted) {
-        $errors[] = 'Trebuie să accepți Termenii și condițiile și Politica de confidențialitate.';
+        $fieldErrors['terms'] = 'Trebuie să accepți Termenii și condițiile și Politica de confidențialitate.';
     }
 
     if ($token === '') {
@@ -72,8 +154,12 @@ function handle_offer_request(): array
         $errors[] = 'Nu am putut valida reCAPTCHA.';
     }
 
+    if (!empty($fieldErrors)) {
+        $errors = array_merge($errors, array_values($fieldErrors));
+    }
+
     if (!empty($errors)) {
-        return ['success' => false, 'errors' => $errors];
+        return ['success' => false, 'errors' => $errors, 'fieldErrors' => $fieldErrors];
     }
 
     $subject = 'Cerere de ofertă nouă - DesignToro.ro';
@@ -89,6 +175,7 @@ function handle_offer_request(): array
 
     $bodyLines[] = "Detalii:\n{$details}";
     $body = implode("\n", $bodyLines);
+    $body .= offer_build_submission_metadata($fingerprintRaw, $pageUrl);
     $headers = 'From: no-reply@designtoro.ro' . "\r\n" . 'Reply-To: ' . $email;
 
     $mailSent = false;
@@ -100,8 +187,9 @@ function handle_offer_request(): array
         return [
             'success' => false,
             'errors' => ['Momentan nu putem trimite mesajul. Vă rugăm să ne contactați telefonic.'],
+            'fieldErrors' => []
         ];
     }
 
-    return ['success' => true, 'errors' => []];
+    return ['success' => true, 'errors' => [], 'fieldErrors' => []];
 }
