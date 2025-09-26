@@ -153,6 +153,25 @@ video {
     padding-block: 1rem;
 }
 
+.navbar-layout {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.navbar-layout .navbar-brand {
+    margin-right: auto;
+}
+
+.navbar-layout .navbar-collapse {
+    width: 100%;
+}
+
+.navbar-cta {
+    padding-inline: 1.75rem;
+}
+
 .navbar-nav {
     display: flex;
     align-items: center;
@@ -173,6 +192,38 @@ video {
     .navbar-nav .nav-link {
         margin-inline: 0;
         width: 100%;
+    }
+
+    .navbar-layout .navbar-toggler {
+        margin-left: auto;
+    }
+}
+
+.navbar-layout .navbar-collapse .btn {
+    text-align: center;
+}
+
+.navbar-layout .navbar-collapse .btn.w-100 {
+    justify-content: center;
+}
+
+.navbar-layout .navbar-nav {
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .navbar-layout .navbar-collapse {
+        flex: 1;
+        display: flex !important;
+        justify-content: center;
+    }
+
+    .navbar-layout .navbar-nav {
+        justify-content: center;
+    }
+
+    .navbar-cta {
+        margin-left: auto;
     }
 }
 
