@@ -163,6 +163,64 @@
         setState(false);
     });
 
+    const pricingInfoPrompt = document.getElementById('pricing-info-prompt');
+    const firstPricingToggle = document.querySelector('[data-pricing-card] [data-info-toggle]');
+
+    if (pricingInfoPrompt && firstPricingToggle) {
+        const PROMPT_STORAGE_KEY = 'pricingInfoPromptShownAt';
+        const PROMPT_INTERVAL = 24 * 60 * 60 * 1000;
+        const PROMPT_DELAY = 2000;
+        const PROMPT_DURATION = 10000;
+
+        let lastShownTimestamp = 0;
+
+        try {
+            const storedTimestamp = localStorage.getItem(PROMPT_STORAGE_KEY);
+            if (storedTimestamp) {
+                lastShownTimestamp = parseInt(storedTimestamp, 10) || 0;
+            }
+        } catch (error) {
+            lastShownTimestamp = 0;
+        }
+
+        const now = Date.now();
+        const canShowPrompt = !lastShownTimestamp || now - lastShownTimestamp >= PROMPT_INTERVAL;
+
+        const hidePrompt = () => {
+            pricingInfoPrompt.classList.remove('is-visible');
+            pricingInfoPrompt.setAttribute('aria-hidden', 'true');
+        };
+
+        if (canShowPrompt) {
+            window.setTimeout(() => {
+                pricingInfoPrompt.classList.add('is-visible');
+                pricingInfoPrompt.setAttribute('aria-hidden', 'false');
+
+                try {
+                    localStorage.setItem(PROMPT_STORAGE_KEY, String(Date.now()));
+                } catch (error) {
+                    /* localStorage might be unavailable; ignore */
+                }
+
+                window.setTimeout(hidePrompt, PROMPT_DURATION);
+            }, PROMPT_DELAY);
+        }
+
+        const dismissPrompt = () => {
+            if (pricingInfoPrompt.classList.contains('is-visible')) {
+                hidePrompt();
+            }
+        };
+
+        firstPricingToggle.addEventListener('click', dismissPrompt);
+        firstPricingToggle.addEventListener('focus', dismissPrompt);
+        firstPricingToggle.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                dismissPrompt();
+            }
+        });
+    }
+
     const recaptchaSiteKey = window.RECAPTCHA_SITE_KEY;
     const enableRecaptchaBadge = (auto = false) => {
         document.body.classList.add('show-recaptcha');
