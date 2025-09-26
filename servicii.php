@@ -65,24 +65,24 @@ include __DIR__ . '/partials/head.php';
     <div class="container process-grid">
         <div>
             <h2 id="process-title">Procesul nostru în 4 acte</h2>
-            <p>Un parcurs clar, colaborativ și agil care transformă ideile în experiențe digitale complete.</p>
+            <p>Un parcurs clar, colaborativ și agil care transformă ideile în experiențe digitale complete și site-uri memorabile.</p>
         </div>
         <ol class="process-steps">
             <li>
                 <h3>Discovery</h3>
-                <p>Analizăm contextul brandului și definim scenariul strategic al proiectului.</p>
+                <p>Analizăm contextul brandului și definim scenariul strategic al proiectului de web design, de la obiective la arhitectura informațională.</p>
             </li>
             <li>
                 <h3>Design &amp; Prototipare</h3>
-                <p>Construim wireframe-uri interactive și moodboard-uri pentru feedback rapid.</p>
+                <p>Construim wireframe-uri interactive, moodboard-uri și prototipuri UI pentru a valida rapid direcția vizuală a site-ului.</p>
             </li>
             <li>
                 <h3>Build &amp; QA</h3>
-                <p>Implementăm funcționalitățile, optimizăm performanța și testăm cross-device.</p>
+                <p>Implementăm interfețele responsive, optimizăm performanța front-end și testăm cross-device și cross-browser.</p>
             </li>
             <li>
                 <h3>Launch &amp; Growth</h3>
-                <p>Orchestrăm lansarea, monitorizăm datele și iterăm pentru rezultate sustenabile.</p>
+                <p>Orchestrăm lansarea site-ului, monitorizăm datele de utilizare și iterăm UI/UX pentru rezultate sustenabile.</p>
             </li>
         </ol>
     </div>
