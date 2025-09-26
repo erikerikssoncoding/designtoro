@@ -9,8 +9,8 @@ include __DIR__ . '/partials/head.php';
 <section class="hero py-5" aria-labelledby="hero-title">
     <div class="container">
         <div class="row align-items-center g-5 hero-content">
-            <div class="col-lg-6 hero-text">
-                <p class="eyebrow">Studio digital pentru branduri fără pauză</p>
+            <div class="col-12 col-lg-10 col-xl-8 hero-text">
+                <p class="eyebrow">Agenție digitală pentru branduri fără pauză</p>
                 <div class="hero-badges">
                     <span class="badge-pill is-gradient">Lansări cu impact global</span>
                     <span class="badge-pill">Design narativ &amp; funnel-uri inteligente</span>
@@ -32,22 +32,13 @@ include __DIR__ . '/partials/head.php';
                     <a class="btn btn-ghost" href="/contact">Rezervă un call</a>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="hero-media" aria-hidden="true">
-                    <div class="media-placeholder">
-                        <div class="media-visual hero-visual" role="img" aria-label="Previzualizare proiect digital realizat de DesignToro">
-                            <span class="media-visual__tag" aria-hidden="true">UX • UI • Growth</span>
-                        </div>
-                        <div class="media-caption">
-                            <h3>Experiență completă, gata de lansare.</h3>
-                            <span>UX, conținut și tehnologie reunite într-un singur pachet digital.</span>
-                        </div>
-                    </div>
-                    <div class="accent-card">
-                        <strong>+68%</strong>
-                        <span>creștere medie a timpului petrecut pe pagină după relansare</span>
-                    </div>
-                </div>
+        </div>
+        <div class="hero-metric">
+            <div class="accent-card">
+                <h3>Experiență completă, gata de lansare.</h3>
+                <p>UX, conținut și tehnologie reunite într-un singur pachet digital.</p>
+                <strong>+68%</strong>
+                <span>creștere medie a timpului petrecut pe pagină după relansare</span>
             </div>
         </div>
     </div>
@@ -74,7 +65,7 @@ include __DIR__ . '/partials/head.php';
 <section class="about" id="despre" aria-labelledby="about-title">
     <div class="container about-grid">
         <div class="about-summary">
-            <h2 id="about-title">Studio digital din București specializat în web design și marketing</h2>
+            <h2 id="about-title">Agenție digitală din București specializată în web design și marketing</h2>
             <p>De peste opt ani, DesignToro planifică și lansează platforme digitale care convertesc. Aliniem strategia de
             business cu storytelling vizual, componente modulare și tehnologie scalabilă pentru branduri ce vor să-și crească
             vizibilitatea și vânzările.</p>
