@@ -16,12 +16,12 @@ include __DIR__ . '/partials/head.php';
                     <span class="badge-pill">Design narativ &amp; funnel-uri inteligente</span>
                 </div>
                 <h1 id="hero-title">Transformăm prezența online într-o platformă care ține publicul conectat.</h1>
-                <p>DesignToro produce experiențe web imersive, inspirate de dinamica platformelor de streaming. De la art
-                direction și copywriting la arhitectură tehnică și growth marketing, tratăm fiecare proiect ca pe o producție
-                premium.</p>
+                <p>DesignToro creează experiențe web orientate spre conversie, cu fluxuri UX clare și marketing digital
+                orchestrat. De la art direction și copywriting la arhitectură tehnică și growth marketing, tratăm fiecare
+                proiect ca pe un ecosistem complet pentru creștere.</p>
                 <ul class="hero-highlights">
-                    <li><i class="bi bi-check-circle-fill text-primary" aria-hidden="true"></i>Site-uri orchestrate ca un
-                    release major, cu UI cinematic și micro-interacțiuni care amplifică emoția.</li>
+                    <li><i class="bi bi-check-circle-fill text-primary" aria-hidden="true"></i>Site-uri orchestrate pentru
+                    performanță, cu UI adaptiv și micro-interacțiuni care sporesc încrederea.</li>
                     <li><i class="bi bi-rocket-takeoff-fill text-primary" aria-hidden="true"></i>Biblioteci de conținut și
                     automatizări personalizate care transformă vizitatorii în membri loiali.</li>
                     <li><i class="bi bi-diagram-3-fill text-primary" aria-hidden="true"></i>Campanii integrate și
@@ -35,8 +35,8 @@ include __DIR__ . '/partials/head.php';
             <div class="col-lg-6">
                 <div class="hero-media" aria-hidden="true">
                     <div class="media-placeholder">
-                        <h3>Experiență completă, ready to stream.</h3>
-                        <span>Motion, storytelling și tehnologie reunite într-un singur pachet digital.</span>
+                        <h3>Experiență completă, gata de lansare.</h3>
+                        <span>UX, conținut și tehnologie reunite într-un singur pachet digital.</span>
                     </div>
                     <div class="accent-card">
                         <strong>+68%</strong>
@@ -69,10 +69,10 @@ include __DIR__ . '/partials/head.php';
 <section class="about" id="despre" aria-labelledby="about-title">
     <div class="container about-grid">
         <div class="about-summary">
-            <h2 id="about-title">Studio digital din București cu ADN cinematografic</h2>
-            <p>De peste opt ani, DesignToro planifică și lansează platforme digitale care se consumă ca un sezon complet.
-            Aliniem strategia de business cu storytelling vizual, componente modulare și tehnologie scalabilă pentru branduri ce
-            vor să captiveze publicul.</p>
+            <h2 id="about-title">Studio digital din București specializat în web design și marketing</h2>
+            <p>De peste opt ani, DesignToro planifică și lansează platforme digitale care convertesc. Aliniem strategia de
+            business cu storytelling vizual, componente modulare și tehnologie scalabilă pentru branduri ce vor să-și crească
+            vizibilitatea și vânzările.</p>
             <div class="about-metrics" role="list" aria-label="Indicatori de performanță DesignToro">
                 <div class="about-metric" role="listitem">
                     <strong>3,2x</strong>
@@ -85,14 +85,14 @@ include __DIR__ . '/partials/head.php';
             </div>
         </div>
         <div class="about-details">
-            <h3>De ce brandurile ne aleg pentru rolul principal</h3>
-            <p>Acoperim întregul pipeline: cercetare, UX, UI, content, dezvoltare, SEO și growth orchestrat. Lucrăm în sprinturi
-            transparente și livrăm kituri complete pentru echipe interne.</p>
+            <h3>De ce brandurile ne aleg pentru creștere continuă</h3>
+            <p>Acoperim întregul pipeline digital: cercetare, UX, UI, content, dezvoltare, SEO și campanii orchestrate. Lucrăm
+            în sprinturi transparente și livrăm kituri complete pentru echipe interne.</p>
             <ul class="about-list">
-                <li>Design systems modulare, contraste puternice și micro-interacțiuni inspirate din entertainment.</li>
-                <li>SEO tehnic, analytics și content calendar gândite ca un program editorial.</li>
-                <li>Automatizări CRM și campanii multi-channel care livrează reacții în timp real.</li>
-                <li>Raportare live, dashboard-uri personalizate și suport post-lansare non-stop.</li>
+                <li>Design systems modulare, contraste puternice și micro-interacțiuni orientate spre conversie.</li>
+                <li>SEO tehnic, analytics și content calendar integrate cu obiectivele de marketing.</li>
+                <li>Automatizări CRM și campanii multi-channel care livrează lead-uri calificate.</li>
+                <li>Raportare live, dashboard-uri personalizate și suport post-lansare constant.</li>
             </ul>
         </div>
     </div>
@@ -104,7 +104,7 @@ include __DIR__ . '/partials/head.php';
             <article class="service-card">
                 <div class="service-icon"><i class="bi bi-window-stack" aria-hidden="true"></i></div>
                 <h3>Experiențe Web &amp; Platforme</h3>
-                <p>Interfețe modulare, membership și ecommerce cu vibe cinematic și performanță ridicată.</p>
+                <p>Interfețe modulare, membership și ecommerce construite pentru performanță și conversii.</p>
                 <a class="link-arrow" href="/servicii#web-design">Descoperă procesul</a>
             </article>
             <article class="service-card">
@@ -122,7 +122,7 @@ include __DIR__ . '/partials/head.php';
             <article class="service-card">
                 <div class="service-icon"><i class="bi bi-palette-fill" aria-hidden="true"></i></div>
                 <h3>Branding &amp; Content Studio</h3>
-                <p>Identități vizuale, scenarii video și copywriting care vând emoție.</p>
+                <p>Identități vizuale, ghiduri de comunicare și campanii de conținut care vând.</p>
                 <a class="link-arrow" href="/servicii#branding">Vezi pachetele</a>
             </article>
         </div>
@@ -131,9 +131,9 @@ include __DIR__ . '/partials/head.php';
 <section class="insights" id="strategie-digitala" aria-labelledby="insights-title">
     <div class="container">
         <div>
-            <h2 id="insights-title">Metoda noastră de producție digitală</h2>
+            <h2 id="insights-title">Metoda noastră de creștere digitală</h2>
             <p>Construim ecosisteme digitale alimentate de date, storytelling și performanță. Fiecare proiect trece printr-un
-            pipeline clar, astfel încât lansarea să se simtă ca o premieră perfect regizată.</p>
+            pipeline clar, astfel încât lansarea să fie previzibilă și scalabilă.</p>
         </div>
         <div class="insights-grid">
             <article class="insight-card">
@@ -144,7 +144,7 @@ include __DIR__ . '/partials/head.php';
             </article>
             <article class="insight-card">
                 <span>Design &amp; Build</span>
-                <h3>UI cinematic și infrastructură gata de scalare</h3>
+                <h3>UI orientat spre conversie și infrastructură gata de scalare</h3>
                 <p>Design systems modulare, animații subtile și cod optimizat pentru încărcare rapidă pe orice device.</p>
             </article>
             <article class="insight-card">
@@ -159,7 +159,7 @@ include __DIR__ . '/partials/head.php';
 <section class="portfolio-preview" aria-labelledby="portfolio-title">
     <div class="container">
         <div class="section-header">
-            <h2 id="portfolio-title">Producții recente</h2>
+            <h2 id="portfolio-title">Proiecte recente</h2>
             <a class="link-arrow" href="/portofoliu">Vezi toată colecția</a>
         </div>
         <div class="portfolio-grid">
@@ -167,7 +167,7 @@ include __DIR__ . '/partials/head.php';
                 <div class="portfolio-media">Poster digital Pulse</div>
                 <div class="portfolio-overlay">
                     <h3>Pulse Media</h3>
-                    <p>Platformă de content serializat</p>
+                    <p>Platformă de content digital și marketing automation</p>
                 </div>
             </article>
             <article class="portfolio-card">
@@ -228,7 +228,7 @@ include __DIR__ . '/partials/head.php';
 <section class="principles" aria-labelledby="principles-title">
     <div class="container principles-grid">
         <div class="principles-intro">
-            <h2 id="principles-title">Principii de colaborare pentru proiecte blockbuster</h2>
+            <h2 id="principles-title">Principii de colaborare pentru proiecte digitale performante</h2>
             <p>Parteneriate transparente, procese rapide și soluții flexibile adaptate fiecărei etape de creștere.</p>
         </div>
         <ul class="principles-list">
@@ -275,7 +275,7 @@ include __DIR__ . '/partials/head.php';
 </section>
 <section class="cta-final" aria-labelledby="cta-title">
     <div class="container cta-content">
-        <h2 id="cta-title">Pregătit pentru premiera digitală a brandului tău?</h2>
+        <h2 id="cta-title">Pregătit pentru lansarea digitală a brandului tău?</h2>
         <p>Hai să discutăm despre următorul proiect și cum îl transformăm într-o experiență memorabilă.</p>
         <a class="btn btn-accent" href="/contact">Contactează-ne</a>
     </div>

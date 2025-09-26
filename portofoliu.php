@@ -8,8 +8,8 @@ include __DIR__ . '/partials/head.php';
 ?>
 <section class="page-hero py-5" aria-labelledby="portfolio-hero">
     <div class="container narrow text-center">
-        <h1 id="portfolio-hero">Producții digitale care captivează.</h1>
-        <p>Selecție de proiecte în care designul cinematic întâlnește performanța de top.</p>
+        <h1 id="portfolio-hero">Proiecte digitale care convertesc.</h1>
+        <p>Selecție de website-uri, platforme ecommerce și campanii integrate cu rezultate măsurabile.</p>
     </div>
 </section>
 <section class="portfolio-filters py-3" aria-label="Filtre portofoliu">
@@ -26,7 +26,7 @@ include __DIR__ . '/partials/head.php';
             <div class="portfolio-media">Poster digital Pulse</div>
             <div class="portfolio-details">
                 <h2>Pulse Media</h2>
-                <p>Hub de content video &amp; podcast</p>
+                <p>Hub de content digital &amp; newsletter</p>
             </div>
         </article>
         <article class="portfolio-item" data-category="ecommerce">

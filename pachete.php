@@ -8,7 +8,7 @@ include __DIR__ . '/partials/head.php';
 ?>
 <section class="page-hero py-5" aria-labelledby="pricing-hero">
     <div class="container narrow text-center">
-        <h1 id="pricing-hero">Pachete create pentru lansări demne de prime-time.</h1>
+        <h1 id="pricing-hero">Pachete create pentru lansări digitale performante.</h1>
         <p>Transparență totală, beneficii clare și flexibilitate pentru branduri aflate la start sau în expansiune.</p>
     </div>
 </section>
@@ -30,7 +30,7 @@ include __DIR__ . '/partials/head.php';
             <h2>Spotlight</h2>
             <p class="pricing-tag">Pentru branduri în creștere</p>
             <ul>
-                <li>Website multipage cu UI cinematic</li>
+                <li>Website multipage cu UI orientat spre conversie</li>
                 <li>SEO on-page, content calendar și blog integrat</li>
                 <li>Automatizări lead nurturing &amp; e-mail marketing</li>
                 <li>Suport dedicat în primele 60 de zile</li>
@@ -65,7 +65,7 @@ include __DIR__ . '/partials/head.php';
             <h2>Social Media Showrunner</h2>
             <ul>
                 <li>Strategie editorială, grilă de conținut și tone of voice</li>
-                <li>Producție creativă foto/video și asset-uri animate</li>
+                <li>Producție creativă pentru social media și asset-uri animate</li>
                 <li>Campanii plătite și raportări detaliate</li>
             </ul>
             <button class="btn btn-secondary" data-scroll="contact">Solicită pachet</button>
