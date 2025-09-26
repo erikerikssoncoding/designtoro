@@ -1255,7 +1255,8 @@ video {
 }
 
 @media (max-width: 575.98px) {
-    .contact-hero .container {
+    .contact-hero .container,
+    .cta-banner .container {
         width: min(100% - 1.5rem, var(--max-width));
     }
 
