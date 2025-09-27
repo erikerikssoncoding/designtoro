@@ -227,8 +227,8 @@ include __DIR__ . '/partials/head.php';
                         <i class="fa-solid fa-circle-check"></i>
                     </span>
                     <div>
-                        <p class="form-success-title">Cererea a ajuns la noi!</p>
-                        <p>Un specialist DesignToro te va contacta în cel mai scurt timp.</p>
+                        <p class="form-success-title">Cererea ta este în curs!</p>
+                        <p>Ți-am primit detaliile și revenim în maximum o zi lucrătoare. Nu este nevoie să trimiți un alt formular în următoarele 24 de ore.</p>
                     </div>
                 </div>
                 <form
@@ -316,10 +316,16 @@ include __DIR__ . '/partials/head.php';
                         value="1"
                         required
                         <?= isset($_POST['terms']) ? 'checked' : ''; ?>
+                        class="form-consent__input"
                     >
-                    <label for="offer-terms">
-                        Sunt de acord cu <a href="/termeni-si-conditii" target="_blank" rel="noopener">Termenii și condițiile</a>
-                        și cu <a href="/politica-de-confidentialitate" target="_blank" rel="noopener">Politica de confidențialitate</a>.
+                    <label class="form-consent__label" for="offer-terms">
+                        <span class="form-consent__checkbox" aria-hidden="true">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span class="form-consent__text">
+                            Sunt de acord cu <a href="/termeni-si-conditii" target="_blank" rel="noopener">Termenii și condițiile</a>
+                            și cu <a href="/politica-de-confidentialitate" target="_blank" rel="noopener">Politica de confidențialitate</a>.
+                        </span>
                     </label>
                     <p class="form-error" data-field-error="terms" aria-live="polite">
                         <?= $offerFieldErrors['terms'] ?? ''; ?>

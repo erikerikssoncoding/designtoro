@@ -298,6 +298,7 @@
         const planField = offerModal.querySelector('#offer-plan-field');
         const nameField = offerModal.querySelector('#offer-name');
         const closeSelectors = '[data-offer-modal-close]';
+        const offerCloseElements = offerModal.querySelectorAll(closeSelectors);
         const animatedElements = offerModal.querySelectorAll('[data-offer-animate]');
         const prefersReducedMotion = typeof window.matchMedia === 'function'
             ? window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -375,6 +376,24 @@
                 offerModal.classList.remove('is-closing');
             }, offerModalCloseDuration);
         };
+
+        const bindCloseElement = (element) => {
+            element.addEventListener('click', (event) => {
+                event.preventDefault();
+                closeOfferModal();
+            });
+
+            element.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    closeOfferModal();
+                }
+            });
+        };
+
+        offerCloseElements.forEach((element) => {
+            bindCloseElement(element);
+        });
 
         if (offerModal.classList.contains('is-visible')) {
             setAriaState(true);
@@ -505,6 +524,31 @@
         }
     };
 
+    const parseSuccessKeys = (value) => {
+        if (typeof value !== 'string' || !value.trim()) {
+            return [];
+        }
+
+        return value
+            .split(',')
+            .map((key) => key.trim())
+            .filter((key) => key.length > 0);
+    };
+
+    const getActiveSuccessKey = (primaryKey, additionalKeys = []) => {
+        if (primaryKey && getStoredSuccessTimestamp(primaryKey)) {
+            return primaryKey;
+        }
+
+        for (const key of additionalKeys) {
+            if (getStoredSuccessTimestamp(key)) {
+                return key;
+            }
+        }
+
+        return '';
+    };
+
     const phoneValidationMessages = {
         invalidCharacters: 'Numărul de telefon poate conține doar cifre (și un singur + la început).',
         invalidInternational: 'Numărul de telefon în format internațional trebuie să aibă între 6 și 14 cifre.',
@@ -560,6 +604,7 @@
     const asyncForms = document.querySelectorAll('[data-async-form]');
     asyncForms.forEach((form) => {
         const storageKey = form.getAttribute('data-success-storage-key');
+        const sharedSuccessKeys = parseSuccessKeys(form.getAttribute('data-shared-success-keys'));
         const formWrapper = form.closest('[data-form-wrapper]');
         const successContainer = formWrapper ? formWrapper.querySelector('[data-form-success]') : null;
         const globalErrorContainer = form.querySelector('[data-form-global-error]');
@@ -743,22 +788,25 @@
         };
 
         const handleStoredSuccess = () => {
-            if (!storageKey) {
+            const activeSuccessKey = getActiveSuccessKey(storageKey, sharedSuccessKeys);
+
+            if (activeSuccessKey) {
+                setFormVisibility(true);
+                setSuccessVisibility(true);
                 return;
             }
 
-            const storedTimestamp = getStoredSuccessTimestamp(storageKey);
-            if (storedTimestamp) {
+            const successInitiallyVisible = successContainer
+                ? successContainer.classList.contains('is-visible')
+                : false;
+
+            setSuccessVisibility(successInitiallyVisible);
+
+            if (successInitiallyVisible && storageKey) {
+                storeSuccessTimestamp(storageKey);
                 setFormVisibility(true);
-                setSuccessVisibility(true);
             } else {
-                setSuccessVisibility(successContainer ? successContainer.classList.contains('is-visible') : false);
-                if (successContainer && successContainer.classList.contains('is-visible') && storageKey) {
-                    storeSuccessTimestamp(storageKey);
-                    setFormVisibility(true);
-                } else {
-                    setFormVisibility(false);
-                }
+                setFormVisibility(false);
             }
         };
 
