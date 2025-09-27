@@ -1486,28 +1486,87 @@ video {
 }
 
 .form-group.form-consent {
-    grid-template-columns: auto 1fr;
-    align-items: flex-start;
+    justify-items: center;
+    text-align: center;
+    gap: 0.85rem;
+    position: relative;
+}
+
+.form-consent__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.form-consent__label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 0.75rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--color-text);
 }
 
-.form-group.form-consent input[type="checkbox"] {
-    width: 1.15rem;
-    height: 1.15rem;
-    margin-top: 0.2rem;
-    accent-color: var(--color-accent);
+.form-consent__checkbox {
+    width: 4.25rem;
+    height: 4.25rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(229, 9, 20, 0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.55);
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.form-group.form-consent label {
-    font-weight: 400;
-    font-size: 0.95rem;
-    line-height: 1.5;
+.form-consent__checkbox i {
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.form-group.form-consent a {
+.form-consent__text {
+    max-width: 28rem;
+}
+
+.form-consent__text a {
     color: var(--color-accent);
     text-decoration: underline;
     text-decoration-thickness: 1px;
+}
+
+.form-consent__input:focus + .form-consent__label .form-consent__checkbox,
+.form-consent__input:focus-visible + .form-consent__label .form-consent__checkbox {
+    box-shadow: 0 0 0 0.25rem rgba(229, 9, 20, 0.3);
+}
+
+.form-consent__input:checked + .form-consent__label .form-consent__checkbox {
+    background: var(--gradient-accent);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 20px 45px rgba(229, 9, 20, 0.45);
+    transform: translateY(-2px);
+}
+
+.form-consent__input:checked + .form-consent__label .form-consent__checkbox i {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.form-group.form-consent .form-error {
+    text-align: center;
 }
 
 .form-shell {
@@ -1594,10 +1653,18 @@ video {
 .form-group.has-error textarea,
 .form-group.has-error input[type="text"],
 .form-group.has-error input[type="email"],
-.form-group.has-error input[type="tel"],
-.form-group.has-error input[type="checkbox"] {
+.form-group.has-error input[type="tel"] {
     border-color: rgba(229, 9, 20, 0.6);
     box-shadow: 0 0 0 0.15rem rgba(229, 9, 20, 0.18);
+}
+
+.form-group.has-error .form-consent__checkbox {
+    border-color: rgba(229, 9, 20, 0.65);
+    box-shadow: 0 0 0 0.25rem rgba(229, 9, 20, 0.2);
+}
+
+.form-group.has-error .form-consent__text {
+    color: var(--color-accent);
 }
 
 .delivery-note {

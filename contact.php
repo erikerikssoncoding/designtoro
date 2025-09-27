@@ -51,8 +51,8 @@ include __DIR__ . '/partials/head.php';
                         <i class="fa-solid fa-circle-check"></i>
                     </span>
                     <div>
-                        <p class="form-success-title">Mesaj primit!</p>
-                        <p>Îți mulțumim. Te vom contacta în cel mai scurt timp cu detaliile solicitate.</p>
+                        <p class="form-success-title">Cererea ta este în curs!</p>
+                        <p>Ți-am primit detaliile și revenim în maximum o zi lucrătoare. Dacă ai completat deja formularul „Cere ofertă”, nu este nevoie să ne trimiți un alt mesaj în următoarele 24 de ore.</p>
                     </div>
                 </div>
                 <form
@@ -62,6 +62,7 @@ include __DIR__ . '/partials/head.php';
                     novalidate
                     data-async-form
                     data-success-storage-key="contact"
+                    data-shared-success-keys="offer"
                 >
                     <div class="form-feedback<?= !empty($globalFormErrors) ? ' is-visible' : ''; ?>" data-form-global-error aria-live="polite">
                         <?php if (!empty($globalFormErrors)): ?>
@@ -138,10 +139,16 @@ include __DIR__ . '/partials/head.php';
                             value="1"
                             required
                             <?= isset($_POST['terms']) ? 'checked' : ''; ?>
+                            class="form-consent__input"
                         >
-                        <label for="contact-terms">
-                            Sunt de acord cu <a href="/termeni-si-conditii" target="_blank" rel="noopener">Termenii și condițiile</a>
-                            și cu <a href="/politica-de-confidentialitate" target="_blank" rel="noopener">Politica de confidențialitate</a>.
+                        <label class="form-consent__label" for="contact-terms">
+                            <span class="form-consent__checkbox" aria-hidden="true">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            <span class="form-consent__text">
+                                Sunt de acord cu <a href="/termeni-si-conditii" target="_blank" rel="noopener">Termenii și condițiile</a>
+                                și cu <a href="/politica-de-confidentialitate" target="_blank" rel="noopener">Politica de confidențialitate</a>.
+                            </span>
                         </label>
                         <p class="form-error" data-field-error="terms" aria-live="polite">
                             <?= $formFieldErrors['terms'] ?? ''; ?>
