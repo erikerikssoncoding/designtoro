@@ -52,7 +52,7 @@ include __DIR__ . '/partials/head.php';
                     </span>
                     <div>
                         <p class="form-success-title">Cererea ta este în curs!</p>
-                        <p>Ți-am primit detaliile și revenim în maximum o zi lucrătoare. Dacă ai completat deja formularul „Cere ofertă”, nu este nevoie să ne trimiți un alt mesaj în următoarele 24 de ore.</p>
+                        <p>Ți-am primit detaliile și revenim în maximum o zi lucrătoare. Ai ceva de adăugat? Contactează-ne pe <a href="https://wa.me/40757568812" class="link-arrow">WhatsApp</a>.</p>
                     </div>
                 </div>
                 <form
