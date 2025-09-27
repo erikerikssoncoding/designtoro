@@ -222,16 +222,17 @@
     }
 
     const recaptchaSiteKey = window.RECAPTCHA_SITE_KEY;
-    const enableRecaptchaBadge = (auto = false) => {
-        document.body.classList.add('show-recaptcha');
-        if (auto) {
-            document.body.dataset.recaptchaAuto = 'true';
+    let recaptchaBadgeVisible = document.body.classList.contains('show-recaptcha');
+    const showRecaptchaBadge = () => {
+        if (!recaptchaBadgeVisible) {
+            document.body.classList.add('show-recaptcha');
+            recaptchaBadgeVisible = true;
         }
     };
-    const disableAutoRecaptchaBadge = () => {
-        if (document.body.dataset.recaptchaAuto === 'true') {
+    const hideRecaptchaBadge = () => {
+        if (recaptchaBadgeVisible) {
             document.body.classList.remove('show-recaptcha');
-            delete document.body.dataset.recaptchaAuto;
+            recaptchaBadgeVisible = false;
         }
     };
     const setRecaptchaTokenValue = (token) => {
@@ -242,7 +243,7 @@
     let pendingRecaptchaRequest = null;
     const requestRecaptchaToken = () => {
         if (!recaptchaSiteKey || typeof grecaptcha === 'undefined') {
-            enableRecaptchaBadge(true);
+            showRecaptchaBadge();
             setRecaptchaTokenValue('');
             return Promise.resolve(null);
         }
@@ -257,13 +258,13 @@
                     .execute(recaptchaSiteKey, { action: 'contact' })
                     .then((token) => {
                         setRecaptchaTokenValue(token);
-                        disableAutoRecaptchaBadge();
+                        hideRecaptchaBadge();
                         pendingRecaptchaRequest = null;
                         resolve(token);
                     })
                     .catch(() => {
                         console.warn('Nu s-a putut genera tokenul reCAPTCHA.');
-                        enableRecaptchaBadge(true);
+                        showRecaptchaBadge();
                         setRecaptchaTokenValue('');
                         pendingRecaptchaRequest = null;
                         resolve(null);
@@ -281,7 +282,6 @@
         if (typeof grecaptcha !== 'undefined') {
             requestRecaptchaToken();
         } else {
-            enableRecaptchaBadge(true);
             window.addEventListener('load', () => {
                 if (typeof grecaptcha !== 'undefined') {
                     requestRecaptchaToken();
@@ -296,7 +296,7 @@
     if (offerModal) {
         const offerOpenButtons = document.querySelectorAll('[data-offer-modal-open]');
         const planField = offerModal.querySelector('#offer-plan-field');
-        const nameField = offerModal.querySelector('#offer-name');
+        const offerDialog = offerModal.querySelector('.offer-modal__dialog');
         const closeSelectors = '[data-offer-modal-close]';
         const offerCloseElements = offerModal.querySelectorAll(closeSelectors);
         const animatedElements = offerModal.querySelectorAll('[data-offer-animate]');
@@ -304,6 +304,10 @@
             ? window.matchMedia('(prefers-reduced-motion: reduce)')
             : { matches: false };
         const offerModalCloseDuration = prefersReducedMotion.matches ? 0 : 280;
+
+        if (offerDialog && !offerDialog.hasAttribute('tabindex')) {
+            offerDialog.setAttribute('tabindex', '-1');
+        }
 
         const animateOfferFields = () => {
             if (!animatedElements.length) {
@@ -350,8 +354,10 @@
             animateOfferFields();
 
             window.setTimeout(() => {
-                if (nameField && typeof nameField.focus === 'function') {
-                    nameField.focus();
+                if (offerDialog && typeof offerDialog.focus === 'function') {
+                    offerDialog.focus();
+                } else if (offerModal && typeof offerModal.focus === 'function') {
+                    offerModal.focus();
                 }
             }, 50);
         };
@@ -399,8 +405,10 @@
             setAriaState(true);
             animateOfferFields();
             window.setTimeout(() => {
-                if (nameField && typeof nameField.focus === 'function') {
-                    nameField.focus();
+                if (offerDialog && typeof offerDialog.focus === 'function') {
+                    offerDialog.focus();
+                } else if (offerModal && typeof offerModal.focus === 'function') {
+                    offerModal.focus();
                 }
             }, 50);
         }
@@ -802,6 +810,7 @@
             clearAllErrors();
             setFormVisibility(true);
             setSuccessVisibility(true);
+            hideRecaptchaBadge();
         };
 
         const handleStoredSuccess = () => {
@@ -842,8 +851,14 @@
             }
         };
 
-        const handleFieldEvent = (event) => {
-            const field = event.target;
+        const touchedFields = new Set();
+        fieldErrorElements.forEach((errorElement, name) => {
+            if (errorElement && !errorElement.hidden && errorElement.textContent.trim() !== '') {
+                touchedFields.add(name);
+            }
+        });
+
+        const handleFieldValidation = (field) => {
             if (!field || !field.name) {
                 return;
             }
@@ -862,6 +877,33 @@
             }
         };
 
+        const handleFieldInput = (event) => {
+            const field = event.target;
+            if (!field || !field.name) {
+                return;
+            }
+
+            if (!touchedFields.has(field.name)) {
+                return;
+            }
+
+            handleFieldValidation(field);
+        };
+
+        const handleFieldBlur = (event) => {
+            const field = event.target;
+            if (!(field instanceof HTMLElement) || !field.name) {
+                return;
+            }
+
+            if (!field.matches('input, textarea, select')) {
+                return;
+            }
+
+            touchedFields.add(field.name);
+            handleFieldValidation(field);
+        };
+
         Array.from(form.elements).forEach((element) => {
             if (!(element instanceof HTMLElement)) {
                 return;
@@ -872,9 +914,14 @@
                 return;
             }
 
-            element.addEventListener('input', handleFieldEvent);
-            element.addEventListener('change', handleFieldEvent);
+            element.addEventListener('input', handleFieldInput);
+            element.addEventListener('change', () => {
+                touchedFields.add(element.name);
+                handleFieldValidation(element);
+            });
         });
+
+        form.addEventListener('focusout', handleFieldBlur);
 
         form.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -884,6 +931,7 @@
             if (Object.keys(fieldErrors).length > 0) {
                 Object.entries(fieldErrors).forEach(([name, message]) => {
                     showFieldError(name, message);
+                    touchedFields.add(name);
                 });
                 showGlobalErrors(['Te rugăm să verifici câmpurile marcate.']);
                 return;
