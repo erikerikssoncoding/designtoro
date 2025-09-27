@@ -1592,6 +1592,17 @@ video {
     margin-bottom: 1.5rem;
 }
 
+.form-success-message a {
+    color: #1abc9c;
+    font-weight: 600;
+}
+
+.form-success-message a:hover,
+.form-success-message a:focus {
+    color: #169f83;
+    text-decoration: underline;
+}
+
 .form-success-message.is-visible {
     display: flex;
 }
