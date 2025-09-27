@@ -464,8 +464,7 @@
             hardwareConcurrency: navigator.hardwareConcurrency,
             deviceMemory: navigator.deviceMemory,
             maxTouchPoints: navigator.maxTouchPoints,
-            cookieEnabled: navigator.cookieEnabled,
-            referrer: document.referrer
+            cookieEnabled: navigator.cookieEnabled
         };
 
         let fingerprintString = '';
@@ -477,6 +476,14 @@
 
         fingerprintFields.forEach((field) => {
             field.value = fingerprintString;
+        });
+    }
+
+    const referrerFields = document.querySelectorAll('[data-page-referrer]');
+    if (referrerFields.length) {
+        const referrerValue = document.referrer ? document.referrer.slice(0, 500) : '';
+        referrerFields.forEach((field) => {
+            field.value = referrerValue;
         });
     }
 

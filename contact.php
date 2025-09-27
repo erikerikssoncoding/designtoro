@@ -156,6 +156,7 @@ include __DIR__ . '/partials/head.php';
                     </div>
                     <input type="hidden" name="g-recaptcha-response" data-recaptcha-token>
                     <input type="hidden" name="fingerprint" data-device-fingerprint>
+                    <input type="hidden" name="referrer" data-page-referrer value="<?= htmlspecialchars($_POST['referrer'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                     <input type="hidden" name="page_url" value="<?= htmlspecialchars($pageUrl ?? ($_SERVER['REQUEST_URI'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
                     <button class="btn btn-accent" type="submit">Trimite mesajul</button>
                 </form>

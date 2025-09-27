@@ -334,6 +334,7 @@ include __DIR__ . '/partials/head.php';
                 <input type="hidden" name="offer_plan" id="offer-plan-field" value="<?= htmlspecialchars($_POST['offer_plan'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                 <input type="hidden" name="g-recaptcha-response" data-recaptcha-token>
                 <input type="hidden" name="fingerprint" data-device-fingerprint>
+                <input type="hidden" name="referrer" data-page-referrer value="<?= htmlspecialchars($_POST['referrer'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                 <input type="hidden" name="page_url" value="<?= htmlspecialchars($pageUrl ?? ($_SERVER['REQUEST_URI'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
                 <button class="btn btn-accent" type="submit" data-offer-animate>Trimite cererea</button>
             </form>
