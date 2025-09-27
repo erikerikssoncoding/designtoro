@@ -1803,7 +1803,7 @@ video {
 }
 
 .offer-modal.is-closing .offer-modal__backdrop {
-    animation: offerModalOutBackdrop 0.28s ease forwards;
+    animation: offerModalOutBackdrop 0.35s ease forwards;
 }
 
 .offer-modal.is-closing .offer-modal__dialog {
@@ -1851,7 +1851,7 @@ video {
 
 .offer-form {
     display: grid;
-    gap: 1.1rem;
+    gap: clamp(0.75rem, 1.8vw, 1rem);
 }
 
 .offer-form .form-group {
