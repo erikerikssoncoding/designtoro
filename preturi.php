@@ -215,19 +215,6 @@ include __DIR__ . '/partials/head.php';
             <h2 id="offer-modal-title" data-offer-animate>Cere o ofertă personalizată</h2>
             <p class="offer-modal__subtitle" data-offer-animate>Completează detaliile esențiale și revenim cu propunerea potrivită în maximum o zi lucrătoare.</p>
             <div class="form-shell" data-form-wrapper>
-                <div class="form-notice" data-form-notice role="note" data-offer-animate>
-                    <span class="form-notice__icon" aria-hidden="true">
-                        <i class="fa-solid fa-circle-info"></i>
-                    </span>
-                    <div>
-                        <p class="form-notice__title">Un singur formular este suficient.</p>
-                        <p class="form-notice__text">
-                            După ce trimiți detaliile, revenim noi cu oferta. Poți retrimite formularul după 24 de ore.
-                            Dacă vrei să adaugi informații între timp, scrie-ne pe <a href="https://wa.me/40757568812" class="link-arrow">WhatsApp</a>
-                            sau pe <a href="mailto:office@designtoro.ro" class="link-arrow">email</a>.
-                        </p>
-                    </div>
-                </div>
                 <div
                     class="form-success-message<?= $offerFormWasSuccessful ? ' is-visible' : ''; ?>"
                     data-form-success
