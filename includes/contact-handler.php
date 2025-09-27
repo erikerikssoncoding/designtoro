@@ -43,7 +43,11 @@ function validate_phone_number(string $phone, bool $isRequired = false): array
     return [true, $phone];
 }
 
-function build_submission_metadata(?string $fingerprintRaw = null, ?string $pageUrl = null): string
+function build_submission_metadata(
+    ?string $fingerprintRaw = null,
+    ?string $pageUrl = null,
+    ?string $formReferrer = null
+): string
 {
     $metadataLines = [];
     $metadataLines[] = '---- Informații tehnice ----';
@@ -51,7 +55,7 @@ function build_submission_metadata(?string $fingerprintRaw = null, ?string $page
     $ipAddress = $_SERVER['REMOTE_ADDR'] ?? 'necunoscut';
     $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? 'necunoscut';
     $acceptLanguage = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? 'necunoscut';
-    $referer = $_SERVER['HTTP_REFERER'] ?? 'necunoscut';
+    $referer = $formReferrer ?: ($_SERVER['HTTP_REFERER'] ?? 'necunoscut');
     $submittedAt = gmdate('Y-m-d H:i:s') . ' UTC';
 
     $metadataLines[] = 'IP vizitator: ' . $ipAddress;
@@ -124,6 +128,14 @@ function handle_contact_form(): array
     $fingerprintKey = fingerprint_generate_key($fingerprintRaw);
     $fingerprintScopes = ['contact', 'offer'];
     $pageUrl = isset($_POST['page_url']) ? substr((string) $_POST['page_url'], 0, 500) : null;
+    $formReferrer = isset($_POST['referrer']) ? substr((string) $_POST['referrer'], 0, 500) : null;
+    if ($formReferrer !== null) {
+        $sanitizedReferrer = filter_var($formReferrer, FILTER_SANITIZE_URL);
+        $formReferrer = is_string($sanitizedReferrer) ? trim($sanitizedReferrer) : '';
+        if ($formReferrer === '') {
+            $formReferrer = null;
+        }
+    }
 
     if ($fingerprintKey && fingerprint_submission_blocked($fingerprintKey, $fingerprintScopes)) {
         $blockMessage = 'Ai trimis deja un formular în ultimele 24 de ore. Dacă ai detalii suplimentare, contactează-ne pe '
@@ -177,7 +189,7 @@ function handle_contact_form(): array
 
     $subject = 'Mesaj nou de pe DesignToro.ro';
     $body = "Nume: {$name}\nEmail: {$email}\nTelefon: {$phone}\nMesaj:\n{$message}";
-    $body .= build_submission_metadata($fingerprintRaw, $pageUrl);
+    $body .= build_submission_metadata($fingerprintRaw, $pageUrl, $formReferrer);
     $headers = 'From: no-reply@designtoro.ro' . "\r\n" . 'Reply-To: ' . $email;
 
     $mailSent = false;
