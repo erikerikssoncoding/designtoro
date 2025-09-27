@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/secretkey.php';
+require_once __DIR__ . '/fingerprint-throttle.php';
 
 function offer_sanitize_input(string $value): string
 {
@@ -121,7 +122,20 @@ function handle_offer_request(): array
     $termsAccepted = isset($_POST['terms']) && $_POST['terms'] === '1';
     $token = $_POST['g-recaptcha-response'] ?? '';
     $fingerprintRaw = isset($_POST['fingerprint']) ? substr((string) $_POST['fingerprint'], 0, 3000) : null;
+    $fingerprintKey = fingerprint_generate_key($fingerprintRaw);
+    $fingerprintScopes = ['offer', 'contact'];
     $pageUrl = isset($_POST['page_url']) ? substr((string) $_POST['page_url'], 0, 500) : null;
+
+    if ($fingerprintKey && fingerprint_submission_blocked($fingerprintKey, $fingerprintScopes)) {
+        $blockMessage = 'Ai trimis deja un formular în ultimele 24 de ore. Dacă ai detalii suplimentare, contactează-ne pe '
+            . 'WhatsApp sau la office@designtoro.ro.';
+
+        return [
+            'success' => false,
+            'errors' => [$blockMessage],
+            'fieldErrors' => []
+        ];
+    }
 
     if ($name === '') {
         $fieldErrors['name'] = 'Numele este obligatoriu.';
@@ -189,6 +203,10 @@ function handle_offer_request(): array
             'errors' => ['Momentan nu putem trimite mesajul. Vă rugăm să ne contactați telefonic.'],
             'fieldErrors' => []
         ];
+    }
+
+    if ($fingerprintKey) {
+        fingerprint_remember_submission($fingerprintKey, $fingerprintScopes);
     }
 
     return ['success' => true, 'errors' => [], 'fieldErrors' => []];

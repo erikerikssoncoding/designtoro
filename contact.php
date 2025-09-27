@@ -40,6 +40,19 @@ include __DIR__ . '/partials/head.php';
         </div>
         <div class="col-lg-7">
             <div class="form-shell" data-form-wrapper>
+                <div class="form-notice" data-form-notice role="note">
+                    <span class="form-notice__icon" aria-hidden="true">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </span>
+                    <div>
+                        <p class="form-notice__title">Completează formularul o singură dată.</p>
+                        <p class="form-notice__text">
+                            Îți cerem aceste detalii doar pentru a reveni cu o ofertă clară. Formularul poate fi retrimis după 24 de ore.
+                            Pentru actualizări rapide, scrie-ne pe <a href="https://wa.me/40757568812" class="link-arrow">WhatsApp</a>
+                            sau pe <a href="mailto:office@designtoro.ro" class="link-arrow">email</a>.
+                        </p>
+                    </div>
+                </div>
                 <div
                     class="form-success-message<?= $formWasSuccessful ? ' is-visible' : ''; ?>"
                     data-form-success

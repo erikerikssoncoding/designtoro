@@ -607,6 +607,9 @@
         const sharedSuccessKeys = parseSuccessKeys(form.getAttribute('data-shared-success-keys'));
         const formWrapper = form.closest('[data-form-wrapper]');
         const successContainer = formWrapper ? formWrapper.querySelector('[data-form-success]') : null;
+        const infoNotices = formWrapper
+            ? Array.from(formWrapper.querySelectorAll('[data-form-notice]'))
+            : [];
         const globalErrorContainer = form.querySelector('[data-form-global-error]');
         const fieldErrorElements = new Map();
         form.querySelectorAll('[data-field-error]').forEach((element) => {
@@ -767,6 +770,20 @@
                 form.classList.remove('is-hidden');
                 form.removeAttribute('aria-hidden');
             }
+
+            infoNotices.forEach((notice) => {
+                if (!(notice instanceof HTMLElement)) {
+                    return;
+                }
+
+                if (hidden) {
+                    notice.classList.add('is-hidden');
+                    notice.setAttribute('hidden', '');
+                } else {
+                    notice.classList.remove('is-hidden');
+                    notice.removeAttribute('hidden');
+                }
+            });
         };
 
         const setSuccessVisibility = (visible) => {
