@@ -303,7 +303,7 @@
         const prefersReducedMotion = typeof window.matchMedia === 'function'
             ? window.matchMedia('(prefers-reduced-motion: reduce)')
             : { matches: false };
-        const offerModalCloseDuration = prefersReducedMotion.matches ? 0 : 280;
+        const offerModalCloseDuration = prefersReducedMotion.matches ? 0 : 350;
 
         if (offerDialog && !offerDialog.hasAttribute('tabindex')) {
             offerDialog.setAttribute('tabindex', '-1');
@@ -321,8 +321,8 @@
 
             window.requestAnimationFrame(() => {
                 animatedElements.forEach((element, index) => {
-                    const delayBase = prefersReducedMotion.matches ? 0 : 250;
-                    const delayStep = prefersReducedMotion.matches ? 0 : 180;
+                    const delayBase = prefersReducedMotion.matches ? 0 : 180;
+                    const delayStep = prefersReducedMotion.matches ? 0 : 120;
                     const delay = delayBase + (delayStep * index);
 
                     if (delay) {
