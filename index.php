@@ -262,8 +262,8 @@ include __DIR__ . '/partials/head.php';
         <div class="faq-grid">
             <article class="faq-item">
                 <h3>Cât durează să lansăm un site?</h3>
-                <p>În mod obișnuit, un site complet durează între 6 și 10 săptămâni, în funcție de numărul de pagini și materiale.
-                Îți arătăm stadiul proiectului în fiecare săptămână.</p>
+                <p>În mod obișnuit, un site complet durează între 1 și 6 săptămâni, în funcție de complexitate și materialele
+                pe care le avem disponibile. Îți arătăm stadiul proiectului în fiecare săptămână.</p>
             </article>
             <article class="faq-item">
                 <h3>Ce include pachetul de SEO și conținut?</h3>
