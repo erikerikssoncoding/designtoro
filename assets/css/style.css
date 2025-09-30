@@ -273,11 +273,16 @@ video {
     position: relative;
     padding: clamp(6rem, 8vw, 8rem) 0 5rem;
     overflow: hidden;
-    /* background:
+    background:
         radial-gradient(circle at 15% 20%, rgba(229, 9, 20, 0.45), transparent 62%),
         radial-gradient(circle at 85% 5%, rgba(118, 17, 23, 0.35), transparent 55%),
-        linear-gradient(160deg, #050505 0%, #0d0d11 65%, #050505 100%); */
-    background: url('/img/designtoro-hero.webp') center/cover no-repeat;
+        linear-gradient(160deg, #050505 0%, #0d0d11 65%, #050505 100%);
+}
+
+@media (min-width: 992px) {
+    .hero {
+        background: url('/img/designtoro-hero.webp') center/cover no-repeat;
+    }
 }
 
 .hero::after {
