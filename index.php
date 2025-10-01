@@ -204,27 +204,22 @@ include __DIR__ . '/partials/head.php';
         <h2 id="testimonials-title">Ce spun clienții despre noi</h2>
         <div class="testimonial-grid">
             <article class="testimonial-card">
-                <p class="testimonial-quote">„DesignToro ne-a făcut un site ușor de folosit și de actualizat. Avem de două ori mai
-                multe cereri decât înainte.”</p>
+                <p class="testimonial-quote">„Colaborarea cu DesignToro este așa cum ar trebui să fie. M-a înștiințat de orice aspect
+                era necesar și mi-a facilitat orice solicitare am avut pe parcursul timpului. Serviciile lor le-aș defini ca fiind
+                prompte, calitative și la prețul corect.”</p>
+                <div class="testimonial-rating" aria-label="5 din 5 stele">★★★★★</div>
                 <div class="testimonial-meta">
-                    <strong>Irina C., CEO Glow Beauty</strong>
-                    <span>Industrie beauty</span>
+                    <strong>Ciprian Cucu</strong>
+                    <span>Fizionomist &amp; Antreprenor</span>
                 </div>
             </article>
             <article class="testimonial-card">
-                <p class="testimonial-quote">„Lansarea a fost simplă și bine organizată. Echipa s-a ocupat de site și de reclame,
-                iar vânzările au crescut din prima lună.”</p>
+                <p class="testimonial-quote">„Modul de lucru m-a convins și am apelat cu încredere, nu am fost dezamăgită. S-a realizat un site
+                frumos, care merită „răsfoit” pentru a alege serviciile de care pacienții noștri au nevoie. Mulțumim DesignToro!”</p>
+                <div class="testimonial-rating" aria-label="5 din 5 stele">★★★★★</div>
                 <div class="testimonial-meta">
-                    <strong>Andrei M., Co-fondator UrbanFit</strong>
-                    <span>Start-up fitness</span>
-                </div>
-            </article>
-            <article class="testimonial-card">
-                <p class="testimonial-quote">„Primim rapoarte clare și recomandări ușor de pus în practică. Știm mereu ce se întâmplă cu
-                site-ul și cu campaniile noastre.”</p>
-                <div class="testimonial-meta">
-                    <strong>Bianca P., Marketing Manager NordEstate</strong>
-                    <span>Real estate</span>
+                    <strong>Rodica Stan</strong>
+                    <span>Kinetoterapeut</span>
                 </div>
             </article>
         </div>
