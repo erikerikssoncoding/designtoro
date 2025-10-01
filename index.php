@@ -5,6 +5,7 @@ $pageDescription = 'DesignToro creează site-uri clare și campanii ușor de în
 $pageKeywords = 'agenție web design, creare site bucurești, marketing digital, servicii seo, promovare online';
 $pageUrl = 'https://www.designtoro.ro/';
 $currentPage = 'home';
+$bodyClasses[] = 'page-home';
 
 $experienceStartDate = new DateTime('2013-10-13');
 $experienceYears = max(1, $experienceStartDate->diff(new DateTime())->y);
