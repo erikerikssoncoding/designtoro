@@ -702,6 +702,12 @@ video {
     color: rgba(255, 255, 255, 0.85);
 }
 
+.testimonial-rating {
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    color: var(--color-accent);
+}
+
 .testimonial-meta {
     display: flex;
     flex-direction: column;
