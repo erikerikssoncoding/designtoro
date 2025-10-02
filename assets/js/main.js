@@ -79,7 +79,7 @@
                 const category = item.getAttribute('data-category');
                 const isVisible = filter === 'all' || category === filter;
                 item.setAttribute('aria-hidden', String(!isVisible));
-                item.style.display = isVisible ? 'flex' : 'none';
+                item.style.display = isVisible ? '' : 'none';
             });
         });
     });
