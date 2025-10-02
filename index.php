@@ -10,6 +10,41 @@ $bodyClasses[] = 'page-home';
 $experienceStartDate = new DateTime('2013-10-13');
 $experienceYears = max(1, $experienceStartDate->diff(new DateTime())->y);
 
+$recentProjects = [
+    [
+        'name' => 'Kinetofusion',
+        'url' => 'https://kinetofusion.ro',
+        'image' => '/img/portofoliu/kinetofusion.ro_prezentare.webp',
+        'alt' => 'Previzualizare site de prezentare Kinetofusion',
+        'type' => 'Site de prezentare',
+        'description' => 'Platformă clară pentru programări și servicii de kinetoterapie.',
+    ],
+    [
+        'name' => 'Sf. Vasile',
+        'url' => 'https://sfvasile.ro',
+        'image' => '/img/portofoliu/sfvasile.ro_prezentare.webp',
+        'alt' => 'Previzualizare site de prezentare Sf. Vasile',
+        'type' => 'Site de prezentare',
+        'description' => 'Calendar, anunțuri și informații actualizate pentru comunitate.',
+    ],
+    [
+        'name' => 'ExpertConfort',
+        'url' => 'https://expertconfort.ro',
+        'image' => '/img/portofoliu/expertconfort.ro_prezentare.webp',
+        'alt' => 'Previzualizare site de prezentare ExpertConfort',
+        'type' => 'Site de prezentare',
+        'description' => 'Prezentare a serviciilor HVAC și a soluțiilor de mentenanță.',
+    ],
+    [
+        'name' => 'FixiShop',
+        'url' => 'https://fixishop.ro',
+        'image' => '/img/portofoliu/fixishop.ro_magazin.webp',
+        'alt' => 'Previzualizare magazin online FixiShop',
+        'type' => 'Magazin online',
+        'description' => 'Catalog de accesorii și consumabile pentru reparații rapide.',
+    ],
+];
+
 include __DIR__ . '/partials/head.php';
 ?>
 <section class="hero py-5" aria-labelledby="hero-title">
@@ -153,50 +188,32 @@ include __DIR__ . '/partials/head.php';
             <a class="link-arrow" href="/portofoliu">Vezi toate exemplele</a>
         </div>
         <div class="portfolio-grid">
-            <article class="portfolio-card">
-                <div class="portfolio-media">
-                    <div class="mockup-card mockup-pulse" role="img" aria-label="Previzualizare proiect Pulse Media">
-                        <span class="mockup-label" aria-hidden="true">Pulse Media</span>
-                    </div>
-                </div>
-                <div class="portfolio-overlay">
-                    <h3>Pulse Media</h3>
-                    <p>Site de știri și newsletter ușor de actualizat</p>
-                </div>
-            </article>
-            <article class="portfolio-card">
-                <div class="portfolio-media">
-                    <div class="mockup-card mockup-nebula" role="img" aria-label="Previzualizare proiect Nebula Commerce">
-                        <span class="mockup-label" aria-hidden="true">Nebula Commerce</span>
-                    </div>
-                </div>
-                <div class="portfolio-overlay">
-                    <h3>Nebula Commerce</h3>
-                    <p>Magazin online de modă cu proces de cumpărare simplu</p>
-                </div>
-            </article>
-            <article class="portfolio-card">
-                <div class="portfolio-media">
-                    <div class="mockup-card mockup-skyline" role="img" aria-label="Previzualizare proiect Skyline Air">
-                        <span class="mockup-label" aria-hidden="true">Skyline Air</span>
-                    </div>
-                </div>
-                <div class="portfolio-overlay">
-                    <h3>Skyline Air</h3>
-                    <p>Platformă de rezervări cu explicații pas cu pas</p>
-                </div>
-            </article>
-            <article class="portfolio-card">
-                <div class="portfolio-media">
-                    <div class="mockup-card mockup-prime" role="img" aria-label="Previzualizare proiect Prime Estates">
-                        <span class="mockup-label" aria-hidden="true">Prime Estates</span>
-                    </div>
-                </div>
-                <div class="portfolio-overlay">
-                    <h3>Prime Estates</h3>
-                    <p>Site imobiliar cu tururi virtuale și formulare clare</p>
-                </div>
-            </article>
+            <?php foreach ($recentProjects as $project): ?>
+                <article class="portfolio-card">
+                    <a
+                        class="portfolio-card-link"
+                        href="<?= htmlspecialchars($project['url'], ENT_QUOTES) ?>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Deschide <?= htmlspecialchars($project['name'], ENT_QUOTES) ?>"
+                    >
+                        <figure class="portfolio-media">
+                            <img
+                                src="<?= htmlspecialchars($project['image'], ENT_QUOTES) ?>"
+                                alt="<?= htmlspecialchars($project['alt'], ENT_QUOTES) ?>"
+                                loading="lazy"
+                                width="960"
+                                height="1890"
+                            >
+                        </figure>
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-category"><?= htmlspecialchars($project['type'], ENT_QUOTES) ?></span>
+                            <h3><?= htmlspecialchars($project['name'], ENT_QUOTES) ?></h3>
+                            <p><?= htmlspecialchars($project['description'], ENT_QUOTES) ?></p>
+                        </div>
+                    </a>
+                </article>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

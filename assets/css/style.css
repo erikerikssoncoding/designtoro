@@ -916,6 +916,17 @@ video {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
+.portfolio-card-link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+    border-radius: inherit;
+    overflow: hidden;
+}
+
 .portfolio-card {
     position: relative;
     border-radius: 24px;
@@ -935,6 +946,34 @@ video {
     background:
         radial-gradient(circle at 20% 20%, rgba(229, 9, 20, 0.18), transparent 60%),
         rgba(12, 12, 18, 0.85);
+}
+
+.portfolio-card .portfolio-media {
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    background: none;
+}
+
+.portfolio-card .portfolio-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.portfolio-card .portfolio-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(5, 5, 10, 0.1), rgba(5, 5, 10, 0.35));
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-media::after,
+.portfolio-card:focus-within .portfolio-media::after {
+    opacity: 0;
 }
 
 .mockup-card {
@@ -1073,6 +1112,20 @@ video {
 .portfolio-card:hover .portfolio-overlay,
 .portfolio-card:focus-within .portfolio-overlay {
     opacity: 1;
+}
+
+.portfolio-category {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
 }
 
 .portfolio-item .portfolio-media,
