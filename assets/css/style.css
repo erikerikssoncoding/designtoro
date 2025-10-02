@@ -1498,6 +1498,25 @@ figure.portfolio-media {
     overflow: hidden;
     background: rgba(12, 12, 18, 0.9);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    border-radius: 15px;
+}
+
+figure.portfolio-media::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 5, 10, 0.45);
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.portfolio-link:hover figure.portfolio-media::before,
+.portfolio-link:focus figure.portfolio-media::before,
+.portfolio-link:active figure.portfolio-media::before,
+.portfolio-item:focus-within figure.portfolio-media::before {
+    opacity: 0;
 }
 
 figure.portfolio-media img {
@@ -1505,6 +1524,7 @@ figure.portfolio-media img {
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 15px;
 }
 
 .portfolio-details {
@@ -1525,6 +1545,19 @@ figure.portfolio-media img {
     margin: 0;
     color: rgba(255, 255, 255, 0.65);
     font-size: 0.95rem;
+}
+
+.portfolio-more {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.portfolio-more p {
+    margin: 0;
+    font-size: clamp(1rem, 3vw, 1.35rem);
 }
 
 .portfolio-empty {
