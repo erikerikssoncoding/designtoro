@@ -12,6 +12,13 @@ if (!isset($pageUrl)) {
     $pageUrl = 'https://www.designtoro.ro/';
 }
 require_once __DIR__ . '/../config/sitekey.php';
+$config = require __DIR__ . '/../config/app.php';
+if (!is_array($config)) {
+    $config = [];
+}
+$assetVersion = isset($config['asset_version'])
+    ? htmlspecialchars((string) $config['asset_version'], ENT_QUOTES, 'UTF-8')
+    : '1.0.0';
 $bodyClasses = $bodyClasses ?? [];
 if (!is_array($bodyClasses)) {
     $bodyClasses = [$bodyClasses];
@@ -45,7 +52,7 @@ $bodyClassAttribute = htmlspecialchars(implode(' ', array_unique($bodyClasses)),
         integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI"
         crossorigin="anonymous"
     >
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=<?= $assetVersion; ?>">
     <script>
         window.RECAPTCHA_SITE_KEY = '<?= RECAPTCHA_SITE_KEY; ?>';
     </script>

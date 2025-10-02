@@ -1,0 +1,4 @@
+<?php
+return [
+    'asset_version' => '1.0.0',
+];
