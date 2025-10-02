@@ -322,12 +322,16 @@ video {
 }
 
 .page-home .hero {
-    padding-top: clamp(8rem, 12vw, 10rem);
+    padding-top: 90px;
 }
 
 @media (min-width: 992px) {
     .hero {
         background: url('/img/designtoro-hero.webp') center/cover no-repeat;
+        padding-top: 180px;
+    }
+
+    .page-home .hero {
         padding-top: 180px;
     }
 }
