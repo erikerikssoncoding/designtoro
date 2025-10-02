@@ -326,7 +326,7 @@ video {
 @media (min-width: 992px) {
     .hero {
         background: url('/img/designtoro-hero.webp') center/cover no-repeat;
-        margin-top: 180px;
+        padding-top: 180px;
     }
 }
 
