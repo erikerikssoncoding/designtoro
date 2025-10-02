@@ -162,4 +162,9 @@ include __DIR__ . '/partials/head.php';
         <a class="btn btn-accent" href="/contact">Hai să discutăm</a>
     </div>
 </section>
+<section class="portfolio-more py-5" aria-hidden="true">
+    <div class="container">
+        <p>SI MULTE ALTELE...</p>
+    </div>
+</section>
 <?php include __DIR__ . '/partials/footer.php'; ?>
