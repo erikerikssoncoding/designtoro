@@ -69,6 +69,20 @@
     const filterButtons = document.querySelectorAll('.filter-button');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
 
+    if (portfolioItems.length > 0) {
+        const earlyRevealCount = Math.min(portfolioItems.length, 4);
+        const earlyRevealDelay = 200;
+
+        window.setTimeout(() => {
+            portfolioItems.forEach((item, index) => {
+                if (index < earlyRevealCount && item.classList.contains('reveal')) {
+                    item.classList.add('in-view');
+                    observer.unobserve(item);
+                }
+            });
+        }, earlyRevealDelay);
+    }
+
     filterButtons.forEach((button) => {
         button.addEventListener('click', () => {
             const filter = button.getAttribute('data-filter');
