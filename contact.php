@@ -63,6 +63,7 @@ include __DIR__ . '/partials/head.php';
                     data-async-form
                     data-success-storage-key="contact"
                     data-shared-success-keys="offer"
+                    data-form-ready="false"
                 >
                     <div class="form-feedback<?= !empty($globalFormErrors) ? ' is-visible' : ''; ?>" data-form-global-error aria-live="polite">
                         <?php if (!empty($globalFormErrors)): ?>

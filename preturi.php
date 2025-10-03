@@ -239,6 +239,8 @@ include __DIR__ . '/partials/head.php';
                     novalidate
                     data-async-form
                     data-success-storage-key="offer"
+                    data-shared-success-keys="contact"
+                    data-form-ready="false"
                 >
                     <div class="form-feedback<?= !empty($offerGlobalErrors) ? ' is-visible' : ''; ?>" data-form-global-error aria-live="polite" data-offer-animate>
                         <?php if (!empty($offerGlobalErrors)): ?>

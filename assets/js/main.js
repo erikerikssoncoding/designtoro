@@ -509,55 +509,136 @@
         });
     }
 
-    const FORM_SUCCESS_STORAGE_PREFIX = 'dtFormSuccess:';
+    const FORM_SUCCESS_COOKIE_NAME = 'dtFormSuccess';
     const FORM_SUCCESS_TTL = 24 * 60 * 60 * 1000;
+    const FORM_SUCCESS_GLOBAL_KEY = '__global';
+    const readSuccessCookie = () => {
+        if (!document.cookie) {
+            return {};
+        }
+
+        const cookies = document.cookie.split('; ');
+        for (const entry of cookies) {
+            if (!entry) {
+                continue;
+            }
+
+            const [name, ...valueParts] = entry.split('=');
+            if (name !== FORM_SUCCESS_COOKIE_NAME) {
+                continue;
+            }
+
+            const value = valueParts.join('=');
+            if (!value) {
+                return {};
+            }
+
+            try {
+                const decoded = decodeURIComponent(value);
+                const parsed = JSON.parse(decoded);
+                return typeof parsed === 'object' && parsed !== null ? parsed : {};
+            } catch (error) {
+                return {};
+            }
+        }
+
+        return {};
+    };
+    const writeSuccessCookie = (data) => {
+        const keys = Object.keys(data);
+        if (!keys.length) {
+            const expiredDate = new Date(0);
+            document.cookie =
+                FORM_SUCCESS_COOKIE_NAME
+                + '=; expires='
+                + expiredDate.toUTCString()
+                + '; max-age=0; path=/; SameSite=Lax';
+            return;
+        }
+
+        const expiresAt = new Date(Date.now() + FORM_SUCCESS_TTL);
+        const encodedValue = encodeURIComponent(JSON.stringify(data));
+        let cookieValue =
+            FORM_SUCCESS_COOKIE_NAME
+            + '=' + encodedValue
+            + '; expires=' + expiresAt.toUTCString()
+            + '; max-age=' + Math.floor(FORM_SUCCESS_TTL / 1000)
+            + '; path=/; SameSite=Lax';
+
+        if (window.location.protocol === 'https:') {
+            cookieValue += '; Secure';
+        }
+
+        document.cookie = cookieValue;
+    };
+    const pruneSuccessData = (data) => {
+        const now = Date.now();
+        let changed = false;
+        const normalized = {};
+
+        Object.entries(data || {}).forEach(([key, value]) => {
+            const timestamp = typeof value === 'number' ? value : parseInt(value, 10);
+
+            if (!timestamp || Number.isNaN(timestamp)) {
+                changed = true;
+                return;
+            }
+
+            if (now - timestamp >= FORM_SUCCESS_TTL) {
+                changed = true;
+                return;
+            }
+
+            normalized[key] = timestamp;
+        });
+
+        return { data: normalized, changed };
+    };
     const getStoredSuccessTimestamp = (key) => {
         if (!key) {
             return 0;
         }
 
-        try {
-            const rawValue = localStorage.getItem(FORM_SUCCESS_STORAGE_PREFIX + key);
-            if (!rawValue) {
-                return 0;
-            }
-
-            const timestamp = parseInt(rawValue, 10);
-            if (!timestamp || Number.isNaN(timestamp)) {
-                localStorage.removeItem(FORM_SUCCESS_STORAGE_PREFIX + key);
-                return 0;
-            }
-
-            if (Date.now() - timestamp >= FORM_SUCCESS_TTL) {
-                localStorage.removeItem(FORM_SUCCESS_STORAGE_PREFIX + key);
-                return 0;
-            }
-
-            return timestamp;
-        } catch (error) {
-            return 0;
+        const { data, changed } = pruneSuccessData(readSuccessCookie());
+        if (changed) {
+            writeSuccessCookie(data);
         }
+
+        return data[key] || 0;
     };
     const storeSuccessTimestamp = (key) => {
-        if (!key) {
-            return;
+        const { data } = pruneSuccessData(readSuccessCookie());
+        const timestamp = Date.now();
+
+        data[FORM_SUCCESS_GLOBAL_KEY] = timestamp;
+        if (key) {
+            data[key] = timestamp;
         }
 
-        try {
-            localStorage.setItem(FORM_SUCCESS_STORAGE_PREFIX + key, String(Date.now()));
-        } catch (error) {
-            /* localStorage may be unavailable */
-        }
+        writeSuccessCookie(data);
     };
     const clearStoredSuccess = (key) => {
         if (!key) {
             return;
         }
 
-        try {
-            localStorage.removeItem(FORM_SUCCESS_STORAGE_PREFIX + key);
-        } catch (error) {
-            /* ignore */
+        const pruned = pruneSuccessData(readSuccessCookie());
+        const data = pruned.data;
+        let changed = pruned.changed;
+
+        if (data[key]) {
+            delete data[key];
+            changed = true;
+        }
+
+        const hasSpecificKeys = Object.keys(data).some((entryKey) => entryKey !== FORM_SUCCESS_GLOBAL_KEY);
+        if (!hasSpecificKeys && data[FORM_SUCCESS_GLOBAL_KEY]) {
+            delete data[FORM_SUCCESS_GLOBAL_KEY];
+            changed = true;
+        }
+
+        if (changed) {
+            writeSuccessCookie(data);
         }
     };
 
@@ -573,11 +654,19 @@
     };
 
     const getActiveSuccessKey = (primaryKey, additionalKeys = []) => {
-        if (primaryKey && getStoredSuccessTimestamp(primaryKey)) {
-            return primaryKey;
+        const keysToCheck = [FORM_SUCCESS_GLOBAL_KEY];
+
+        if (primaryKey && !keysToCheck.includes(primaryKey)) {
+            keysToCheck.push(primaryKey);
         }
 
-        for (const key of additionalKeys) {
+        additionalKeys.forEach((key) => {
+            if (key && !keysToCheck.includes(key)) {
+                keysToCheck.push(key);
+            }
+        });
+
+        for (const key of keysToCheck) {
             if (getStoredSuccessTimestamp(key)) {
                 return key;
             }
@@ -648,6 +737,10 @@
             ? Array.from(formWrapper.querySelectorAll('[data-form-notice]'))
             : [];
         const globalErrorContainer = form.querySelector('[data-form-global-error]');
+        form.setAttribute('data-form-ready', 'false');
+        form.classList.add('is-hidden');
+        form.setAttribute('aria-hidden', 'true');
+
         const fieldErrorElements = new Map();
         form.querySelectorAll('[data-field-error]').forEach((element) => {
             const fieldName = element.getAttribute('data-field-error');
@@ -833,9 +926,7 @@
         };
 
         const showSuccessState = () => {
-            if (storageKey) {
-                storeSuccessTimestamp(storageKey);
-            }
+            storeSuccessTimestamp(storageKey);
             clearAllErrors();
             setFormVisibility(true);
             setSuccessVisibility(true);
@@ -848,6 +939,7 @@
             if (activeSuccessKey) {
                 setFormVisibility(true);
                 setSuccessVisibility(true);
+                form.setAttribute('data-form-ready', 'true');
                 return;
             }
 
@@ -857,12 +949,14 @@
 
             setSuccessVisibility(successInitiallyVisible);
 
-            if (successInitiallyVisible && storageKey) {
+            if (successInitiallyVisible) {
                 storeSuccessTimestamp(storageKey);
                 setFormVisibility(true);
             } else {
                 setFormVisibility(false);
             }
+
+            form.setAttribute('data-form-ready', 'true');
         };
 
         handleStoredSuccess();
