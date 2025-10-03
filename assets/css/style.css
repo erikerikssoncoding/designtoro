@@ -841,11 +841,24 @@ video {
 .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, transform;
 }
 
 .reveal.in-view {
     opacity: 1;
+    transform: translateY(0);
+}
+
+.portfolio-item.reveal {
+    transform: translateY(40px);
+    filter: blur(12px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio-item.reveal.in-view {
+    filter: blur(0);
     transform: translateY(0);
 }
 

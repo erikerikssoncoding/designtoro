@@ -75,6 +75,11 @@
     if (portfolioItems.length > 0) {
         const earlyRevealCount = Math.min(portfolioItems.length, 4);
         const earlyRevealDelay = 200;
+        const revealInterval = 90;
+
+        portfolioItems.forEach((item, index) => {
+            item.style.setProperty('--reveal-delay', `${index * revealInterval}ms`);
+        });
 
         window.setTimeout(() => {
             portfolioItems.forEach((item, index) => {
