@@ -1,2 +1,0 @@
-<?php
-define('RECAPTCHA_SITE_KEY', 'YOUR_SITE_KEY_HERE');
