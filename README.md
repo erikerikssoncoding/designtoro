@@ -14,4 +14,10 @@ Acest proiect reproiectează site-ul DesignToro folosind React (Vite) pentru int
 - `npm start` – pornește serverul Express și servește conținutul din `dist/` (rulează după `npm run build`).
 
 ## Note
-Formularele validează client-side și trimit date către API-urile Express. Răspunsurile sunt simplificate pentru a confirma trimiterea cererii.
+Formularele validează client-side și trimit date către API-urile Express. Pentru ca mesajele să fie trimise către `office@designtoro.ro` și să primească clientul confirmarea, configurează următoarele variabile de mediu înainte de a porni serverul:
+
+- `SMTP_HOST` – host-ul serverului de email
+- `SMTP_PORT` – portul SMTP (ex. 587 sau 465)
+- `SMTP_SECURE` – `true` dacă folosești port securizat (465)
+- `SMTP_USER` / `SMTP_PASS` – credențiale pentru autentificare
+- `MAIL_FROM` – opțional, adresa folosită în câmpul „from” (implicit `office@designtoro.ro`)
