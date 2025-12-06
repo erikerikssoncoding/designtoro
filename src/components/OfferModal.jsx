@@ -26,6 +26,30 @@ export default function OfferModal({ isOpen, onClose, plan }) {
     }
   }, [isOpen, plan]);
 
+  useEffect(() => {
+    if (!isOpen) {
+      return undefined;
+    }
+
+    const modalContent = document.querySelector('[data-offer-modal-content]');
+
+    if (!modalContent) {
+      return undefined;
+    }
+
+    const animatedElements = Array.from(modalContent.querySelectorAll('[data-offer-animate]'));
+    const timers = animatedElements.map((element, index) =>
+      window.setTimeout(() => {
+        element.classList.add('is-animated');
+      }, index * 60)
+    );
+
+    return () => {
+      timers.forEach((timerId) => window.clearTimeout(timerId));
+      animatedElements.forEach((element) => element.classList.remove('is-animated'));
+    };
+  }, [isOpen]);
+
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
     setFormValues((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
