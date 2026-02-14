@@ -8,6 +8,29 @@ const navLinks = [
   { to: '/contact', label: 'Contact', icon: 'fa-solid fa-envelope', key: 'contact' },
 ];
 
+const socialLinks = [
+  {
+    href: 'https://www.instagram.com',
+    label: 'Instagram',
+    icon: 'fa-brands fa-instagram',
+  },
+  {
+    href: 'https://www.linkedin.com',
+    label: 'LinkedIn',
+    icon: 'fa-brands fa-linkedin',
+  },
+  {
+    href: 'https://www.facebook.com',
+    label: 'Facebook',
+    icon: 'fa-brands fa-facebook',
+  },
+  {
+    href: 'https://www.youtube.com',
+    label: 'YouTube',
+    icon: 'fa-brands fa-youtube',
+  },
+];
+
 export default function Footer() {
   const location = useLocation();
 
@@ -52,36 +75,25 @@ export default function Footer() {
           <div className="footer-column">
             <h3>Urmărește noutățile</h3>
             <ul className="social-links">
-              <li>
-                <a href="#" aria-label="Instagram">
-                  <i className="fa-brands fa-instagram" aria-hidden="true"></i> Instagram
-                </a>
-              </li>
-              <li>
-                <a href="#" aria-label="LinkedIn">
-                  <i className="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="#" aria-label="Facebook">
-                  <i className="fa-brands fa-facebook" aria-hidden="true"></i> Facebook
-                </a>
-              </li>
-              <li>
-                <a href="#" aria-label="YouTube">
-                  <i className="fa-brands fa-youtube" aria-hidden="true"></i> YouTube
-                </a>
-              </li>
+              {socialLinks.map((social) => (
+                <li key={social.href}>
+                  <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}>
+                    <i className={social.icon} aria-hidden="true"></i> {social.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
           <p>
-            Copyright © {new Date().getFullYear()} DesignToro.ro | <a href="#">Politica de Confidențialitate</a> |{' '}
-            <a href="#">Termeni și Condiții</a>
+            Copyright © {new Date().getFullYear()} DesignToro.ro |{' '}
+            <NavLink to="/politica-de-confidentialitate">Politica de Confidențialitate</NavLink> |{' '}
+            <NavLink to="/termeni-si-conditii">Termeni și Condiții</NavLink>
           </p>
         </div>
       </footer>
+
       <nav className="mobile-footer-nav" aria-label="Navigație rapidă">
         {navLinks
           .filter((link) => !location.pathname.startsWith(link.to) || (link.to === '/' && location.pathname !== '/'))

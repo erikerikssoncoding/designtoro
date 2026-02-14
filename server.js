@@ -12,34 +12,93 @@ const distPath = path.join(__dirname, 'dist');
 
 const OFFICE_EMAIL = 'office@designtoro.ro';
 const DEFAULT_FROM = process.env.MAIL_FROM || OFFICE_EMAIL;
+const REQUEST_WINDOW_MS = Number(process.env.RATE_LIMIT_WINDOW_MS || 15 * 60 * 1000);
+const MAX_REQUESTS_PER_WINDOW = Number(process.env.RATE_LIMIT_MAX || 25);
 
-const emailConfigured = Boolean(
-  process.env.SMTP_HOST && process.env.SMTP_PORT && process.env.SMTP_USER && process.env.SMTP_PASS
-);
+const rateLimitStore = new Map();
 
-const transporter = emailConfigured
-  ? nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === 'true' || Number(process.env.SMTP_PORT) === 465,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    })
-  : null;
+function trimOrEmpty(value) {
+  return typeof value === 'string' ? value.trim() : '';
+}
 
-app.use(express.json());
-app.use(express.static(distPath));
-app.use('/img', express.static(path.join(__dirname, 'public', 'img')));
+function toLower(value) {
+  return trimOrEmpty(value).toLowerCase();
+}
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
+const PHONE_RE = /^[0-9+().\-\s]{7,30}$/;
+
+function normalizePayload(payload) {
+  const normalized = {};
+  Object.entries(payload || {}).forEach(([key, value]) => {
+    if (key === 'terms') {
+      normalized[key] = value === true || String(value).toLowerCase() === 'true' || value === '1' || value === 1;
+      return;
+    }
+
+    normalized[key] = typeof value === 'string' ? value.trim() : value;
+  });
+  return normalized;
+}
 
 function validateFields(fields, required) {
   const errors = {};
+
   required.forEach((field) => {
-    if (!fields[field] || (typeof fields[field] === 'string' && !fields[field].trim())) {
+    if (field === 'terms') {
+      if (fields[field] !== true) {
+        errors[field] = 'Trebuie să confirmi că ești de acord cu termenii.';
+      }
+      return;
+    }
+
+    if (!trimOrEmpty(fields[field])) {
       errors[field] = 'Acest câmp este obligatoriu.';
     }
   });
+
+  return errors;
+}
+
+function validateContactPayload(payload) {
+  const errors = validateFields(payload, ['name', 'email', 'message', 'terms']);
+  const email = toLower(payload.email);
+
+  if (!EMAIL_RE.test(email)) {
+    errors.email = 'Introdu o adresă de email validă.';
+  }
+
+  if (trimOrEmpty(payload.phone) && !PHONE_RE.test(payload.phone)) {
+    errors.phone = 'Introdu un număr de telefon valid.';
+  }
+
+  if (trimOrEmpty(payload.message).length > 3000) {
+    errors.message = 'Mesajul este prea lung. Păstrează-l sub 3000 de caractere.';
+  }
+
+  return errors;
+}
+
+function validateOfferPayload(payload) {
+  const errors = validateFields(payload, ['name', 'email', 'phone', 'details', 'terms']);
+  const email = toLower(payload.email);
+
+  if (!EMAIL_RE.test(email)) {
+    errors.email = 'Introdu o adresă de email validă.';
+  }
+
+  if (!PHONE_RE.test(payload.phone)) {
+    errors.phone = 'Introdu un număr de telefon valid.';
+  }
+
+  if (trimOrEmpty(payload.details).length < 10) {
+    errors.details = 'Detaliile trebuie să conțină cel puțin 10 caractere.';
+  }
+
+  if (trimOrEmpty(payload.details).length > 8000) {
+    errors.details = 'Detaliile sunt prea lungi. Păstrează-le sub 8000 de caractere.';
+  }
+
   return errors;
 }
 
@@ -47,57 +106,156 @@ function isSpam(payload) {
   return Boolean(payload.company && String(payload.company).trim());
 }
 
-async function sendEmails(adminMailOptions, clientMailOptions) {
-  if (!transporter) {
-    throw new Error('Serviciul de email nu este configurat.');
-  }
-
-  const adminPromise = transporter.sendMail(adminMailOptions);
-  const clientPromise = transporter.sendMail(clientMailOptions);
-
-  await Promise.all([adminPromise, clientPromise]);
+function formatText(value) {
+  return trimOrEmpty(value) || 'necompletat';
 }
 
-app.post('/api/contact', (req, res) => {
-  const payload = req.body || {};
-  const errors = validateFields(payload, ['name', 'email', 'message', 'terms']);
-
-  if (Object.keys(errors).length > 0) {
-    return res.status(400).json({ success: false, fieldErrors: errors, message: 'Te rugăm să completezi câmpurile obligatorii.' });
+function buildMailText(type, payload) {
+  if (type === 'contact') {
+    return {
+      subject: `Mesaj nou din formularul de contact - ${formatText(payload.name)}`,
+      adminText:
+        `Ai primit un mesaj nou din formularul de contact:\n\n` +
+        `Nume: ${formatText(payload.name)}\n` +
+        `Email: ${formatText(payload.email)}\n` +
+        `Telefon: ${formatText(payload.phone)}\n` +
+        `Mesaj:\n${formatText(payload.message)}\n\n` +
+        `Referrer: ${formatText(payload.referrer)}\n` +
+        `Pagină: ${formatText(payload.page_url)}\n`,
+      clientSubject: 'Am primit mesajul tău - DesignToro',
+      clientText:
+        `Salut ${formatText(payload.name)},\n\nÎți mulțumim că ne-ai contactat! Echipa DesignToro a primit detaliile tale și îți va răspunde în maximum o zi lucrătoare.\n\n` +
+        `Detalii trimise:\n- Telefon: ${formatText(payload.phone)}\n- Mesaj: ${formatText(payload.message)}\n\n` +
+        `Dacă vrei să adaugi ceva, răspunde direct la acest email.\n\n` +
+        `Mulțumim,\nEchipa DesignToro`,
+    };
   }
 
-  if (isSpam(payload)) {
-    return res.status(400).json({ success: false, message: 'Cererea nu a putut fi procesată.' });
+  return {
+    subject: `Cerere ofertă - ${formatText(payload.name)}${payload.offer_plan ? ` (${formatText(payload.offer_plan)})` : ''}`,
+    adminText:
+      `Ai primit o cerere nouă pentru ofertă:\n\n` +
+      `Nume: ${formatText(payload.name)}\n` +
+      `Email: ${formatText(payload.email)}\n` +
+      `Telefon: ${formatText(payload.phone)}\n` +
+      `Plan selectat: ${formatText(payload.offer_plan)}\n\n` +
+      `Detalii proiect:\n${formatText(payload.details)}\n\n` +
+      `Referrer: ${formatText(payload.referrer)}\n` +
+      `Pagină: ${formatText(payload.page_url)}\n`,
+    clientSubject: 'Am primit cererea ta de ofertă - DesignToro',
+    clientText:
+      `Salut ${formatText(payload.name)},\n\nMulțumim pentru interesul în serviciile DesignToro! Echipa noastră analizează detaliile oferite și revine cu o ofertă personalizată în maximum o zi lucrătoare.\n\n` +
+      `Rezumatul cererii:\n- Telefon: ${formatText(payload.phone)}\n- Plan: ${formatText(payload.offer_plan)}\n- Detalii proiect: ${formatText(payload.details)}\n\n` +
+      `Dacă vrei să completezi informațiile, răspunde direct la acest email.\n\n` +
+      `Mulțumim,\nEchipa DesignToro`,
+  };
+}
+
+function createTransporter() {
+  if (!process.env.SMTP_HOST || !process.env.SMTP_PORT || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    return null;
   }
 
+  const port = Number(process.env.SMTP_PORT) || 587;
+  const secure =
+    process.env.SMTP_SECURE === 'true' ||
+    process.env.SMTP_SECURE === '1' ||
+    port === 465;
+
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port,
+    secure,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+}
+
+const transporter = createTransporter();
+if (!transporter) {
+  console.warn('Configurarea SMTP nu este completă. Endpoint-urile vor returna eroare.');
+}
+
+function sendEmails(type, payload) {
+  if (!transporter) {
+    return Promise.reject(new Error('Serviciul de email nu este configurat.'));
+  }
+
+  const payloadText = buildMailText(type, payload);
   const adminMail = {
     to: OFFICE_EMAIL,
     from: DEFAULT_FROM,
     replyTo: payload.email,
-    subject: `Mesaj nou din formularul de contact - ${payload.name}`,
-    text:
-      `Ai primit un mesaj nou din formularul de contact:\n\n` +
-      `Nume: ${payload.name}\n` +
-      `Email: ${payload.email}\n` +
-      `Telefon: ${payload.phone || 'necompletat'}\n` +
-      `Mesaj:\n${payload.message}\n\n` +
-      `Referrer: ${payload.referrer || 'necunoscut'}\n` +
-      `Pagină: ${payload.page_url || 'necunoscută'}`,
+    subject: payloadText.subject,
+    text: payloadText.adminText,
   };
 
   const clientMail = {
     to: payload.email,
     from: DEFAULT_FROM,
-    subject: 'Am primit mesajul tău - DesignToro',
-    text:
-      `Salut ${payload.name || ' '},\n\nÎți mulțumim că ne-ai contactat! Echipa DesignToro a primit detaliile tale și îți va răspunde în maximum o zi lucrătoare.\n\n` +
-      `Detalii trimise:\n- Telefon: ${payload.phone || 'necompletat'}\n- Mesaj: ${payload.message}\n\n` +
-      `Dacă vrei să adaugi ceva, răspunde direct la acest email.\n\n` +
-      `Mulțumim,\nEchipa DesignToro`,
+    subject: payloadText.clientSubject,
+    text: payloadText.clientText,
   };
 
-  return sendEmails(adminMail, clientMail)
-    .then(() => res.json({ success: true, message: 'Cererea ta a fost înregistrată. Revenim în maximum o zi lucrătoare.' }))
+  return Promise.all([transporter.sendMail(adminMail), transporter.sendMail(clientMail)]);
+}
+
+function cleanupRateLimits() {
+  const now = Date.now();
+  rateLimitStore.forEach((entry, key) => {
+    if (entry.resetAt <= now) {
+      rateLimitStore.delete(key);
+    }
+  });
+}
+
+setInterval(cleanupRateLimits, Math.max(REQUEST_WINDOW_MS / 4, 30000));
+
+function apiRateLimit(req, res, next) {
+  const ip = req.ip || req.connection?.remoteAddress || 'unknown';
+  const now = Date.now();
+  const existing = rateLimitStore.get(ip) || { count: 0, resetAt: now + REQUEST_WINDOW_MS };
+
+  if (existing.resetAt <= now) {
+    existing.count = 1;
+    existing.resetAt = now + REQUEST_WINDOW_MS;
+  } else {
+    existing.count += 1;
+  }
+
+  if (existing.count > MAX_REQUESTS_PER_WINDOW) {
+    res.set('Retry-After', Math.ceil((existing.resetAt - now) / 1000));
+    return res.status(429).json({
+      success: false,
+      message: 'Prea multe solicitări. Încearcă din nou în câteva minute.',
+    });
+  }
+
+  rateLimitStore.set(ip, existing);
+  return next();
+}
+
+function handleContact(payload, res, message) {
+  const normalized = normalizePayload(payload);
+
+  const errors = validateContactPayload(normalized);
+  if (Object.keys(errors).length > 0) {
+    return res.status(400).json({ success: false, fieldErrors: errors, message: 'Te rugăm să corectezi datele din formular.' });
+  }
+
+  if (isSpam(normalized)) {
+    return res.status(400).json({ success: false, message: 'Cererea nu a putut fi procesată.' });
+  }
+
+  return sendEmails('contact', normalized)
+    .then(() =>
+      res.json({
+        success: true,
+        message,
+      }),
+    )
     .catch((error) => {
       console.error('Eroare la trimiterea emailurilor pentru contact:', error);
       return res.status(500).json({
@@ -105,49 +263,27 @@ app.post('/api/contact', (req, res) => {
         message: 'Nu am putut trimite mesajul. Încearcă din nou sau contactează-ne direct pe email.',
       });
     });
-});
+}
 
-app.post('/api/offer', (req, res) => {
-  const payload = req.body || {};
-  const errors = validateFields(payload, ['name', 'email', 'phone', 'details', 'terms']);
+function handleOffer(payload, res, message) {
+  const normalized = normalizePayload(payload);
 
+  const errors = validateOfferPayload(normalized);
   if (Object.keys(errors).length > 0) {
-    return res.status(400).json({ success: false, fieldErrors: errors, message: 'Completează detaliile pentru ofertă.' });
+    return res.status(400).json({ success: false, fieldErrors: errors, message: 'Corectează câmpurile obligatorii.' });
   }
 
-  if (isSpam(payload)) {
+  if (isSpam(normalized)) {
     return res.status(400).json({ success: false, message: 'Cererea nu a putut fi procesată.' });
   }
 
-  const adminMail = {
-    to: OFFICE_EMAIL,
-    from: DEFAULT_FROM,
-    replyTo: payload.email,
-    subject: `Cerere ofertă - ${payload.name}${payload.offer_plan ? ` (${payload.offer_plan})` : ''}`,
-    text:
-      `Ai primit o cerere nouă pentru ofertă:\n\n` +
-      `Nume: ${payload.name}\n` +
-      `Email: ${payload.email}\n` +
-      `Telefon: ${payload.phone}\n` +
-      `Plan selectat: ${payload.offer_plan || 'necompletat'}\n\n` +
-      `Detalii proiect:\n${payload.details}\n\n` +
-      `Referrer: ${payload.referrer || 'necunoscut'}\n` +
-      `Pagină: ${payload.page_url || 'necunoscută'}`,
-  };
-
-  const clientMail = {
-    to: payload.email,
-    from: DEFAULT_FROM,
-    subject: 'Am primit cererea ta de ofertă - DesignToro',
-    text:
-      `Salut ${payload.name || ' '},\n\nMulțumim pentru interesul în serviciile DesignToro! Echipa noastră analizează detaliile oferite și revine cu o ofertă personalizată în maximum o zi lucrătoare.\n\n` +
-      `Rezumatul cererii:\n- Telefon: ${payload.phone}\n- Plan: ${payload.offer_plan || 'necompletat'}\n- Detalii proiect: ${payload.details}\n\n` +
-      `Dacă vrei să completezi informațiile, răspunde direct la acest email.\n\n` +
-      `Mulțumim,\nEchipa DesignToro`,
-  };
-
-  return sendEmails(adminMail, clientMail)
-    .then(() => res.json({ success: true, message: 'Am preluat cererea ta și revenim cu oferta completă.' }))
+  return sendEmails('offer', normalized)
+    .then(() =>
+      res.json({
+        success: true,
+        message,
+      }),
+    )
     .catch((error) => {
       console.error('Eroare la trimiterea emailurilor pentru ofertă:', error);
       return res.status(500).json({
@@ -155,7 +291,41 @@ app.post('/api/offer', (req, res) => {
         message: 'Nu am putut trimite cererea. Încearcă din nou sau contactează-ne direct pe email.',
       });
     });
+}
+
+app.use(express.json({ limit: '24kb' }));
+app.use('/img', express.static(path.join(__dirname, 'public', 'img')));
+app.use(express.static(distPath));
+
+const apiRouter = express.Router();
+
+apiRouter.use(apiRateLimit);
+
+apiRouter.post('/contact', (req, res) => {
+  handleContact(
+    { ...req.body, referrer: req.body?.referrer, page_url: req.body?.page_url },
+    res,
+    'Cererea ta a fost înregistrată. Revenim în maximum o zi lucrătoare.',
+  );
 });
+
+apiRouter.post('/offer', (req, res) => {
+  handleOffer(
+    { ...req.body, referrer: req.body?.referrer, page_url: req.body?.page_url },
+    res,
+    'Am preluat cererea ta și revenim cu oferta completă.',
+  );
+});
+
+apiRouter.get('/health', (_req, res) => {
+  return res.json({ success: true, status: 'ok' });
+});
+
+apiRouter.use((_req, res) => {
+  return res.status(404).json({ success: false, message: 'Endpoint API invalid.' });
+});
+
+app.use('/api', apiRouter);
 
 app.get('*', (_req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));

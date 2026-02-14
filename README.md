@@ -16,8 +16,12 @@ Acest proiect reproiectează site-ul DesignToro folosind React (Vite) pentru int
 ## Note
 Formularele validează client-side și trimit date către API-urile Express. Pentru ca mesajele să fie trimise către `office@designtoro.ro` și să primească clientul confirmarea, configurează următoarele variabile de mediu înainte de a porni serverul:
 
-- `SMTP_HOST` – host-ul serverului de email
-- `SMTP_PORT` – portul SMTP (ex. 587 sau 465)
-- `SMTP_SECURE` – `true` dacă folosești port securizat (465)
-- `SMTP_USER` / `SMTP_PASS` – credențiale pentru autentificare
-- `MAIL_FROM` – opțional, adresa folosită în câmpul „from” (implicit `office@designtoro.ro`)
+ - `SMTP_HOST` – host-ul serverului de email
+ - `SMTP_PORT` – portul SMTP (ex. 587 sau 465)
+ - `SMTP_SECURE` – `true` dacă folosești port securizat (465)
+ - `SMTP_USER` / `SMTP_PASS` – credențiale pentru autentificare
+ - `MAIL_FROM` – opțional, adresa folosită în câmpul „from” (implicit `office@designtoro.ro`)
+ - `RATE_LIMIT_WINDOW_MS` – opțional, fereastra de limitare API (în milisecunde)
+ - `RATE_LIMIT_MAX` – opțional, max solicitări / fereastră per IP pentru rutele API
+
+Nu păstra credențiale reale în public sau repository. Folosește doar variabile de mediu pe server.

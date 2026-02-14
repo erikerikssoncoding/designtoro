@@ -7,6 +7,8 @@ import Services from './pages/Services';
 import Pricing from './pages/Pricing';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
+import TermsAndConditions from './pages/TermsAndConditions';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import { useSiteEffects } from './hooks/useSiteEffects';
 
 function ScrollAndEffects() {
@@ -32,6 +34,8 @@ export default function App() {
           <Route path="/preturi" element={<Pricing />} />
           <Route path="/portofoliu" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/termeni-si-conditii" element={<TermsAndConditions />} />
+          <Route path="/politica-de-confidentialitate" element={<PrivacyPolicy />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

@@ -6,8 +6,12 @@ export function useSiteEffects() {
 
   useEffect(() => {
     const docEl = document.documentElement;
+    const body = document.body;
+
     docEl.classList.remove('no-js');
-    document.body.classList.remove('no-js');
+    body.classList.remove('no-js');
+    const isHomePage = location.pathname === '/';
+    body.classList.toggle('page-home', isHomePage);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -72,6 +76,7 @@ export function useSiteEffects() {
     }
 
     return () => {
+      body.classList.remove('page-home');
       observer.disconnect();
       window.removeEventListener('scroll', updateHeaderState);
       if (stickyMediaQuery) {

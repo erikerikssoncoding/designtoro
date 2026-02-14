@@ -137,11 +137,11 @@ export default function Contact() {
                     </span>
                     <span className="form-consent__text">
                       Sunt de acord cu{' '}
-                      <a href="/termeni-si-conditii" target="_blank" rel="noopener">
+                      <a href="/termeni-si-conditii">
                         Termenii și condițiile
                       </a>{' '}
                       și cu{' '}
-                      <a href="/politica-de-confidentialitate" target="_blank" rel="noopener">
+                      <a href="/politica-de-confidentialitate">
                         Politica de confidențialitate
                       </a>
                       .

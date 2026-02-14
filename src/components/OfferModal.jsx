@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { submitForm } from '../utils/api';
 
 const initialOfferState = {
@@ -10,12 +10,64 @@ const initialOfferState = {
   offer_plan: '',
 };
 
+const FOCUSABLE_SELECTORS =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 export default function OfferModal({ isOpen, onClose, plan }) {
   const [formValues, setFormValues] = useState(initialOfferState);
   const [fieldErrors, setFieldErrors] = useState({});
   const [globalError, setGlobalError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const modalContentRef = useRef(null);
+  const previousFocusRef = useRef(null);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return undefined;
+    }
+
+    previousFocusRef.current = document.activeElement;
+    const modalElement = modalContentRef.current;
+    const focusable = modalElement ? modalElement.querySelectorAll(FOCUSABLE_SELECTORS) : [];
+    const firstFocusable = focusable?.[0];
+    if (firstFocusable instanceof HTMLElement) {
+      firstFocusable.focus();
+    }
+
+    document.body.classList.add('offer-modal-open');
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+        return;
+      }
+
+      if (event.key !== 'Tab' || !focusable.length) {
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown, true);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown, true);
+      document.body.classList.remove('offer-modal-open');
+      if (previousFocusRef.current instanceof HTMLElement) {
+        previousFocusRef.current.focus();
+      }
+    };
+  }, [isOpen, onClose]);
 
   useEffect(() => {
     if (isOpen) {
@@ -41,7 +93,7 @@ export default function OfferModal({ isOpen, onClose, plan }) {
     const timers = animatedElements.map((element, index) =>
       window.setTimeout(() => {
         element.classList.add('is-animated');
-      }, index * 60)
+      }, index * 60),
     );
 
     return () => {
@@ -86,9 +138,15 @@ export default function OfferModal({ isOpen, onClose, plan }) {
   }
 
   return (
-    <div className={`offer-modal is-visible${isSuccess ? ' is-success' : ''}`} role="dialog" aria-modal="true" aria-labelledby="offer-modal-title">
+      <div
+        className={`offer-modal is-visible${isSuccess ? ' is-success' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="offer-modal-title"
+        aria-describedby="offer-modal-subtitle"
+      >
       <div className="offer-modal__backdrop" onClick={onClose} aria-hidden="true"></div>
-      <div className="offer-modal__dialog" role="document">
+      <div className="offer-modal__dialog" ref={modalContentRef} role="document" tabIndex={-1}>
         <button className="offer-modal__close" type="button" onClick={onClose} aria-label="Închide formularul">
           <i className="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
@@ -96,11 +154,17 @@ export default function OfferModal({ isOpen, onClose, plan }) {
           <h2 id="offer-modal-title" data-offer-animate>
             Cere o ofertă personalizată
           </h2>
-          <p className="offer-modal__subtitle" data-offer-animate>
+          <p id="offer-modal-subtitle" className="offer-modal__subtitle" data-offer-animate>
             Completează detaliile esențiale și revenim cu propunerea potrivită în maximum o zi lucrătoare.
           </p>
           <div className="form-shell" data-form-wrapper>
-            <div className={`form-success-message${isSuccess ? ' is-visible' : ''}`} data-form-success role="status" aria-live="polite" hidden={!isSuccess}>
+            <div
+              className={`form-success-message${isSuccess ? ' is-visible' : ''}`}
+              data-form-success
+              role="status"
+              aria-live="polite"
+              hidden={!isSuccess}
+            >
               <span className="form-success-icon" aria-hidden="true">
                 <i className="fa-solid fa-circle-check"></i>
               </span>
@@ -116,7 +180,12 @@ export default function OfferModal({ isOpen, onClose, plan }) {
               </div>
             </div>
             <form className="offer-form" id="offer-form" onSubmit={handleSubmit} noValidate>
-              <div className={`form-feedback${globalError ? ' is-visible' : ''}`} data-form-global-error aria-live="polite" data-offer-animate>
+              <div
+                className={`form-feedback${globalError ? ' is-visible' : ''}`}
+                data-form-global-error
+                aria-live="polite"
+                data-offer-animate
+              >
                 {globalError && <p>{globalError}</p>}
               </div>
               <div className={`form-group${fieldErrors.name ? ' has-error' : ''}`} data-offer-animate>
@@ -141,7 +210,15 @@ export default function OfferModal({ isOpen, onClose, plan }) {
                 <label htmlFor="offer-email" className="form-label">
                   Email *
                 </label>
-                <input type="email" id="offer-email" name="email" className="form-control" value={formValues.email} onChange={handleChange} required />
+                <input
+                  type="email"
+                  id="offer-email"
+                  name="email"
+                  className="form-control"
+                  value={formValues.email}
+                  onChange={handleChange}
+                  required
+                />
                 <p className="form-error" data-field-error="email" aria-live="polite">
                   {fieldErrors.email}
                 </p>
@@ -150,7 +227,15 @@ export default function OfferModal({ isOpen, onClose, plan }) {
                 <label htmlFor="offer-details" className="form-label">
                   Detalii despre site / proiect *
                 </label>
-                <textarea id="offer-details" name="details" rows="5" className="form-control" value={formValues.details} onChange={handleChange} required></textarea>
+                <textarea
+                  id="offer-details"
+                  name="details"
+                  rows="5"
+                  className="form-control"
+                  value={formValues.details}
+                  onChange={handleChange}
+                  required
+                ></textarea>
                 <p className="form-error" data-field-error="details" aria-live="polite">
                   {fieldErrors.details}
                 </p>
@@ -160,21 +245,24 @@ export default function OfferModal({ isOpen, onClose, plan }) {
                 <input type="text" id="offer-company" name="company" autoComplete="off" tabIndex={-1} />
               </div>
               <div className={`form-group form-consent${fieldErrors.terms ? ' has-error' : ''}`} data-offer-animate>
-                <input type="checkbox" id="offer-terms" name="terms" value="1" required className="form-consent__input" checked={formValues.terms} onChange={handleChange} />
+                <input
+                  type="checkbox"
+                  id="offer-terms"
+                  name="terms"
+                  value="1"
+                  required
+                  className="form-consent__input"
+                  checked={formValues.terms}
+                  onChange={handleChange}
+                />
                 <label className="form-consent__label" htmlFor="offer-terms">
                   <span className="form-consent__checkbox" aria-hidden="true">
                     <i className="fa-solid fa-check"></i>
                   </span>
                   <span className="form-consent__text">
                     Sunt de acord cu{' '}
-                    <a href="/termeni-si-conditii" target="_blank" rel="noopener">
-                      Termenii și condițiile
-                    </a>{' '}
-                    și cu{' '}
-                    <a href="/politica-de-confidentialitate" target="_blank" rel="noopener">
-                      Politica de confidențialitate
-                    </a>
-                    .
+                    <a href="/termeni-si-conditii">Termenii și condițiile</a> și cu{' '}
+                    <a href="/politica-de-confidentialitate">Politica de confidențialitate</a>.
                   </span>
                 </label>
                 <p className="form-error" data-field-error="terms" aria-live="polite">
