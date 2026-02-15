@@ -34,6 +34,13 @@ const socialLinks = [
 export default function Footer() {
   const location = useLocation();
 
+  const openCookieSettings = (event) => {
+    event.preventDefault();
+    if (window.klaro?.show) {
+      window.klaro.show(undefined, true);
+    }
+  };
+
   return (
     <>
       <footer className="site-footer">
@@ -93,7 +100,10 @@ export default function Footer() {
           <p>
             Copyright © {new Date().getFullYear()} DesignToro.ro |{' '}
             <NavLink to="/politica-de-confidentialitate">Politica de Confidențialitate</NavLink> |{' '}
-            <NavLink to="/termeni-si-conditii">Termeni și Condiții</NavLink>
+            <NavLink to="/termeni-si-conditii">Termeni și Condiții</NavLink> |{' '}
+            <button type="button" className="cookie-settings-link" onClick={openCookieSettings}>
+              Setări cookie
+            </button>
           </p>
         </div>
       </footer>

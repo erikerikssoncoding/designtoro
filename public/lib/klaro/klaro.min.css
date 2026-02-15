@@ -1,0 +1,348 @@
+/* Designtoro: native Klaro theme */
+body .klaro,
+body .klaro * {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text);
+}
+
+body .klaro,
+body .klaro .cookie-notice,
+body .klaro .cookie-modal,
+body .klaro .cookie-modal .cm-modal,
+body .klaro .cookie-modal-notice,
+body .klaro .cn-body {
+    font-family: inherit;
+    color: var(--color-text);
+}
+
+body .klaro .cookie-notice,
+body .klaro .cookie-modal,
+body .klaro .cookie-modal .cm-modal,
+body .klaro .cm-modal,
+body .klaro .cm-modal .cm-content,
+body .klaro .cm-modal .cm-body {
+    color: var(--color-text);
+    background: transparent;
+}
+
+body .klaro .cm-overlay,
+body .klaro .cm-backdrop,
+body .klaro .cm-modal-backdrop,
+body .klaro .cm-modal .cm-bg,
+body .cm-overlay,
+body .cm-backdrop,
+body .cm-modal-backdrop {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(6, 6, 10, 0.84) !important;
+    backdrop-filter: blur(14px);
+    z-index: 2147483647 !important;
+}
+
+body .klaro .cookie-modal,
+body .klaro .cookie-notice,
+body .klaro .cm-modal,
+body .klaro #klaro {
+    z-index: 2147483647 !important;
+}
+
+body .klaro .cookie-modal,
+body .klaro .cm-modal,
+body .klaro .cookie-modal .cm-modal.cm-klaro {
+    position: fixed !important;
+    background: transparent !important;
+    right: auto !important;
+    left: 50% !important;
+    --klaro-popup-x: -50%;
+    --klaro-popup-y: 0;
+    --klaro-popup-offset: 0.75rem;
+    transform: translate(var(--klaro-popup-x), var(--klaro-popup-y)) !important;
+    box-sizing: border-box;
+}
+
+body .klaro .cookie-notice:not(.cookie-modal-notice) {
+    top: auto !important;
+    bottom: clamp(0.9rem, 2vw, 1.2rem) !important;
+    width: min(920px, calc(100vw - 1.4rem));
+    max-width: min(920px, calc(100vw - 1.4rem));
+    max-height: min(88vh, calc(100dvh - 1.4rem));
+    border-radius: 20px;
+    border: none !important;
+    background: linear-gradient(155deg, rgba(229, 9, 20, 0.18) 0%, rgba(17, 17, 26, 0.95) 48%, rgba(7, 7, 12, 0.98) 100%);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 24px 58px rgba(0, 0, 0, 0.55);
+    overflow: auto;
+    padding: 1rem;
+    animation: klaroPopupInNotice 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body .klaro .cookie-notice,
+body .klaro .cookie-modal .cm-modal {
+    will-change: transform, opacity;
+    transition:
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.22s ease;
+}
+
+body .klaro .cookie-notice:not(.cookie-notice-hidden) {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+body .klaro .cookie-notice.cookie-notice-hidden {
+    display: block !important;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(var(--klaro-popup-x), calc(var(--klaro-popup-y) + var(--klaro-popup-offset)) scale(0.985)) !important;
+}
+
+body .klaro .cookie-modal .cm-modal.cm-klaro {
+    top: 50% !important;
+    --klaro-popup-y: -50%;
+    --klaro-popup-offset: 0.6rem;
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 0 !important;
+    width: min(980px, calc(100vw - 1.4rem));
+    max-width: min(980px, calc(100vw - 1.4rem));
+    max-height: min(92vh, calc(100dvh - 1.4rem));
+    border-radius: 18px;
+    padding: 0;
+    overflow: auto;
+    inset: auto;
+    background: linear-gradient(155deg, rgba(229, 9, 20, 0.14) 0%, rgba(17, 17, 26, 0.95) 58%, rgba(7, 7, 12, 0.98) 100%);
+    box-shadow: 0 30px 72px rgba(0, 0, 0, 0.57);
+    animation: klaroPopupInModal 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body .klaro .cookie-notice .cn-body,
+body .klaro .cookie-notice__body,
+body .klaro .cookie-notice__inner,
+body .klaro .cookie-modal .cm-content {
+    background: transparent !important;
+}
+
+body .klaro .cookie-notice .cn-notice,
+body .klaro .cookie-notice .cn-buttons,
+body .klaro .cookie-notice .cn-description,
+body .klaro .cookie-notice .cn-title,
+body .klaro .cookie-modal .cm-title,
+body .klaro .cookie-modal .cm-description {
+    color: var(--color-text);
+}
+
+body .klaro .cookie-notice .cn-buttons,
+body .klaro .cm-modal .cm-btn-group,
+body .klaro .cm-modal .cm-btn-container,
+body .klaro .cm-modal .cm-buttons {
+    margin-top: 0.8rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, max-content));
+    gap: 0.75rem;
+    justify-content: center;
+    align-items: stretch;
+}
+
+body .klaro .cm-btn,
+body .klaro button.cm-btn,
+body .klaro a.cm-btn {
+    border-radius: 999px;
+    padding: 0.55rem 1.1rem !important;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(229, 9, 20, 0.38) !important;
+    color: #ffffff !important;
+    background: rgba(229, 9, 20, 0.16) !important;
+    transition:
+        transform 0.2s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+body .klaro .cm-btn:is(.cm-btn-success, .cm-btn-accept-all, .cm-btn-accept, .cm-btn-accept-selected, .cm-btn-save) {
+    background: var(--gradient-accent) !important;
+    border-color: transparent !important;
+    box-shadow: 0 12px 28px rgba(229, 9, 20, 0.34) !important;
+}
+
+body .klaro .cn-learn-more,
+body .klaro .cm-learn-more {
+    grid-column: 1 / -1;
+    margin-top: 0.3rem;
+    justify-self: center;
+    display: inline !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--color-accent) !important;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    text-transform: none !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+body .klaro .cm-btn:is(.cm-btn-danger, .cm-btn-decline, .cm-btn-info, .cm-btn-secondary) {
+    background: rgba(229, 9, 20, 0.12) !important;
+    border-color: rgba(229, 9, 20, 0.45) !important;
+}
+
+body .klaro .cm-btn:hover,
+body .klaro .cm-btn:focus {
+    transform: translateY(-1px);
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 12px 28px rgba(229, 9, 20, 0.32) !important;
+}
+
+body .klaro .cn-learn-more:hover,
+body .klaro .cm-learn-more:hover {
+    transform: none !important;
+    text-decoration-thickness: 2px;
+    box-shadow: none !important;
+}
+
+body .klaro .cookie-notice a[href],
+body .klaro .cookie-modal .cm-link,
+body .klaro .cm-description a,
+body .klaro .cm-notice-text a {
+    color: var(--color-accent) !important;
+    text-decoration-color: rgba(229, 9, 20, 0.7);
+}
+
+body .klaro .cm-btn:focus-visible,
+body .klaro .cookie-notice a[href]:focus-visible,
+body .klaro .cookie-modal a[href]:focus-visible,
+body .klaro .cm-modal a[href]:focus-visible,
+body .klaro .cookie-notice button:focus-visible,
+body .klaro .cookie-modal button:focus-visible,
+body .klaro .cm-modal button:focus-visible {
+    outline: 2px solid rgba(229, 9, 20, 0.35) !important;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.22) !important;
+}
+
+body .klaro .cookie-notice:focus,
+body .klaro .cookie-notice:focus-visible,
+body .klaro .cookie-modal:focus,
+body .klaro .cookie-modal:focus-visible,
+body .klaro .cm-modal:focus,
+body .klaro .cm-modal:focus-visible {
+    outline: none !important;
+    outline-offset: 0 !important;
+    box-shadow: none !important;
+}
+
+body .klaro .cm-service {
+    border-color: rgba(255, 255, 255, 0.09);
+    background: rgba(16, 16, 23, 0.82);
+    border-radius: 14px;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.72rem;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03), 0 10px 28px rgba(0, 0, 0, 0.24);
+}
+
+body .klaro .cm-service p,
+body .klaro .cm-service .cm-service__description,
+body .klaro .cm-services-list {
+    color: var(--color-muted);
+}
+
+body .klaro .cm-service-title,
+body .klaro .cm-service__title,
+body .klaro .cm-service h3,
+body .klaro .cm-service-header,
+body .klaro .cm-service-title-text,
+body .klaro .cm-service p,
+body .klaro .cm-service-description {
+    color: var(--color-text);
+}
+
+body .klaro .cm-services-list {
+    margin: 0;
+    padding: 0.7rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+body .klaro .cookie-modal .cm-modal.cm-klaro .cm-header,
+body .klaro .cookie-modal .cm-modal.cm-klaro .cm-body,
+body .klaro .cookie-modal .cm-modal.cm-klaro .cm-footer {
+    background: transparent;
+}
+
+body .klaro .cookie-modal .cm-modal.cm-klaro .cm-body,
+body .klaro .cookie-modal .cm-modal.cm-klaro .cm-footer {
+    border-top-color: rgba(255, 255, 255, 0.09);
+}
+
+body .klaro .cm-btn-group,
+body .klaro .cm-btn-container,
+body .klaro .cm-modal .cm-buttons {
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    body .klaro .cookie-notice:not(.cookie-modal-notice),
+    body .klaro .cookie-modal:not(.cookie-modal-notice) {
+        left: 50% !important;
+        right: auto !important;
+        --klaro-popup-x: -50%;
+        transform: translate(var(--klaro-popup-x), var(--klaro-popup-y)) !important;
+    }
+
+    body .klaro .cookie-notice:not(.cookie-modal-notice) {
+        width: calc(100vw - 1.2rem);
+        max-width: calc(100vw - 1.2rem);
+        --klaro-popup-y: -0.42rem;
+        --klaro-popup-offset: 0.48rem;
+        padding: 0.9rem;
+    }
+
+    body .klaro .cookie-modal .cm-modal.cm-klaro {
+        width: calc(100vw - 1.2rem);
+        max-width: calc(100vw - 1.2rem);
+        max-height: calc(96vh - 1.2rem);
+        --klaro-popup-offset: 0.42rem;
+    }
+
+    body .klaro .cookie-notice .cn-buttons,
+    body .klaro .cm-modal .cm-btn-group,
+    body .klaro .cm-modal .cm-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes klaroPopupInNotice {
+    0% {
+        opacity: 0;
+        transform: translate(var(--klaro-popup-x), calc(var(--klaro-popup-y) + var(--klaro-popup-offset)) scale(0.985) !important;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(var(--klaro-popup-x), var(--klaro-popup-y)) scale(1) !important;
+    }
+}
+
+@keyframes klaroPopupInModal {
+    0% {
+        opacity: 0;
+        transform: translate(var(--klaro-popup-x), calc(var(--klaro-popup-y) + var(--klaro-popup-offset)) scale(0.985) !important;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(var(--klaro-popup-x), var(--klaro-popup-y)) scale(1) !important;
+    }
+}

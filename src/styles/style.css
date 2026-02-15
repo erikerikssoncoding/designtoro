@@ -2473,6 +2473,22 @@ body.offer-modal-open {
     color: rgba(255, 255, 255, 0.5);
 }
 
+.cookie-settings-link {
+    border: none;
+    padding: 0;
+    background: transparent;
+    color: var(--color-muted);
+    cursor: pointer;
+    font-size: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.cookie-settings-link:hover,
+.cookie-settings-link:focus {
+    color: var(--color-accent);
+}
+
 .grecaptcha-badge {
     visibility: hidden;
     opacity: 0;
