@@ -14,8 +14,12 @@ export default function Header() {
       <nav className="navbar navbar-dark" data-bs-theme="dark" aria-label="Navigare principală">
         <div className="container">
           <div className="navbar-layout">
-            <NavLink to="/" className="navbar-brand text-uppercase fw-bold" aria-label="DesignToro">
-              designtoro
+            <NavLink to="/" className="navbar-brand" aria-label="DesignToro">
+              <img
+                src="/img/designtoro-logo-white.webp"
+                alt="DesignToro"
+                className="brand-logo"
+              />
             </NavLink>
             <ul className="navbar-links" id="primary-menu">
               {navLinks.map((link) => (

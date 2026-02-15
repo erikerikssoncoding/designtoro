@@ -40,7 +40,11 @@ export default function Footer() {
         <div className="container footer-grid">
           <div className="footer-column">
             <NavLink to="/" className="footer-logo">
-              designtoro
+              <img
+                src="/img/designtoro-logo-white.webp"
+                alt="DesignToro"
+                className="brand-logo"
+              />
             </NavLink>
             <p>
               Construim site-uri clare și campanii ușor de înțeles. Explicăm fiecare pas și te ajutăm să atragi clienți noi fără jargon tehnic.
