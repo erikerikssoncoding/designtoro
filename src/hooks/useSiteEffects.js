@@ -7,6 +7,9 @@ export function useSiteEffects() {
   useEffect(() => {
     const docEl = document.documentElement;
     const body = document.body;
+    const isPortfolioPage = location.pathname === '/portofoliu';
+    let initialRevealFrame;
+    let firstRowRevealFrame;
 
     docEl.classList.remove('no-js');
     body.classList.remove('no-js');
@@ -28,14 +31,66 @@ export function useSiteEffects() {
       },
     );
 
-    const revealTargets = document.querySelectorAll(
-      'section:not(.hero), .service-card, .portfolio-card, .portfolio-item, .pricing-card, .stat-card',
-    );
+    const revealTargets = document.querySelectorAll('section:not(.hero), .service-card, .portfolio-card, .portfolio-item, .pricing-card, .stat-card');
+
+    const revealVisibleElements = () => {
+      const viewportHeight = window.innerHeight || docEl.clientHeight;
+
+      revealTargets.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const isInView = rect.top < viewportHeight && rect.bottom > 0;
+
+        if (isInView) {
+          el.classList.add('in-view');
+          observer.unobserve(el);
+        }
+      });
+    };
 
     revealTargets.forEach((el) => {
       el.classList.add('reveal');
       observer.observe(el);
     });
+
+    initialRevealFrame = window.requestAnimationFrame(() => {
+      initialRevealFrame = window.requestAnimationFrame(revealVisibleElements);
+    });
+
+    if (isPortfolioPage) {
+      const revealPortfolioElements = () => {
+        const forceReveal = (selector) => {
+          const element = document.querySelector(selector);
+          if (element) {
+            element.classList.add('in-view');
+            observer.unobserve(element);
+          }
+        };
+
+        forceReveal('.page-hero');
+        forceReveal('.portfolio-filters');
+        forceReveal('.portfolio-gallery');
+
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        if (!portfolioItems.length) {
+          return;
+        }
+
+        const firstRowTop = portfolioItems[0].getBoundingClientRect().top;
+        const rowTolerance = 16;
+
+        portfolioItems.forEach((item) => {
+          const itemTop = item.getBoundingClientRect().top;
+          if (Math.abs(itemTop - firstRowTop) <= rowTolerance) {
+            item.classList.add('in-view');
+            observer.unobserve(item);
+          }
+        });
+      };
+
+      firstRowRevealFrame = window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(revealPortfolioElements);
+      });
+    }
 
     const heroRevealTargets = document.querySelectorAll(
       '.hero .hero-text > *, .hero .hero-metric, .hero .hero-metric .accent-card',
@@ -85,6 +140,13 @@ export function useSiteEffects() {
         } else if (typeof stickyMediaQuery.removeListener === 'function') {
           stickyMediaQuery.removeListener(handleMediaChange);
         }
+      }
+      if (firstRowRevealFrame) {
+        window.cancelAnimationFrame(firstRowRevealFrame);
+      }
+
+      if (initialRevealFrame) {
+        window.cancelAnimationFrame(initialRevealFrame);
       }
     };
   }, [location.pathname]);

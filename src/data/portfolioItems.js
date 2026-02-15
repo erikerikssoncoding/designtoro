@@ -58,10 +58,10 @@ export const portfolioItems =
         "filename": "expertconfort.ro_prezentare.webp",
         "url": "https:\/\/expertconfort.ro",
         "host": "expertconfort.ro",
-        "name": "Expertconfort",
+        "name": "ExpertConfort",
         "category": "website",
-        "label": "Site de prezentare",
-        "alt": "Previzualizare site de prezentare Expertconfort"
+        "label": "Montaj și reparații aer condiționat",
+        "alt": "Previzualizare site de prezentare ExpertConfort"
     },
     {
         "filename": "fibercif.ro_prezentare.webp",
@@ -78,7 +78,7 @@ export const portfolioItems =
         "host": "fixishop.ro",
         "name": "Fixishop",
         "category": "ecommerce",
-        "label": "Magazin online",
+        "label": "Magazin online de cosmetice",
         "alt": "Previzualizare magazin online Fixishop"
     },
     {
@@ -193,10 +193,10 @@ export const portfolioItems =
         "filename": "sfvasile.ro_prezentare.webp",
         "url": "https:\/\/sfvasile.ro",
         "host": "sfvasile.ro",
-        "name": "Sfvasile",
+        "name": "Sf. Vasile",
         "category": "website",
-        "label": "Site de prezentare",
-        "alt": "Previzualizare site de prezentare Sfvasile"
+        "label": "Cămin de bătrâni, Voluntari",
+        "alt": "Previzualizare site de prezentare Sf. Vasile"
     },
     {
         "filename": "theboatinnhayton.co.uk_prezentare.webp",

@@ -18,7 +18,7 @@ export default function Portfolio() {
 
   return (
     <>
-      <section className="page-hero py-5" aria-labelledby="portfolio-hero">
+      <section className="page-hero portfolio-hero" aria-labelledby="portfolio-hero">
         <div className="container narrow text-center">
           <h1 id="portfolio-hero">Proiecte digitale care aduc rezultate reale.</h1>
           <p>Vezi exemple de site-uri, magazine online și campanii pe care le-am construit pas cu pas împreună cu clienții noștri.</p>

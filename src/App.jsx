@@ -23,11 +23,13 @@ function ScrollAndEffects() {
 }
 
 export default function App() {
+  const { pathname } = useLocation();
+
   return (
     <>
       <ScrollAndEffects />
       <Header />
-      <main>
+      <main className="page-transition" key={pathname}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/servicii" element={<Services />} />

@@ -118,7 +118,7 @@ export default function Pricing() {
     <>
       <section className="page-hero py-5" aria-labelledby="pricing-hero">
         <div className="container narrow text-center">
-          <h1 id="pricing-hero">Prețuri clare pentru site-uri și promovare online.</h1>
+          <h1 id="pricing-hero">Pachete clare pentru site-uri și promovare online.</h1>
           <p>Alege pachetul care se potrivește afacerii tale și află dinainte ce primești și în cât timp livrăm.</p>
         </div>
       </section>
@@ -139,7 +139,8 @@ export default function Pricing() {
                   <div className="pricing-card-face pricing-card-front" aria-hidden={isOpen}>
                     {plan.badge && <div className="badge">{plan.badge}</div>}
                     <button className="info-toggle" type="button" data-info-toggle aria-expanded={isOpen} aria-label="Vezi explicații ușor de înțeles" onClick={() => setInfoOpen(isOpen ? '' : plan.name)}>
-                      <span aria-hidden="true">i</span>
+                      <span aria-hidden="true" className="info-toggle-icon">i</span>
+                      <span className="info-toggle-text" aria-hidden="true">vezi informații</span>
                     </button>
                     {!isOpen && plan.name === 'StartUp' && (
                       <div className="info-notice" id="pricing-info-prompt" role="status" aria-live="polite">
@@ -192,7 +193,8 @@ export default function Pricing() {
                 <div className="pricing-card-inner">
                   <div className="pricing-card-face pricing-card-front" aria-hidden={isOpen}>
                     <button className="info-toggle" type="button" data-info-toggle aria-expanded={isOpen} aria-label="Vezi explicații ușor de înțeles" onClick={() => setInfoOpen(isOpen ? '' : plan.name)}>
-                      <span aria-hidden="true">i</span>
+                      <span aria-hidden="true" className="info-toggle-icon">i</span>
+                      <span className="info-toggle-text" aria-hidden="true">vezi informații</span>
                     </button>
                     <h2>{plan.name}</h2>
                     <ul>
