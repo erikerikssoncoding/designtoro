@@ -272,6 +272,15 @@ export default function Home() {
           <div className="principles-intro">
             <h2 id="principles-title">Cum colaborăm de la prima discuție până după lansare</h2>
             <p>Ne dorim ca totul să fie simplu, clar și ușor de urmărit, indiferent cât de familiar ești cu partea digitală.</p>
+            <div className="principles-image-wrap">
+              <span className="principles-image-pulse" aria-hidden="true"></span>
+              <img
+                src="/img/designtoro-colaborare.webp"
+                alt="Procesul de colaborare DesignToro"
+                className="principles-image"
+                loading="lazy"
+              />
+            </div>
           </div>
           <ul className="principles-list">
             <li>

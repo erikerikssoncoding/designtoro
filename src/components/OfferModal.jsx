@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { submitForm } from '../utils/api';
 
 const initialOfferState = {
@@ -137,8 +138,8 @@ export default function OfferModal({ isOpen, onClose, plan }) {
     return null;
   }
 
-  return (
-      <div
+  return createPortal(
+    <div
         className={`offer-modal is-visible${isSuccess ? ' is-success' : ''}`}
         role="dialog"
         aria-modal="true"
@@ -277,6 +278,7 @@ export default function OfferModal({ isOpen, onClose, plan }) {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
