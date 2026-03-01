@@ -1,13 +1,13 @@
 export default function PrivacyPolicy() {
   return (
-    <section className="page-hero py-5" aria-labelledby="privacy-title">
-      <div className="container narrow">
+    <section className="page-hero page-legal py-5" aria-labelledby="privacy-title">
+      <div className="container narrow legal-shell">
         <h1 id="privacy-title">Politica de confidențialitate</h1>
-        <p>
+        <p className="legal-lead">
           Respectăm confidențialitatea datelor personale transmise prin formularele site-ului și le folosim strict pentru răspunsuri
           comerciale și îmbunătățirea serviciilor.
         </p>
-        <div className="legal-content">
+        <div className="legal-content legal-sheet">
           <h2>1. Ce date colectăm</h2>
           <p>
             Nume, email, telefon și mesajul completat în formularele de contact sau ofertă. De asemenea, putem colecta date de

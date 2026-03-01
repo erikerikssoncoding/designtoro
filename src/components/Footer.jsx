@@ -10,24 +10,14 @@ const navLinks = [
 
 const socialLinks = [
   {
-    href: 'https://www.instagram.com',
+    href: 'https://www.instagram.com/designtoro.romania',
     label: 'Instagram',
     icon: 'fa-brands fa-instagram',
   },
   {
-    href: 'https://www.linkedin.com',
-    label: 'LinkedIn',
-    icon: 'fa-brands fa-linkedin',
-  },
-  {
-    href: 'https://www.facebook.com',
+    href: 'https://www.facebook.com/DesignToroRomania/',
     label: 'Facebook',
     icon: 'fa-brands fa-facebook',
-  },
-  {
-    href: 'https://www.youtube.com',
-    label: 'YouTube',
-    icon: 'fa-brands fa-youtube',
   },
 ];
 
@@ -100,6 +90,7 @@ export default function Footer() {
           <p>
             Copyright © {new Date().getFullYear()} DesignToro.ro |{' '}
             <NavLink to="/politica-de-confidentialitate">Politica de Confidențialitate</NavLink> |{' '}
+            <NavLink to="/politica-cookie-uri">Politica privind Cookies</NavLink> |{' '}
             <NavLink to="/termeni-si-conditii">Termeni și Condiții</NavLink> |{' '}
             <button type="button" className="cookie-settings-link" onClick={openCookieSettings}>
               Setări cookie

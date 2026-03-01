@@ -14,6 +14,7 @@ const OFFICE_EMAIL = 'office@designtoro.ro';
 const DEFAULT_FROM = process.env.MAIL_FROM || OFFICE_EMAIL;
 const REQUEST_WINDOW_MS = Number(process.env.RATE_LIMIT_WINDOW_MS || 15 * 60 * 1000);
 const MAX_REQUESTS_PER_WINDOW = Number(process.env.RATE_LIMIT_MAX || 25);
+const CONTACT_SUPPORT_EMAIL = OFFICE_EMAIL;
 
 const rateLimitStore = new Map();
 
@@ -178,6 +179,41 @@ if (!transporter) {
   console.warn('Configurarea SMTP nu este completă. Endpoint-urile vor returna eroare.');
 }
 
+function getEmailSendError(error, formType = 'contact') {
+  const message = `${error?.message || ''}`.toLowerCase();
+  const code = error?.code || error?.responseCode;
+  const fallbackMessage =
+    formType === 'offer'
+      ? 'Nu am putut trimite cererea. Încearcă din nou sau contactează-ne direct pe email.'
+      : 'Nu am putut trimite mesajul. Încearcă din nou sau contactează-ne direct pe email.';
+
+  if (!transporter || message.includes('nu este configurat')) {
+    return {
+      status: 503,
+      message: `Serviciul de email nu este configurat. Te rugăm să contactezi ${CONTACT_SUPPORT_EMAIL} sau să încerci din nou mai târziu.`,
+    };
+  }
+
+  if (code === 'EAUTH') {
+    return {
+      status: 503,
+      message: 'Autentificarea SMTP a eșuat. Verifică setările de utilizator/parolă sau contactează-ne direct.',
+    };
+  }
+
+  if (code === 'ECONNECTION' || code === 'ETIMEDOUT') {
+    return {
+      status: 503,
+      message: 'Nu putem trimite momentan emailurile din cauza unei probleme de conexiune SMTP.',
+    };
+  }
+
+  return {
+    status: 500,
+    message: fallbackMessage,
+  };
+}
+
 function sendEmails(type, payload) {
   if (!transporter) {
     return Promise.reject(new Error('Serviciul de email nu este configurat.'));
@@ -258,9 +294,10 @@ function handleContact(payload, res, message) {
     )
     .catch((error) => {
       console.error('Eroare la trimiterea emailurilor pentru contact:', error);
-      return res.status(500).json({
+      const emailError = getEmailSendError(error, 'contact');
+      return res.status(emailError.status).json({
         success: false,
-        message: 'Nu am putut trimite mesajul. Încearcă din nou sau contactează-ne direct pe email.',
+        message: emailError.message,
       });
     });
 }
@@ -286,9 +323,10 @@ function handleOffer(payload, res, message) {
     )
     .catch((error) => {
       console.error('Eroare la trimiterea emailurilor pentru ofertă:', error);
-      return res.status(500).json({
+      const emailError = getEmailSendError(error, 'offer');
+      return res.status(emailError.status).json({
         success: false,
-        message: 'Nu am putut trimite cererea. Încearcă din nou sau contactează-ne direct pe email.',
+        message: emailError.message,
       });
     });
 }
@@ -318,7 +356,13 @@ apiRouter.post('/offer', (req, res) => {
 });
 
 apiRouter.get('/health', (_req, res) => {
-  return res.json({ success: true, status: 'ok' });
+  const smtpConfigured = Boolean(process.env.SMTP_HOST && process.env.SMTP_PORT && process.env.SMTP_USER && process.env.SMTP_PASS);
+  return res.json({
+    success: true,
+    status: smtpConfigured ? 'ok' : 'email-config-missing',
+    smtpConfigured,
+    supportEmail: CONTACT_SUPPORT_EMAIL,
+  });
 });
 
 apiRouter.use((_req, res) => {

@@ -9,6 +9,7 @@ import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import CookiePolicy from './pages/CookiePolicy';
 import { useSiteEffects } from './hooks/useSiteEffects';
 
 function ScrollAndEffects() {
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/termeni-si-conditii" element={<TermsAndConditions />} />
           <Route path="/politica-de-confidentialitate" element={<PrivacyPolicy />} />
+          <Route path="/politica-cookie-uri" element={<CookiePolicy />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
