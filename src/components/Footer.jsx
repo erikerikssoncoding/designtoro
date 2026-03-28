@@ -3,6 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 const navLinks = [
   { to: '/', label: 'Acasă', icon: 'fa-solid fa-house', key: 'home' },
   { to: '/servicii', label: 'Servicii', icon: 'fa-solid fa-layer-group', key: 'servicii' },
+  { to: '/integrare-agent-ai', label: 'Integrări AI', icon: 'fa-solid fa-robot', key: 'integrari-ai' },
   { to: '/preturi', label: 'Prețuri', icon: 'fa-solid fa-tags', key: 'preturi' },
   { to: '/portofoliu', label: 'Portofoliu', icon: 'fa-solid fa-briefcase', key: 'portofoliu' },
   { to: '/contact', label: 'Contact', icon: 'fa-solid fa-envelope', key: 'contact' },

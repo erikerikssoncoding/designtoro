@@ -7,14 +7,17 @@ import Services from './pages/Services';
 import Pricing from './pages/Pricing';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
+import AiIntegrations from './pages/AiIntegrations';
 import TermsAndConditions from './pages/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CookiePolicy from './pages/CookiePolicy';
 import { useSiteEffects } from './hooks/useSiteEffects';
+import { useRouteSeo } from './hooks/useRouteSeo';
 
 function ScrollAndEffects() {
   const { pathname } = useLocation();
   useSiteEffects();
+  useRouteSeo();
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -37,6 +40,7 @@ export default function App() {
           <Route path="/preturi" element={<Pricing />} />
           <Route path="/portofoliu" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/integrare-agent-ai" element={<AiIntegrations />} />
           <Route path="/termeni-si-conditii" element={<TermsAndConditions />} />
           <Route path="/politica-de-confidentialitate" element={<PrivacyPolicy />} />
           <Route path="/politica-cookie-uri" element={<CookiePolicy />} />

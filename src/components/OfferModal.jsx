@@ -6,6 +6,7 @@ const initialOfferState = {
   name: '',
   phone: '',
   email: '',
+  company: '',
   details: '',
   terms: false,
   offer_plan: '',
@@ -123,7 +124,7 @@ export default function OfferModal({ isOpen, onClose, plan }) {
 
       if (result?.success) {
         setIsSuccess(true);
-        setFormValues(initialOfferState);
+        setFormValues({ ...initialOfferState, offer_plan: plan || '' });
       }
     } catch (error) {
       setIsSuccess(false);
@@ -243,7 +244,15 @@ export default function OfferModal({ isOpen, onClose, plan }) {
               </div>
               <div className="form-group honeypot">
                 <label htmlFor="offer-company">Companie</label>
-                <input type="text" id="offer-company" name="company" autoComplete="off" tabIndex={-1} />
+                <input
+                  type="text"
+                  id="offer-company"
+                  name="company"
+                  autoComplete="off"
+                  tabIndex={-1}
+                  value={formValues.company}
+                  onChange={handleChange}
+                />
               </div>
               <div className={`form-group form-consent${fieldErrors.terms ? ' has-error' : ''}`} data-offer-animate>
                 <input

@@ -2281,6 +2281,192 @@ body:not(.no-js) [data-offer-animate].is-animated {
     }
 }
 
+.ai-hero {
+    padding: 5rem 0 4rem;
+    background:
+        radial-gradient(circle at 10% 16%, rgba(229, 9, 20, 0.18), transparent 35%),
+        linear-gradient(145deg, rgba(12, 12, 18, 0.96), rgba(5, 5, 8, 1));
+}
+
+.ai-hero-grid,
+.ai-systems-grid,
+.ai-contact-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    align-items: start;
+}
+
+.ai-hero-copy {
+    max-width: 760px;
+}
+
+.ai-highlights {
+    max-width: 760px;
+}
+
+.ai-hero-panel {
+    display: grid;
+    gap: 1.25rem;
+    align-self: stretch;
+}
+
+.ai-hero-panel__badge {
+    background: #050505;
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.ai-hero-panel h2 {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+}
+
+.ai-panel-list {
+    margin: 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.85rem;
+}
+
+.ai-panel-note {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.7;
+}
+
+.ai-section-header {
+    display: grid;
+    gap: 0.85rem;
+    margin-bottom: 2rem;
+}
+
+.ai-section-header p {
+    max-width: 760px;
+    color: var(--color-muted);
+    margin: 0;
+}
+
+.ai-card-grid {
+    align-items: stretch;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ai-integration-card {
+    height: 100%;
+}
+
+@media (max-width: 991.98px) {
+    .ai-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767.98px) {
+    .ai-card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ai-benefits {
+    background: var(--color-surface);
+}
+
+.ai-benefit-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.ai-benefit-card {
+    border-radius: 24px;
+    padding: 1.75rem;
+    background: rgba(16, 16, 24, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: var(--shadow-soft);
+}
+
+.ai-benefit-card h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.15rem;
+}
+
+.ai-benefit-card p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.7;
+}
+
+.ai-systems {
+    background: var(--color-bg);
+}
+
+.ai-tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.ai-stack-card {
+    display: grid;
+    gap: 0.9rem;
+    min-height: 100%;
+    align-content: center;
+    background:
+        linear-gradient(180deg, rgba(5, 5, 8, 0.28), rgba(5, 5, 8, 0.82)),
+        url('/img/designtoro-integrare-ai.webp') center / cover no-repeat;
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 26px 55px rgba(0, 0, 0, 0.45);
+    isolation: isolate;
+}
+
+.ai-stack-card::before {
+    background:
+        linear-gradient(160deg, rgba(5, 5, 8, 0.32), rgba(5, 5, 8, 0.84)),
+        radial-gradient(circle at 18% 18%, rgba(229, 9, 20, 0.26), transparent 42%);
+    opacity: 1;
+}
+
+.ai-stack-card strong {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.ai-faq-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ai-contact {
+    background: linear-gradient(160deg, rgba(229, 9, 20, 0.08), rgba(5, 5, 8, 0.98));
+}
+
+.ai-contact-copy {
+    display: grid;
+    gap: 1rem;
+}
+
+.ai-contact-copy p {
+    color: var(--color-muted);
+    margin: 0;
+}
+
+@media (max-width: 991.98px) {
+    .ai-hero {
+        padding-top: 4rem;
+    }
+
+    .ai-hero-panel,
+    .ai-stack-card {
+        padding: 1.6rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .ai-faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 @keyframes offerModalOutBackdrop {
     0% {
         opacity: 1;

@@ -1,14 +1,17 @@
 import 'dotenv/config';
 import express from 'express';
+import fs from 'fs';
 import nodemailer from 'nodemailer';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { getPageSeo, serializeSchemaPayload } from './src/seo/routeMeta.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const distPath = path.join(__dirname, 'dist');
+const distIndexPath = path.join(distPath, 'index.html');
 
 const OFFICE_EMAIL = 'office@designtoro.ro';
 const DEFAULT_FROM = process.env.MAIL_FROM || OFFICE_EMAIL;
@@ -17,6 +20,112 @@ const MAX_REQUESTS_PER_WINDOW = Number(process.env.RATE_LIMIT_MAX || 25);
 const CONTACT_SUPPORT_EMAIL = OFFICE_EMAIL;
 
 const rateLimitStore = new Map();
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function upsertTag(html, pattern, replacement) {
+  if (pattern.test(html)) {
+    return html.replace(pattern, replacement);
+  }
+
+  return html.replace('</head>', `  ${replacement}\n  </head>`);
+}
+
+function injectSeoTags(html, pathname) {
+  const seo = getPageSeo(pathname);
+  const schemaText = serializeSchemaPayload(seo.schema);
+
+  let finalHtml = html;
+
+  finalHtml = upsertTag(finalHtml, /<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(seo.title)}</title>`);
+  finalHtml = upsertTag(
+    finalHtml,
+    /<meta\s+name=["']description["'][^>]*>/i,
+    `<meta name="description" content="${escapeHtml(seo.description)}" />`,
+  );
+  finalHtml = upsertTag(
+    finalHtml,
+    /<meta\s+name=["']robots["'][^>]*>/i,
+    `<meta name="robots" content="${escapeHtml(seo.robots)}" />`,
+  );
+  finalHtml = upsertTag(
+    finalHtml,
+    /<link\s+rel=["']canonical["'][^>]*>/i,
+    `<link rel="canonical" href="${escapeHtml(seo.canonical)}" />`,
+  );
+  finalHtml = upsertTag(
+    finalHtml,
+    /<meta\s+property=["']og:locale["'][^>]*>/i,
+    '<meta property="og:locale" content="ro_RO" />',
+  );
+  finalHtml = upsertTag(
+    finalHtml,
+    /<meta\s+property=["']og:type["'][^>]*>/i,
+    `<meta property="og:type" content="${escapeHtml(seo.ogType)}" />`,
+  );
+  finalHtml = upsertTag(
+    finalHtml,
+    /<meta\s+property=["']og:title["'][^>]*>/i,
+    `<meta property="og:title" content="${escapeHtml(seo.title)}" />`,
+  );
+  finalHtml = upsertTag(
+    finalHtml,
+    /<meta\s+property=["']og:description["'][^>]*>/i,
+    `<meta property="og:description" content="${escapeHtml(seo.description)}" />`,
+  );
+  finalHtml = upsertTag(
+    finalHtml,
+    /<meta\s+property=["']og:url["'][^>]*>/i,
+    `<meta property="og:url" content="${escapeHtml(seo.canonical)}" />`,
+  );
+  finalHtml = upsertTag(
+    finalHtml,
+    /<meta\s+property=["']og:site_name["'][^>]*>/i,
+    '<meta property="og:site_name" content="DesignToro" />',
+  );
+  finalHtml = upsertTag(
+    finalHtml,
+    /<meta\s+property=["']og:image["'][^>]*>/i,
+    `<meta property="og:image" content="${escapeHtml(seo.ogImage)}" />`,
+  );
+  finalHtml = upsertTag(
+    finalHtml,
+    /<meta\s+name=["']twitter:card["'][^>]*>/i,
+    `<meta name="twitter:card" content="${escapeHtml(seo.twitterCard)}" />`,
+  );
+  finalHtml = upsertTag(
+    finalHtml,
+    /<meta\s+name=["']twitter:title["'][^>]*>/i,
+    `<meta name="twitter:title" content="${escapeHtml(seo.title)}" />`,
+  );
+  finalHtml = upsertTag(
+    finalHtml,
+    /<meta\s+name=["']twitter:description["'][^>]*>/i,
+    `<meta name="twitter:description" content="${escapeHtml(seo.description)}" />`,
+  );
+  finalHtml = upsertTag(
+    finalHtml,
+    /<meta\s+name=["']twitter:image["'][^>]*>/i,
+    `<meta name="twitter:image" content="${escapeHtml(seo.ogImage)}" />`,
+  );
+
+  if (schemaText) {
+    finalHtml = upsertTag(
+      finalHtml,
+      /<script[^>]*data-route-schema=["']true["'][^>]*>[\s\S]*?<\/script>/i,
+      `<script type="application/ld+json" data-route-schema="true">${schemaText}</script>`,
+    );
+  }
+
+  return finalHtml;
+}
 
 function trimOrEmpty(value) {
   return typeof value === 'string' ? value.trim() : '';
@@ -113,6 +222,10 @@ function formatText(value) {
 
 function buildMailText(type, payload) {
   if (type === 'contact') {
+    const requestTopicLine = trimOrEmpty(payload.request_topic)
+      ? `Interes principal: ${formatText(payload.request_topic)}\n`
+      : '';
+
     return {
       subject: `Mesaj nou din formularul de contact - ${formatText(payload.name)}`,
       adminText:
@@ -120,13 +233,16 @@ function buildMailText(type, payload) {
         `Nume: ${formatText(payload.name)}\n` +
         `Email: ${formatText(payload.email)}\n` +
         `Telefon: ${formatText(payload.phone)}\n` +
+        requestTopicLine +
         `Mesaj:\n${formatText(payload.message)}\n\n` +
         `Referrer: ${formatText(payload.referrer)}\n` +
         `Pagină: ${formatText(payload.page_url)}\n`,
       clientSubject: 'Am primit mesajul tău - DesignToro',
       clientText:
         `Salut ${formatText(payload.name)},\n\nÎți mulțumim că ne-ai contactat! Echipa DesignToro a primit detaliile tale și îți va răspunde în maximum o zi lucrătoare.\n\n` +
-        `Detalii trimise:\n- Telefon: ${formatText(payload.phone)}\n- Mesaj: ${formatText(payload.message)}\n\n` +
+        `Detalii trimise:\n- Telefon: ${formatText(payload.phone)}\n` +
+        `${trimOrEmpty(payload.request_topic) ? `- Interes: ${formatText(payload.request_topic)}\n` : ''}` +
+        `- Mesaj: ${formatText(payload.message)}\n\n` +
         `Dacă vrei să adaugi ceva, răspunde direct la acest email.\n\n` +
         `Mulțumim,\nEchipa DesignToro`,
     };
@@ -372,7 +488,13 @@ apiRouter.use((_req, res) => {
 app.use('/api', apiRouter);
 
 app.get('*', (_req, res) => {
-  res.sendFile(path.join(distPath, 'index.html'));
+  try {
+    const html = fs.readFileSync(distIndexPath, 'utf8');
+    res.send(injectSeoTags(html, _req.path));
+  } catch (error) {
+    console.error('Nu am putut încărca fișierul index pentru randarea SEO:', error);
+    res.sendFile(distIndexPath);
+  }
 });
 
 const port = process.env.PORT || 3002;

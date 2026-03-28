@@ -17,6 +17,10 @@ async function submitForm(endpoint, payload) {
 
     return data;
   } catch (error) {
+    if (error instanceof TypeError) {
+      throw new Error('Nu am putut trimite formularul din cauza unei probleme de conexiune. Încearcă din nou.');
+    }
+
     throw error;
   }
 }

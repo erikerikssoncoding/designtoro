@@ -31,7 +31,9 @@ export function useSiteEffects() {
       },
     );
 
-    const revealTargets = document.querySelectorAll('section:not(.hero), .service-card, .portfolio-card, .portfolio-item, .pricing-card, .stat-card');
+    const revealTargets = document.querySelectorAll(
+      'section:not(.hero), .service-card, .portfolio-card, .portfolio-item, .pricing-card, .stat-card, [data-reveal]',
+    );
 
     const revealVisibleElements = () => {
       const viewportHeight = window.innerHeight || docEl.clientHeight;
@@ -93,7 +95,7 @@ export function useSiteEffects() {
     }
 
     const heroRevealTargets = document.querySelectorAll(
-      '.hero .hero-text > *, .hero .hero-metric, .hero .hero-metric .accent-card',
+      '.hero .hero-text > *, .hero .hero-metric, .hero .hero-metric .accent-card, [data-hero-reveal]',
     );
 
     heroRevealTargets.forEach((el) => {

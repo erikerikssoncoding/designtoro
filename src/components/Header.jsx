@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 const navLinks = [
   { to: '/', label: 'Acasă' },
   { to: '/servicii', label: 'Servicii' },
+  { to: '/integrare-agent-ai', label: 'Integrări AI' },
   { to: '/preturi', label: 'Prețuri' },
   { to: '/portofoliu', label: 'Portofoliu' },
   { to: '/contact', label: 'Contact' },
